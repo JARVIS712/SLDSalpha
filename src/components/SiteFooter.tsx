@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export function SiteFooter() {
@@ -6,9 +7,7 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-4 lg:px-8">
         <div className="md:col-span-2">
           <div className="flex items-center gap-2.5">
-            <span className="flex h-8 w-8 items-center justify-center rounded-md bg-[var(--gold-500)] text-sm font-bold text-[var(--neutral-900)]">
-              S
-            </span>
+            <Image src="/slds-logo.svg" alt="" width={28} height={33} />
             <span className="text-sm font-semibold">SLDS</span>
           </div>
           <p className="mt-4 max-w-sm text-sm text-[var(--neutral-400)]">

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const NAV_LINKS = [
@@ -13,9 +14,7 @@ export function SiteHeader() {
       </a>
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-3 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2.5">
-          <span className="flex h-8 w-8 items-center justify-center rounded-md bg-[var(--gold-500)] text-sm font-bold text-[var(--neutral-900)]">
-            S
-          </span>
+          <Image src="/slds-logo.svg" alt="" width={28} height={33} priority />
           <span className="flex flex-col leading-tight">
             <span className="text-sm font-semibold text-[var(--color-text-primary)]">SLDS</span>
             <span className="text-[11px] text-[var(--color-text-tertiary)]">Design System</span>
