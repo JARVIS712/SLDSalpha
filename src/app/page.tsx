@@ -2,6 +2,7 @@ import Link from "next/link";
 import { componentCounts, components } from "@/data/components";
 
 const FOUNDATIONS = [
+  { href: "/foundations/design-tokens", title: "Design Tokens", desc: "What tokens are, how they're tiered and named, and how to use them — with interactive examples." },
   { href: "/foundations/colour", title: "Colour", desc: "Gold brand palette, semantic tokens, status colours and dark mode." },
   { href: "/foundations/typography", title: "Typography", desc: "Google Sans type scales for mobile and desktop, in English, Sinhala and Tamil." },
   { href: "/foundations/spacing", title: "Spacing & Grid", desc: "A 4px-based spacing scale and responsive grid for mobile, tablet and desktop." },

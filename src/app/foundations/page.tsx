@@ -13,6 +13,7 @@ const PRINCIPLES = [
 ];
 
 const SECTIONS = [
+  { href: "/foundations/design-tokens", title: "Design Tokens", desc: "Token tiers, naming convention, and an interactive resolver." },
   { href: "/foundations/colour", title: "Colour", desc: "62 primitives, 73 semantic tokens, light + dark modes." },
   { href: "/foundations/typography", title: "Typography", desc: "Google Sans across mobile (15 styles) and desktop (12 styles)." },
   { href: "/foundations/spacing", title: "Spacing & Grid", desc: "14-step spacing scale, responsive grid breakpoints." },
