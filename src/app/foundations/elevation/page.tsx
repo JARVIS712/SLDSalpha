@@ -10,7 +10,7 @@ export default function ElevationPage() {
       <PageHeader
         eyebrow="Foundations"
         title="Elevation"
-        description="Shadows communicate layer depth. Use them to reinforce affordance — not decoration. Prefer flat (level 0) whenever possible. Shadow colour aliases Neutral/900."
+        description="Shadows communicate layer depth. Use them to reinforce affordance — not decoration. Prefer flat (level 0) whenever possible. Shadow colour aliases slds-color-neutral-900."
       />
 
       <Section title="Shadow scale">

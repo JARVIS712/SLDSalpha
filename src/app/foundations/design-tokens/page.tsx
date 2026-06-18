@@ -48,7 +48,7 @@ export default function DesignTokensOverviewPage() {
               scales without touching each component individually.
             </p>
             <p className="mt-2 text-sm leading-6 text-[var(--color-text-secondary)]">
-              For example, changing <code className="font-mono text-xs">Gold/500</code> from{" "}
+              For example, changing <code className="font-mono text-xs">slds-color-gold-500</code> from{" "}
               <code className="font-mono text-xs">#F0B41E</code> to{" "}
               <code className="font-mono text-xs">#FFC700</code> (the true ICTA brand yellow)
               automatically updated every component that references{" "}
@@ -65,12 +65,12 @@ export default function DesignTokensOverviewPage() {
               all controlled by separate named tokens.
             </p>
             <pre className="mt-3 overflow-x-auto rounded-[var(--radius-md)] bg-[var(--color-surface-sunken)] p-3 text-[11px] leading-5 text-[var(--color-text-secondary)]">
-{`slds-btn-primary-bg         → Action/Primary       → Gold/500      → #FFC700
-slds-btn-primary-fg         → Action/Primary FG    → Neutral/900   → #111111
-slds-btn-primary-hover-bg   → Action/Primary Hover → Gold/600      → #E0AE00
-slds-btn-padding-y          → space-12             → 12px
-slds-btn-padding-x          → space-24             → 24px
-slds-btn-border-radius      → radius-md            → 8px`}
+{`slds-btn-primary-bg         → Action/Primary       → slds-color-gold-500     → #FFC700
+slds-btn-primary-fg         → Action/Primary FG    → slds-color-neutral-900  → #111111
+slds-btn-primary-hover-bg   → Action/Primary Hover → slds-color-gold-600     → #E0AE00
+slds-btn-padding-y          → slds-space-12        → 12px
+slds-btn-padding-x          → slds-space-24        → 24px
+slds-btn-border-radius      → slds-radius-md       → 8px`}
             </pre>
           </div>
 

@@ -44,15 +44,15 @@ export default function TokenArchitecturePage() {
         <pre className="overflow-x-auto rounded-[var(--radius-lg)] border border-[var(--color-border-decorative)] bg-[var(--color-surface-sunken)] p-4 text-xs leading-6 text-[var(--color-text-secondary)]">
 {`Raw value        #FFC700
      ↑ alias
-Primitive        Gold/500
+Primitive        slds-color-gold-500
      ↑ alias
 Semantic         Action/Primary
      ↑ alias
 Component        slds-btn-primary-bg`}
         </pre>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-[var(--color-text-secondary)]">
-          A change at the primitive layer (Gold/500 = #FFC700) propagates upward through all aliases
-          automatically.
+          A change at the primitive layer (slds-color-gold-500 = #FFC700) propagates upward through all
+          aliases automatically.
         </p>
       </Section>
 

@@ -95,7 +95,7 @@ const raw: Omit<ComponentEntry, "slug">[] = [
   { name: "Cookie Consent", category: "Forms & Inputs", platforms: ["websites"], status: "v1", notes: "" },
 
   // Navigation
-  { name: "Bottom Tab Bar", category: "Navigation", platforms: ["mobile"], status: "v1", notes: "5 tabs max; active icon Icon/Action (Gold/700); 48dp touch targets." },
+  { name: "Bottom Tab Bar", category: "Navigation", platforms: ["mobile"], status: "v1", notes: "5 tabs max; active icon Icon/Action (slds-color-gold-700); 48dp touch targets." },
   { name: "Top Navigation Bar", category: "Navigation", platforms: ["mobile", "web"], status: "v1", notes: "Centred title + back arrow on mobile; logo + links + language switcher on web." },
   { name: "Drawer / Side Menu", category: "Navigation", platforms: ["mobile"], status: "post-v1", notes: "Secondary or ministry-specific navigation." },
   { name: "Pull-to-Refresh", category: "Navigation", platforms: ["mobile"], status: "v1", notes: "Native gesture pattern." },

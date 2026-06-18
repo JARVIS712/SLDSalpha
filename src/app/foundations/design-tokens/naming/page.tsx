@@ -139,13 +139,13 @@ export default function TokenNamingPage() {
   #E0AE00
 
 Primitive
-  Color/Primitive/Gold/600  →  #E0AE00
+  Color/Primitive/Gold/600  →  slds-color-gold-600  →  #E0AE00
 
 Semantic
-  Color/Semantic/Action/Primary Hover  →  Gold/600  →  #E0AE00
+  Color/Semantic/Action/Primary Hover  →  slds-color-gold-600  →  #E0AE00
 
 Component
-  slds-btn-primary-hover-bg  →  Action/Primary Hover  →  Gold/600  →  #E0AE00`}
+  slds-btn-primary-hover-bg  →  Action/Primary Hover  →  slds-color-gold-600  →  #E0AE00`}
         </pre>
         <p className="mb-2 mt-4 text-sm font-medium text-[var(--color-text-primary)]">In code:</p>
         <pre className="overflow-x-auto rounded-[var(--radius-lg)] bg-[var(--color-surface-masthead)] p-4 text-xs leading-6 text-[var(--neutral-200)]">

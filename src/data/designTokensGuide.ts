@@ -33,18 +33,18 @@ export const whenToUseEach = [
 ];
 
 export const tokenCategories = [
-  { category: "Colour", covers: "Backgrounds, surfaces, text, borders, feedback, status, interactive states", examples: "Color/Semantic/Action/Primary, Color/Primitive/Gold/500" },
-  { category: "Typography", covers: "Font size, line height, font weight, letter spacing", examples: "Typography/Mobile/Font Size/body_1, Typography/Desktop/Line Height/heading_1" },
-  { category: "Spacing", covers: "Padding, gap, margin", examples: "space-16, space-24, space-48" },
-  { category: "Border Radius", covers: "Corner rounding", examples: "radius-sm, radius-md, radius-full" },
-  { category: "Elevation", covers: "Shadow offset, blur, spread, opacity; z-index", examples: "Elevation/Shadow/2/Blur, Elevation/z-modal" },
-  { category: "Motion", covers: "Animation duration, easing curves", examples: "Motion/Duration/Normal, Motion/Easing/Decelerate" },
+  { category: "Colour", covers: "Backgrounds, surfaces, text, borders, feedback, status, interactive states", examples: "slds-color-action-primary, slds-color-gold-500" },
+  { category: "Typography", covers: "Font size, line height, font weight, letter spacing", examples: "slds-font-mobile-body-1, slds-font-desktop-heading-1" },
+  { category: "Spacing", covers: "Padding, gap, margin", examples: "slds-space-16, slds-space-24, slds-space-48" },
+  { category: "Border Radius", covers: "Corner rounding", examples: "slds-radius-sm, slds-radius-md, slds-radius-full" },
+  { category: "Elevation", covers: "Shadow offset, blur, spread, opacity; z-index", examples: "slds-shadow-2-blur, slds-z-modal" },
+  { category: "Motion", covers: "Animation duration, easing curves", examples: "slds-motion-duration-normal, slds-motion-easing-decelerate" },
 ];
 
 export const tokenScales = [
-  { scale: "Numeric", appliesTo: "Spacing, colour ramp steps, opacity", example: "space-16, Gold/500, opacity-50" },
-  { scale: "Size", appliesTo: "Border radius, type sizes, icon sizes", example: "radius-md, font-size-body-md" },
-  { scale: "Level", appliesTo: "Elevation shadows, z-index", example: "Elevation/1 · Raised, z-modal" },
+  { scale: "Numeric", appliesTo: "Spacing, colour ramp steps, opacity", example: "slds-space-16, slds-color-gold-500, slds-opacity-50" },
+  { scale: "Size", appliesTo: "Border radius, type sizes, icon sizes", example: "slds-radius-md, slds-font-size-body-md" },
+  { scale: "Level", appliesTo: "Elevation shadows, z-index", example: "slds-shadow-1-raised, slds-z-modal" },
   { scale: "Ratio", appliesTo: "Line height", example: "line-height-body (1.6×)" },
   { scale: "Categorical", appliesTo: "Font weight, colour roles, surface roles", example: "font-weight-bold, Surface/Card, Text/Secondary" },
   { scale: "Positional", appliesTo: "Directional padding or layout", example: "space-inline, space-block" },
@@ -94,14 +94,14 @@ export const primitiveAnatomyExamples = [
 
 // Curated semantic token examples — also powers the interactive resolver.
 export const semanticAnatomyExamples = [
-  { token: "slds-color-action-primary", figmaPath: "Color/Semantic/Action/Primary", primitive: "Gold/500", light: "#FFC700", dark: "#FFC700" },
-  { token: "slds-color-action-primary-hover", figmaPath: "Color/Semantic/Action/Primary Hover", primitive: "Gold/600", light: "#E0AE00", dark: "#FFD740" },
-  { token: "slds-color-text-primary", figmaPath: "Color/Semantic/Text/Primary", primitive: "Neutral/900", light: "#111111", dark: "#FFFFFF" },
-  { token: "slds-color-text-secondary", figmaPath: "Color/Semantic/Text/Secondary", primitive: "Neutral/600", light: "#676C73", dark: "#B8BDC4" },
-  { token: "slds-color-surface-card", figmaPath: "Color/Semantic/Surface/Card", primitive: "Neutral/0", light: "#FFFFFF", dark: "#212529" },
-  { token: "slds-color-border-default", figmaPath: "Color/Semantic/Border/Default", primitive: "Neutral/500", light: "#8E949E", dark: "#3F4548" },
-  { token: "slds-color-feedback-error", figmaPath: "Color/Semantic/Feedback/Error", primitive: "Red/500", light: "#DC2626", dark: "#DC2626" },
-  { token: "slds-color-feedback-success", figmaPath: "Color/Semantic/Feedback/Success", primitive: "Green/600", light: "#059669", dark: "#059669" },
+  { token: "slds-color-action-primary", figmaPath: "Color/Semantic/Action/Primary", primitive: "slds-color-gold-500", light: "#FFC700", dark: "#FFC700" },
+  { token: "slds-color-action-primary-hover", figmaPath: "Color/Semantic/Action/Primary Hover", primitive: "slds-color-gold-600", light: "#E0AE00", dark: "#FFD740" },
+  { token: "slds-color-text-primary", figmaPath: "Color/Semantic/Text/Primary", primitive: "slds-color-neutral-900", light: "#111111", dark: "#FFFFFF" },
+  { token: "slds-color-text-secondary", figmaPath: "Color/Semantic/Text/Secondary", primitive: "slds-color-neutral-600", light: "#676C73", dark: "#B8BDC4" },
+  { token: "slds-color-surface-card", figmaPath: "Color/Semantic/Surface/Card", primitive: "slds-color-neutral-0", light: "#FFFFFF", dark: "#212529" },
+  { token: "slds-color-border-default", figmaPath: "Color/Semantic/Border/Default", primitive: "slds-color-neutral-500", light: "#8E949E", dark: "#3F4548" },
+  { token: "slds-color-feedback-error", figmaPath: "Color/Semantic/Feedback/Error", primitive: "slds-color-red-500", light: "#DC2626", dark: "#DC2626" },
+  { token: "slds-color-feedback-success", figmaPath: "Color/Semantic/Feedback/Success", primitive: "slds-color-green-600", light: "#059669", dark: "#059669" },
 ];
 
 export const componentAnatomyExamples = [

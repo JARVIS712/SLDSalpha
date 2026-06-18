@@ -23,7 +23,7 @@ export default function MotionPage() {
 
       <Section title="Motion rules">
         <ul className="list-disc space-y-2 pl-5 text-sm leading-6 text-[var(--color-text-secondary)]">
-          <li>Always respect <code className="font-mono">prefers-reduced-motion</code>. Fall back to Duration/Instant when active.</li>
+          <li>Always respect <code className="font-mono">prefers-reduced-motion</code>. Fall back to slds-motion-duration-instant when active.</li>
           <li>Entering elements use Decelerate easing. Exiting elements use Accelerate easing.</li>
           <li>Never animate layout-affecting properties (width, height, top, left). Use transform and opacity only.</li>
           <li>Limit concurrent animations to one or two elements at a time.</li>

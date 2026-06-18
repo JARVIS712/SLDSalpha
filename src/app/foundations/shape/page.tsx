@@ -32,7 +32,7 @@ export default function ShapePage() {
       </Section>
 
       <Callout tone="warning">
-        Larger components use larger radii. Never apply <code className="font-mono">radius-full</code> to
+        Larger components use larger radii. Never apply <code className="font-mono">slds-radius-full</code> to
         rectangular containers wider than they are tall.
       </Callout>
     </div>
