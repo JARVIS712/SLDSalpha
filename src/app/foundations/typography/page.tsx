@@ -21,7 +21,7 @@ function Specimen({ style }: { style: TypeStyle }) {
           letterSpacing: style.letterSpacing === "0" ? "normal" : style.letterSpacing,
         }}
       >
-        SLDS Aa සිංහල தமிழ்
+        Aa අආ அஆ
       </p>
       <div className="shrink-0 text-xs text-[var(--color-text-secondary)] sm:text-right">
         <p className="font-mono font-medium text-[var(--color-text-primary)]">{style.name}</p>
