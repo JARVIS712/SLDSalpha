@@ -5,11 +5,11 @@ import { SiteFooter } from "@/components/SiteFooter";
 
 export const metadata: Metadata = {
   title: {
-    default: "Sewa Design System",
-    template: "%s · Sewa Design System",
+    default: "SLDS",
+    template: "%s · SLDS",
   },
   description:
-    "Sewa is the design system for Sri Lanka's government digital services — maintained by ICTA / GoSL. Foundations, components, and guidelines for citizen-facing products.",
+    "SLDS is the design system for Sri Lanka's government digital services — maintained by ICTA / GoSL. Foundations, components, and guidelines for citizen-facing products.",
 };
 
 export default function RootLayout({

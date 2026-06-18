@@ -73,7 +73,7 @@ export default async function ComponentPage({ params }: { params: Promise<{ slug
         <h2 className="mt-4 text-lg font-semibold text-[var(--color-text-primary)]">Live spec coming soon</h2>
         <p className="mt-2 max-w-md text-sm leading-6 text-[var(--color-text-secondary)]">
           Anatomy, variants, states, props/usage guidance and code will be published here as
-          {" "}{component.name}{" "}is designed and built, following the Sewa component build order.
+          {" "}{component.name}{" "}is designed and built, following the SLDS component build order.
         </p>
       </section>
 

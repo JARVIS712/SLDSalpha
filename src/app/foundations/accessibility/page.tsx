@@ -10,7 +10,7 @@ export default function AccessibilityPage() {
       <PageHeader
         eyebrow="Foundations"
         title="Accessibility"
-        description="Every Sewa surface is built to meet WCAG 2.1 AA as a baseline, not an afterthought."
+        description="Every SLDS surface is built to meet WCAG 2.1 AA as a baseline, not an afterthought."
       />
 
       <Section title="Colour contrast (WCAG 2.1 AA)">
@@ -54,7 +54,7 @@ export default function AccessibilityPage() {
       <Section title="Typography minimums">
         <ul className="list-disc space-y-2 pl-5 text-sm leading-6 text-[var(--color-text-secondary)]">
           <li>Minimum body text: 15px mobile / 16px desktop (Mobile/Body 1, Desktop/Body 1).</li>
-          <li>Line height for body text: minimum 1.4× the font size. All Sewa body styles meet this.</li>
+          <li>Line height for body text: minimum 1.4× the font size. All SLDS body styles meet this.</li>
           <li>Do not use text smaller than 12px for any visible UI element.</li>
           <li>Avoid justified text alignment — it creates uneven word spacing that reduces readability.</li>
         </ul>

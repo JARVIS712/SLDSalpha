@@ -35,7 +35,7 @@ export default function SpacingPage() {
         </div>
       </Section>
 
-      <Section title="Grid" description="Responsive grid breakpoints used across Sewa surfaces.">
+      <Section title="Grid" description="Responsive grid breakpoints used across SLDS surfaces.">
         <DataTable
           headers={["Breakpoint", "Columns", "Gutter", "Margin", "Max content width"]}
           rows={gridBreakpoints.map((g) => [g.breakpoint, g.columns, g.gutter, g.margin, g.maxWidth])}

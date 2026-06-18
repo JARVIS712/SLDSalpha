@@ -7,9 +7,9 @@ export function SiteFooter() {
         <div className="md:col-span-2">
           <div className="flex items-center gap-2.5">
             <span className="flex h-8 w-8 items-center justify-center rounded-md bg-[var(--gold-500)] text-sm font-bold text-[var(--neutral-900)]">
-              ස
+              S
             </span>
-            <span className="text-sm font-semibold">Sewa Design System</span>
+            <span className="text-sm font-semibold">SLDS</span>
           </div>
           <p className="mt-4 max-w-sm text-sm text-[var(--neutral-400)]">
             The shared design system for Sri Lanka&rsquo;s government digital services — maintained by ICTA / GoSL.
@@ -40,7 +40,7 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="border-t border-white/10 px-4 py-4 text-center text-xs text-[var(--neutral-500)] sm:px-6 lg:px-8">
-        © {new Date().getFullYear()} ICTA / Government of Sri Lanka. Built with the Sewa Design System.
+        © {new Date().getFullYear()} ICTA / Government of Sri Lanka. Built with SLDS.
       </div>
     </footer>
   );

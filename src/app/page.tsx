@@ -12,8 +12,8 @@ const FOUNDATIONS = [
 ];
 
 const PLATFORMS = [
-  { key: "mobile", label: "Mobile App", desc: "Sewa native — iOS & Android" },
-  { key: "web", label: "Web (PWA)", desc: "Sewa progressive web app" },
+  { key: "mobile", label: "Mobile App", desc: "SLDS native — iOS & Android" },
+  { key: "web", label: "Web (PWA)", desc: "SLDS progressive web app" },
   { key: "dashboard", label: "Dashboard", desc: "Internal gov staff & admin portal" },
   { key: "websites", label: "Websites", desc: "Ministry & department landing pages" },
 ] as const;
@@ -30,7 +30,7 @@ export default function Home() {
             The design system for Sri Lanka&rsquo;s government digital services
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-8 text-[var(--color-text-secondary)]">
-            Sewa (සේවා) gives every citizen-facing product — mobile, web, dashboard and ministry
+            SLDS gives every citizen-facing product — mobile, web, dashboard and ministry
             websites — a shared visual language, reusable components, and accessible-by-default
             design tokens, maintained by ICTA.
           </p>

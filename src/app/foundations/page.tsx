@@ -28,7 +28,7 @@ export default function FoundationsOverview() {
       <PageHeader
         eyebrow="Foundations · v1.0"
         title="Foundations"
-        description="Sewa (සේවා) is the design system for Sri Lanka's government digital services, maintained by ICTA. Three-tier token architecture — Primitive → Semantic → Component. Always reference semantic tokens in components; never use primitive tokens directly in UI."
+        description="SLDS is the design system for Sri Lanka's government digital services, maintained by ICTA. Three-tier token architecture — Primitive → Semantic → Component. Always reference semantic tokens in components; never use primitive tokens directly in UI."
       />
 
       <Section title="Design principles">

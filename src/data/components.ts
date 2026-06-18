@@ -130,7 +130,7 @@ const raw: Omit<ComponentEntry, "slug">[] = [
   { name: "Error State / Error Page", category: "Feedback & Status", platforms: ["mobile", "web", "dashboard", "websites"], status: "v1", notes: "Network / server error; 404 and 500 templates on web." },
 
   // Display & Data
-  { name: "Service Card", category: "Display & Data", platforms: ["mobile", "web", "websites"], status: "v1", notes: "Icon + title + subtitle + status badge; wider layout on web; deep-links into Sewa on Websites." },
+  { name: "Service Card", category: "Display & Data", platforms: ["mobile", "web", "websites"], status: "v1", notes: "Icon + title + subtitle + status badge; wider layout on web; deep-links into SLDS on Websites." },
   { name: "Icon Card", category: "Display & Data", platforms: ["mobile"], status: "v1", notes: "Service category grid tile." },
   { name: "List Item", category: "Display & Data", platforms: ["mobile"], status: "v1", notes: "Leading icon, title, subtitle, trailing icon/badge." },
   { name: "Summary List", category: "Display & Data", platforms: ["mobile", "web", "dashboard"], status: "v1", notes: "Read-only label : value pairs for review screens." },
