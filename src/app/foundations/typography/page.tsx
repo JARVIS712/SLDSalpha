@@ -47,6 +47,15 @@ export default function TypographyPage() {
         Web fallback stack: <code className="font-mono">Google Sans, -apple-system, BlinkMacSystemFont, &apos;Segoe UI&apos;, Roboto, sans-serif</code>
       </Callout>
 
+      <div className="h-4" />
+
+      <Callout tone="warning">
+        <strong>Font status:</strong> Google Sans glyph coverage for Sinhala and Tamil scripts is currently
+        being confirmed. The font packaging approach and any fallback strategy will be documented once
+        validated with the development team. Until confirmed, treat Sinhala and Tamil rendering in
+        production as provisional.
+      </Callout>
+
       <div className="h-10" />
 
       <Section title="Mobile type scale" description="390px viewport — 15 styles. Default body style is highlighted.">
@@ -65,10 +74,46 @@ export default function TypographyPage() {
         </div>
       </Section>
 
+      <Section title="Multi-script scaling strategy">
+        <p className="max-w-2xl text-sm leading-7 text-[var(--color-text-secondary)]">
+          Tamil and Sinhala glyphs are physically larger than their Latin equivalents at the same point
+          size. To preserve UI layout integrity when switching scripts, SLDS applies a modulated scaling
+          approach.
+        </p>
+        <p className="mt-3 max-w-2xl text-sm leading-7 text-[var(--color-text-secondary)]">
+          When the frame language mode is set to Sinhala or Tamil, the Typography variable collection
+          resolves to slightly reduced font sizes compared to the English values. This prevents layout
+          reflow and overflow when switching between scripts.
+        </p>
+        <div className="mt-4 grid gap-4 sm:grid-cols-2">
+          <div className="rounded-[var(--radius-lg)] border border-[var(--color-border-decorative)] bg-[var(--color-surface-card)] p-5">
+            <h3 className="font-semibold text-[var(--color-text-primary)]">In Figma</h3>
+            <p className="mt-2 text-sm leading-6 text-[var(--color-text-secondary)]">
+              Set language at the frame level via the variable mode selector (English / Sinhala / Tamil).
+              Never override the font family or size manually — always switch the mode.
+            </p>
+          </div>
+          <div className="rounded-[var(--radius-lg)] border border-[var(--color-border-decorative)] bg-[var(--color-surface-card)] p-5">
+            <h3 className="font-semibold text-[var(--color-text-primary)]">In code</h3>
+            <p className="mt-2 text-sm leading-6 text-[var(--color-text-secondary)]">
+              Apply the language mode class or CSS custom property at the root container level. Typography
+              tokens resolve automatically.
+            </p>
+          </div>
+        </div>
+        <div className="mt-4">
+          <Callout tone="warning">
+            Google Sans glyph coverage for Sinhala and Tamil is pending final confirmation. Font packaging
+            approach and exact scaling ratios will be documented once confirmed with the development team.
+            This section will be updated.
+          </Callout>
+        </div>
+      </Section>
+
       <Section title="Usage rules">
         <ul className="list-disc space-y-2 pl-5 text-sm leading-6 text-[var(--color-text-secondary)]">
           <li>Never go below 12px for any visible text.</li>
-          <li>Overline text must always be uppercase.</li>
+          <li>Overline text uses sentence case — do not apply all-caps or text-transform: uppercase.</li>
           <li>Use Body 1 as the default for running paragraph text.</li>
           <li>Deck Heading styles (88–44px) are reserved for full-bleed hero / campaign screens — never use inside standard page layouts.</li>
           <li>Use heading hierarchy H1 → H2 → H3 → H4 in order. Do not skip levels.</li>

@@ -11,7 +11,7 @@ export function SiteFooter() {
             <span className="text-sm font-semibold">SLDS</span>
           </div>
           <p className="mt-4 max-w-sm text-sm text-[var(--neutral-400)]">
-            The shared design system for Sri Lanka&rsquo;s government digital services — maintained by ICTA / GoSL.
+            The shared design system for Sri Lanka&rsquo;s government digital services — maintained by GovTech Sri Lanka.
             One visual language across mobile, web, dashboard, and ministry websites.
           </p>
         </div>
@@ -39,7 +39,7 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="border-t border-white/10 px-4 py-4 text-center text-xs text-[var(--neutral-500)] sm:px-6 lg:px-8">
-        © {new Date().getFullYear()} ICTA / Government of Sri Lanka. Built with SLDS.
+        © {new Date().getFullYear()} GovTech Sri Lanka. Built with SLDS.
       </div>
     </footer>
   );

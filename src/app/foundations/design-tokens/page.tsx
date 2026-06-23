@@ -50,7 +50,7 @@ export default function DesignTokensOverviewPage() {
             <p className="mt-2 text-sm leading-6 text-[var(--color-text-secondary)]">
               For example, changing <code className="font-mono text-xs">slds-color-gold-500</code> from{" "}
               <code className="font-mono text-xs">#F0B41E</code> to{" "}
-              <code className="font-mono text-xs">#FFC700</code> (the true ICTA brand yellow)
+              <code className="font-mono text-xs">#FFC700</code> (the true GovTech Sri Lanka brand yellow)
               automatically updated every component that references{" "}
               <code className="font-mono text-xs">Action/Primary</code> — buttons, focus rings, selected
               states — in a single operation.

@@ -5,7 +5,7 @@ import { PageHeader, Section } from "@/components/Foundation";
 export const metadata: Metadata = { title: "Foundations" };
 
 const PRINCIPLES = [
-  { title: "Accessible by default", desc: "Every decision — colour, type size, touch target — meets WCAG 2.1 AA minimum. Disabled states are the only exemption." },
+  { title: "Accessible by default", desc: "Every decision — colour, type size, touch target — meets WCAG 2.2 AA minimum. Disabled states are the only exemption." },
   { title: "Trust through consistency", desc: "Citizens expect government services to look and feel reliable. Consistency builds confidence." },
   { title: "Flat over decorative", desc: "Prefer flat surfaces. Shadows and motion are used sparingly to communicate meaning, not aesthetics." },
   { title: "Language-aware", desc: "All type tokens support English, Sinhala, and Tamil via variable modes. Never hard-code a font family." },
@@ -14,7 +14,7 @@ const PRINCIPLES = [
 
 const SECTIONS = [
   { href: "/foundations/design-tokens", title: "Design Tokens", desc: "Token tiers, naming convention, and an interactive resolver." },
-  { href: "/foundations/colour", title: "Colour", desc: "62 primitives, 73 semantic tokens, light + dark modes." },
+  { href: "/foundations/colour", title: "Colour", desc: "75 primitives, 75 semantic tokens, light + dark + high contrast modes." },
   { href: "/foundations/typography", title: "Typography", desc: "Google Sans across mobile (15 styles) and desktop (12 styles)." },
   { href: "/foundations/spacing", title: "Spacing & Grid", desc: "14-step spacing scale, responsive grid breakpoints." },
   { href: "/foundations/elevation", title: "Elevation", desc: "6-level shadow scale, focus rings, z-index order." },
@@ -29,7 +29,7 @@ export default function FoundationsOverview() {
       <PageHeader
         eyebrow="Foundations · v1.0"
         title="Foundations"
-        description="SLDS is the design system for Sri Lanka's government digital services, maintained by ICTA. Three-tier token architecture — Primitive → Semantic → Component. Always reference semantic tokens in components; never use primitive tokens directly in UI."
+        description="SLDS is the design system for Sri Lanka's government digital services, maintained by GovTech Sri Lanka. Three-tier token architecture — Primitive → Semantic → Component. Always reference semantic tokens in components; never use primitive tokens directly in UI."
       />
 
       <Section title="Design principles">

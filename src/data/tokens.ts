@@ -41,15 +41,22 @@ export const colorPrimitives: PrimitiveFamily[] = [
       { token: "slds-color-neutral-0", hex: "#FFFFFF", usage: "Card surface, page white" },
       { token: "slds-color-neutral-50", hex: "#FAFAFB", usage: "Page background" },
       { token: "slds-color-neutral-100", hex: "#F5F6F8", usage: "Section alt background, sunken" },
+      { token: "slds-color-neutral-150", hex: "#F0F0F0", usage: "Disabled background / sunken surface (High Contrast)" },
+      { token: "slds-color-neutral-175", hex: "#E8E8E8", usage: "Hover / subtle gray (High Contrast)" },
       { token: "slds-color-neutral-200", hex: "#ECEEF1", usage: "Disabled background, dividers" },
+      { token: "slds-color-neutral-250", hex: "#D0D0D0", usage: "Secondary pressed (High Contrast)" },
       { token: "slds-color-neutral-300", hex: "#DADDE2", usage: "Decorative borders" },
       { token: "slds-color-neutral-400", hex: "#B8BDC4", usage: "Disabled foreground, tertiary text" },
       { token: "slds-color-neutral-500", hex: "#8E949E", usage: "Default borders, secondary icons" },
       { token: "slds-color-neutral-600", hex: "#676C73", usage: "Secondary text, strong borders (cool-toned)" },
+      { token: "slds-color-neutral-650", hex: "#595959", usage: "Disabled states (High Contrast)" },
       { token: "slds-color-neutral-700", hex: "#3F4548", usage: "Dark mode borders" },
+      { token: "slds-color-neutral-750", hex: "#374151", usage: "Draft / Archived status (High Contrast)" },
       { token: "slds-color-neutral-800", hex: "#212529", usage: "Dark mode card surface" },
+      { token: "slds-color-neutral-820", hex: "#1F2937", usage: "Dark slate — DataViz/8 (High Contrast)" },
       { token: "slds-color-neutral-900", hex: "#111111", usage: "Primary text, masthead" },
       { token: "slds-color-neutral-950", hex: "#030712", usage: "Footer, deepest dark" },
+      { token: "slds-color-neutral-1000", hex: "#000000", usage: "Pure black (High Contrast)" },
     ],
   },
   {
@@ -68,6 +75,7 @@ export const colorPrimitives: PrimitiveFamily[] = [
       { token: "slds-color-green-100", hex: "#E0F2EC", usage: "Success, approved status" },
       { token: "slds-color-green-500", hex: "#1FAA63", usage: "Success, approved status" },
       { token: "slds-color-green-700", hex: "#086B53", usage: "Success, approved status" },
+      { token: "slds-color-green-800", hex: "#065F46", usage: "Success, Approved, DataViz/7 (High Contrast)" },
     ],
   },
   {
@@ -77,6 +85,7 @@ export const colorPrimitives: PrimitiveFamily[] = [
       { token: "slds-color-teal-100", hex: "#D0F0F5", usage: "Info, submitted status" },
       { token: "slds-color-teal-500", hex: "#0E9DB0", usage: "Info, submitted status" },
       { token: "slds-color-teal-600", hex: "#0D6B7B", usage: "Info, submitted status" },
+      { token: "slds-color-teal-800", hex: "#0F4855", usage: "Info, Submitted, DataViz/4 (High Contrast)" },
     ],
   },
   {
@@ -86,6 +95,7 @@ export const colorPrimitives: PrimitiveFamily[] = [
       { token: "slds-color-blue-100", hex: "#E3EDFF", usage: "Info text, in-review status" },
       { token: "slds-color-blue-500", hex: "#1A56D6", usage: "Info text, in-review status" },
       { token: "slds-color-blue-700", hex: "#1041A8", usage: "Info text, in-review status" },
+      { token: "slds-color-blue-900", hex: "#1E3A8A", usage: "In Review status, DataViz/2 (High Contrast)" },
     ],
   },
   {
@@ -95,6 +105,8 @@ export const colorPrimitives: PrimitiveFamily[] = [
       { token: "slds-color-orange-100", hex: "#FEF0E3", usage: "Warning, escalated status" },
       { token: "slds-color-orange-500", hex: "#F97316", usage: "Warning, escalated status" },
       { token: "slds-color-orange-600", hex: "#F57C00", usage: "Warning, escalated status" },
+      { token: "slds-color-orange-800", hex: "#78350F", usage: "DataViz/1 (High Contrast)" },
+      { token: "slds-color-orange-900", hex: "#7C2D12", usage: "Escalated status, DataViz/6 (High Contrast)" },
     ],
   },
   {
@@ -104,6 +116,7 @@ export const colorPrimitives: PrimitiveFamily[] = [
       { token: "slds-color-purple-100", hex: "#EDE9FF", usage: "On-hold status, DataViz" },
       { token: "slds-color-purple-300", hex: "#A78BFA", usage: "On-hold status, DataViz" },
       { token: "slds-color-purple-500", hex: "#6747C7", usage: "On-hold status, DataViz" },
+      { token: "slds-color-purple-900", hex: "#4C1D95", usage: "On Hold status, DataViz/5 (High Contrast)" },
     ],
   },
   {
@@ -117,6 +130,7 @@ export interface SemanticToken {
   token: string;
   light: string;
   dark: string;
+  highContrast?: string;
   usage: string;
 }
 
@@ -160,6 +174,8 @@ export const semanticColors: SemanticGroup[] = [
       { token: "Action/Primary Pressed", light: "#E0AE00", dark: "#FFD740", usage: "Primary pressed" },
       { token: "Action/Secondary", light: "#FFFFFF", dark: "#212529", usage: "Secondary button background" },
       { token: "Action/Secondary Border", light: "#111111", dark: "#DADDE2", usage: "Secondary button border" },
+      { token: "Action/Secondary Hover", light: "#F5F6F8", dark: "#2A2D31", highContrast: "#E8E8E8", usage: "Secondary button hover background" },
+      { token: "Action/Secondary Pressed", light: "#ECEEF1", dark: "#3F4548", highContrast: "#D0D0D0", usage: "Secondary button pressed background" },
       { token: "Action/Disabled Background", light: "#ECEEF1", dark: "#212529", usage: "Disabled background" },
       { token: "Action/Disabled Foreground", light: "#B8BDC4", dark: "#676C73", usage: "Disabled label/icon" },
     ],
@@ -263,7 +279,7 @@ export const typeScaleMobile: TypeStyle[] = [
   { name: "slds-font-mobile-body-1", size: "15px", lineHeight: "20px", weight: "Regular", letterSpacing: "0", usage: "Primary body copy ← default" },
   { name: "slds-font-mobile-caption-2", size: "14px", lineHeight: "20px", weight: "Regular", letterSpacing: "0", usage: "Metadata, timestamps" },
   { name: "slds-font-mobile-caption-1", size: "12px", lineHeight: "16px", weight: "Regular", letterSpacing: "0", usage: "Helper text, form hints" },
-  { name: "slds-font-mobile-overline", size: "12px", lineHeight: "16px", weight: "Medium", letterSpacing: "+2px", usage: "Section labels (ALL CAPS)" },
+  { name: "slds-font-mobile-overline", size: "12px", lineHeight: "16px", weight: "Medium", letterSpacing: "+2px", usage: "Section labels" },
 ];
 
 export const typeScaleDesktop: TypeStyle[] = [
@@ -278,7 +294,7 @@ export const typeScaleDesktop: TypeStyle[] = [
   { name: "slds-font-desktop-body-2", size: "14px", lineHeight: "22px", weight: "Regular", letterSpacing: "0", usage: "Dense body, sidebar text" },
   { name: "slds-font-desktop-caption-1", size: "12px", lineHeight: "18px", weight: "Regular", letterSpacing: "+0.2px", usage: "Helper text, form hints" },
   { name: "slds-font-desktop-caption-2", size: "11px", lineHeight: "16px", weight: "Regular", letterSpacing: "+0.3px", usage: "Fine print, metadata" },
-  { name: "slds-font-desktop-overline", size: "11px", lineHeight: "16px", weight: "Medium", letterSpacing: "+1px", usage: "Section labels (ALL CAPS)" },
+  { name: "slds-font-desktop-overline", size: "11px", lineHeight: "16px", weight: "Medium", letterSpacing: "+1px", usage: "Section labels" },
 ];
 
 export interface SpacingToken {

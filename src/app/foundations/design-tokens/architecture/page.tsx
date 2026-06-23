@@ -31,6 +31,16 @@ export default function TokenArchitecturePage() {
           headers={["Tier", "Also called", "Description"]}
           rows={tokenTiers.map((t) => [<strong key="t">{t.tier}</strong>, t.also, t.description])}
         />
+        <div className="mt-4">
+          <Callout>
+            Loader and skeleton states (<code className="font-mono text-xs">Skeleton/Base</code>,{" "}
+            <code className="font-mono text-xs">Skeleton/Shimmer</code>,{" "}
+            <code className="font-mono text-xs">Spinner/Track</code>,{" "}
+            <code className="font-mono text-xs">Spinner/Fill</code>) are covered at the{" "}
+            <strong>component token</strong> layer, not the semantic layer — they exist in Figma but aren&rsquo;t
+            yet documented here.
+          </Callout>
+        </div>
       </Section>
 
       <Section

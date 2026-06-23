@@ -9,7 +9,7 @@ const FOUNDATIONS = [
   { href: "/foundations/elevation", title: "Elevation", desc: "A 6-level shadow scale, focus rings, and z-index stacking order." },
   { href: "/foundations/shape", title: "Shape", desc: "Border radius tokens from sharp tables to fully rounded pills." },
   { href: "/foundations/motion", title: "Motion", desc: "Durations and easing curves that communicate state, not decoration." },
-  { href: "/foundations/accessibility", title: "Accessibility", desc: "WCAG 2.1 AA contrast, touch targets, focus management and more." },
+  { href: "/foundations/accessibility", title: "Accessibility", desc: "WCAG 2.2 AA contrast, touch targets, focus management and more." },
 ];
 
 const PLATFORMS = [
@@ -33,7 +33,7 @@ export default function Home() {
           <p className="mt-5 max-w-2xl text-lg leading-8 text-[var(--color-text-secondary)]">
             SLDS gives every citizen-facing product — mobile, web, dashboard and ministry
             websites — a shared visual language, reusable components, and accessible-by-default
-            design tokens, maintained by ICTA.
+            design tokens, maintained by GovTech Sri Lanka.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link

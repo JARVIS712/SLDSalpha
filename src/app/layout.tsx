@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     template: "%s · SLDS",
   },
   description:
-    "SLDS is the design system for Sri Lanka's government digital services — maintained by ICTA / GoSL. Foundations, components, and guidelines for citizen-facing products.",
+    "SLDS is the design system for Sri Lanka's government digital services — maintained by GovTech Sri Lanka. Foundations, components, and guidelines for citizen-facing products.",
 };
 
 export default function RootLayout({
