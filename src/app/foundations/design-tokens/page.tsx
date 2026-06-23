@@ -77,9 +77,9 @@ slds-btn-border-radius      → slds-radius-md       → 8px`}
           <div className="rounded-[var(--radius-lg)] border border-[var(--color-border-decorative)] bg-[var(--color-surface-card)] p-5 sm:col-span-2">
             <h3 className="font-semibold text-[var(--color-text-primary)]">Theme switching without component changes</h3>
             <p className="mt-2 max-w-2xl text-sm leading-6 text-[var(--color-text-secondary)]">
-              A semantic token resolves to different primitive values in Light and Dark mode. The
-              component keeps the same token name — only the resolved value changes. Toggle the demo
-              below: the card and button code never changes, only the mode does.
+              A semantic token resolves to different primitive values in Light, Dark, and High Contrast
+              mode. The component keeps the same token name — only the resolved value changes. Toggle
+              the demo below: the card and button code never changes, only the mode does.
             </p>
             <div className="mt-4">
               <ThemeTokenDemo />

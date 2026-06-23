@@ -9,37 +9,46 @@ const ROWS = [
   { token: "Action/Primary", cssVar: "--color-action-primary" },
 ];
 
+const MODES = [
+  { key: "light", label: "Light", className: "" },
+  { key: "dark", label: "Dark", className: "dark" },
+  { key: "hc", label: "High Contrast", className: "hc" },
+] as const;
+
+type Mode = (typeof MODES)[number]["key"];
+
 export function ThemeTokenDemo() {
-  const [mode, setMode] = useState<"light" | "dark">("light");
+  const [mode, setMode] = useState<Mode>("light");
+  const className = MODES.find((m) => m.key === mode)!.className;
 
   return (
     <div className="rounded-[var(--radius-xl)] border border-[var(--color-border-decorative)] bg-[var(--color-surface-section-alt)] p-5">
-      <div className="mb-5 flex items-center justify-between">
+      <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-sm text-[var(--color-text-secondary)]">
           The same component, the same token names — only the mode changes.
         </p>
         <div className="inline-flex rounded-md border border-[var(--color-border-default)] p-0.5 text-sm">
-          {(["light", "dark"] as const).map((m) => (
+          {MODES.map((m) => (
             <button
-              key={m}
+              key={m.key}
               type="button"
-              onClick={() => setMode(m)}
-              aria-pressed={mode === m}
-              className={`rounded px-3 py-1 font-medium capitalize transition-colors ${
-                mode === m ? "bg-[var(--gold-500)] text-[var(--neutral-900)]" : "text-[var(--color-text-secondary)]"
+              onClick={() => setMode(m.key)}
+              aria-pressed={mode === m.key}
+              className={`whitespace-nowrap rounded px-3 py-1 font-medium transition-colors ${
+                mode === m.key ? "bg-[var(--gold-500)] text-[var(--neutral-900)]" : "text-[var(--color-text-secondary)]"
               }`}
             >
-              {m} mode
+              {m.label}
             </button>
           ))}
         </div>
       </div>
 
-      <div className={mode === "dark" ? "dark" : ""}>
+      <div className={className}>
         <div className="rounded-[var(--radius-lg)] border border-[var(--color-border-decorative)] bg-[var(--color-surface-card)] p-6 transition-colors">
           <h3 className="text-lg font-semibold text-[var(--color-text-primary)]">Card surface</h3>
           <p className="mt-1 text-sm text-[var(--color-text-secondary)]">
-            Styled with Surface/Card, Text/Primary and Text/Secondary — nothing here was rewritten for dark mode.
+            Styled with Surface/Card, Text/Primary and Text/Secondary — nothing here was rewritten per mode.
           </p>
           <button
             type="button"
@@ -52,7 +61,7 @@ export function ThemeTokenDemo() {
 
       <dl className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-4">
         {ROWS.map((r) => (
-          <div key={r.token} className={mode === "dark" ? "dark" : ""}>
+          <div key={r.token} className={className}>
             <div className="rounded-[var(--radius-md)] border border-[var(--color-border-decorative)] bg-[var(--color-surface-card)] p-2">
               <dt className="font-mono text-[10px] text-[var(--color-text-tertiary)]">{r.token}</dt>
               <dd className="mt-1 flex items-center gap-1.5">

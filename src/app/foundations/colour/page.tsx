@@ -37,7 +37,7 @@ export default function ColourPage() {
         </div>
       </Section>
 
-      <Section title="Semantic tokens" description="What components reference. Resolves to the correct value in Light, Dark, and (where confirmed) High Contrast mode automatically.">
+      <Section title="Semantic tokens" description="What components reference. Resolves to the correct value in Light, Dark, and High Contrast mode automatically.">
         <div className="space-y-8">
           {semanticColors.map((group) => (
             <div key={group.name}>
@@ -54,14 +54,10 @@ export default function ColourPage() {
                     <span className="inline-block h-4 w-4 rounded border border-[var(--color-border-decorative)]" style={{ backgroundColor: t.dark }} />
                     {t.dark}
                   </span>,
-                  t.highContrast ? (
-                    <span key="hc" className="inline-flex items-center gap-2">
-                      <span className="inline-block h-4 w-4 rounded border border-[var(--color-border-decorative)]" style={{ backgroundColor: t.highContrast }} />
-                      {t.highContrast}
-                    </span>
-                  ) : (
-                    <span key="hc" className="text-[var(--color-text-tertiary)]">Pending</span>
-                  ),
+                  <span key="hc" className="inline-flex items-center gap-2">
+                    <span className="inline-block h-4 w-4 rounded border border-[var(--color-border-decorative)]" style={{ backgroundColor: t.highContrast }} />
+                    {t.highContrast}
+                  </span>,
                   t.usage,
                 ])}
               />
@@ -70,16 +66,23 @@ export default function ColourPage() {
         </div>
       </Section>
 
-      <Section title="Status — badges & workflow" description="The 8-state status matrix used by Status Badge and Workflow Status Bar.">
+      <Section title="Status — badges & workflow" description="The 8-state status matrix used by Status Badge and Workflow Status Bar, in Light and High Contrast mode.">
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
           {statusBadges.map((s) => (
-            <span
-              key={s.status}
-              className="inline-flex items-center justify-center rounded-full px-3 py-2 text-sm font-medium"
-              style={{ backgroundColor: s.bg, color: s.color }}
-            >
-              {s.status}
-            </span>
+            <div key={s.status} className="flex flex-col gap-1.5">
+              <span
+                className="inline-flex items-center justify-center rounded-full px-3 py-2 text-sm font-medium"
+                style={{ backgroundColor: s.bg, color: s.color }}
+              >
+                {s.status}
+              </span>
+              <span
+                className="inline-flex items-center justify-center rounded-full border border-[var(--color-border-decorative)] px-3 py-2 text-sm font-medium"
+                style={{ backgroundColor: s.hcBg, color: s.hcColor }}
+              >
+                {s.status} (HC)
+              </span>
+            </div>
           ))}
         </div>
       </Section>
@@ -88,7 +91,10 @@ export default function ColourPage() {
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-8">
           {dataViz.map((d) => (
             <div key={d.index} className="overflow-hidden rounded-[var(--radius-md)] border border-[var(--color-border-decorative)]">
-              <div className="h-14 w-full" style={{ backgroundColor: d.light }} />
+              <div className="flex h-14 w-full">
+                <div className="w-2/3" style={{ backgroundColor: d.light }} />
+                <div className="w-1/3 border-l border-[var(--color-border-decorative)]" style={{ backgroundColor: d.highContrast }} />
+              </div>
               <div className="p-2 text-center">
                 <p className="text-xs font-semibold text-[var(--color-text-primary)]">DataViz/{d.index}</p>
                 <p className="text-[10px] text-[var(--color-text-tertiary)]">{d.alias}</p>
@@ -96,6 +102,7 @@ export default function ColourPage() {
             </div>
           ))}
         </div>
+        <p className="mt-3 text-xs text-[var(--color-text-tertiary)]">Each swatch: Light mode (left) · High Contrast mode (right strip).</p>
       </Section>
 
       <Section title="Dark mode">
@@ -128,9 +135,8 @@ export default function ColourPage() {
         <div className="mt-4">
           <Callout>
             In code, map the High Contrast mode to <code className="font-mono text-xs">forced-colors: active</code> and{" "}
-            <code className="font-mono text-xs">prefers-contrast: more</code> media queries. Tokens marked{" "}
-            <span className="text-[var(--color-text-tertiary)]">Pending</span> in the semantic table above are still
-            being confirmed for this mode.
+            <code className="font-mono text-xs">prefers-contrast: more</code> media queries. All 75 semantic tokens
+            have confirmed High Contrast values — see the semantic table above for every token&rsquo;s value.
           </Callout>
         </div>
       </Section>

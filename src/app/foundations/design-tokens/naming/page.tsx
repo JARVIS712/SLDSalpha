@@ -64,7 +64,7 @@ export default function TokenNamingPage() {
               differently per mode.
             </p>
             <DataTable
-              headers={["Token", "Primitive", "Light", "Dark"]}
+              headers={["Token", "Primitive", "Light", "Dark", "High Contrast"]}
               rows={semanticAnatomyExamples.map((s) => [
                 <code key="t" className="text-xs">{s.token}</code>,
                 s.primitive,
@@ -75,6 +75,10 @@ export default function TokenNamingPage() {
                 <span key="d" className="inline-flex items-center gap-1.5">
                   <span className="inline-block h-3.5 w-3.5 rounded border border-[var(--color-border-decorative)]" style={{ backgroundColor: s.dark }} />
                   {s.dark}
+                </span>,
+                <span key="hc" className="inline-flex items-center gap-1.5">
+                  <span className="inline-block h-3.5 w-3.5 rounded border border-[var(--color-border-decorative)]" style={{ backgroundColor: s.highContrast }} />
+                  {s.highContrast}
                 </span>,
               ])}
             />

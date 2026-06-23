@@ -64,8 +64,13 @@ export const colorPrimitives: PrimitiveFamily[] = [
     description: "Feedback — Error",
     tokens: [
       { token: "slds-color-red-100", hex: "#FDECEA", usage: "Errors, destructive, rejected status" },
+      { token: "slds-color-red-300", hex: "#F47272", usage: "Dark mode error border" },
+      { token: "slds-color-red-400", hex: "#F87171", usage: "Dark mode error text, DataViz/3 dark" },
       { token: "slds-color-red-500", hex: "#DC2626", usage: "Errors, destructive, rejected status" },
+      { token: "slds-color-red-600", hex: "#D32F2F", usage: "Rejected status, destructive actions, error borders" },
       { token: "slds-color-red-700", hex: "#B91C1C", usage: "Errors, destructive, rejected status" },
+      { token: "slds-color-red-800", hex: "#991B1B", usage: "Error hover (High Contrast)" },
+      { token: "slds-color-red-900", hex: "#7F1D1D", usage: "Error pressed, Rejected subtle (High Contrast)" },
     ],
   },
   {
@@ -73,9 +78,13 @@ export const colorPrimitives: PrimitiveFamily[] = [
     description: "Feedback — Success",
     tokens: [
       { token: "slds-color-green-100", hex: "#E0F2EC", usage: "Success, approved status" },
+      { token: "slds-color-green-300", hex: "#5DC896", usage: "Dark mode success icon" },
+      { token: "slds-color-green-400", hex: "#34D399", usage: "Dark mode approved status, DataViz/7 dark" },
       { token: "slds-color-green-500", hex: "#1FAA63", usage: "Success, approved status" },
+      { token: "slds-color-green-600", hex: "#059669", usage: "Approved status, DataViz/7" },
       { token: "slds-color-green-700", hex: "#086B53", usage: "Success, approved status" },
       { token: "slds-color-green-800", hex: "#065F46", usage: "Success, Approved, DataViz/7 (High Contrast)" },
+      { token: "slds-color-green-900", hex: "#064E3B", usage: "Approved subtle (High Contrast)" },
     ],
   },
   {
@@ -83,6 +92,8 @@ export const colorPrimitives: PrimitiveFamily[] = [
     description: "Feedback — Info / Submitted",
     tokens: [
       { token: "slds-color-teal-100", hex: "#D0F0F5", usage: "Info, submitted status" },
+      { token: "slds-color-teal-200", hex: "#7DD8E8", usage: "Dark mode info icon" },
+      { token: "slds-color-teal-300", hex: "#67D2E1", usage: "Dark mode submitted status, DataViz/4 dark" },
       { token: "slds-color-teal-500", hex: "#0E9DB0", usage: "Info, submitted status" },
       { token: "slds-color-teal-600", hex: "#0D6B7B", usage: "Info, submitted status" },
       { token: "slds-color-teal-800", hex: "#0F4855", usage: "Info, Submitted, DataViz/4 (High Contrast)" },
@@ -93,6 +104,7 @@ export const colorPrimitives: PrimitiveFamily[] = [
     description: "Feedback — Info / In Review",
     tokens: [
       { token: "slds-color-blue-100", hex: "#E3EDFF", usage: "Info text, in-review status" },
+      { token: "slds-color-blue-300", hex: "#93C5FD", usage: "Dark mode in-review status, DataViz/2 dark" },
       { token: "slds-color-blue-500", hex: "#1A56D6", usage: "Info text, in-review status" },
       { token: "slds-color-blue-700", hex: "#1041A8", usage: "Info text, in-review status" },
       { token: "slds-color-blue-900", hex: "#1E3A8A", usage: "In Review status, DataViz/2 (High Contrast)" },
@@ -103,6 +115,7 @@ export const colorPrimitives: PrimitiveFamily[] = [
     description: "Feedback — Warning / Escalated",
     tokens: [
       { token: "slds-color-orange-100", hex: "#FEF0E3", usage: "Warning, escalated status" },
+      { token: "slds-color-orange-400", hex: "#FB923C", usage: "Dark mode DataViz/6" },
       { token: "slds-color-orange-500", hex: "#F97316", usage: "Warning, escalated status" },
       { token: "slds-color-orange-600", hex: "#F57C00", usage: "Warning, escalated status" },
       { token: "slds-color-orange-800", hex: "#78350F", usage: "DataViz/1 (High Contrast)" },
@@ -124,6 +137,19 @@ export const colorPrimitives: PrimitiveFamily[] = [
     description: "Heritage accent — use sparingly",
     tokens: [{ token: "slds-color-maroon-700", hex: "#7A1240", usage: "Heritage accent — use sparingly" }],
   },
+  {
+    name: "Dark Subtle",
+    description: "Dark-mode subtle backgrounds for feedback/status families",
+    tokens: [
+      { token: "slds-color-dark-subtle-gold", hex: "#2E2200", usage: "Warning/Draft/Escalated subtle background, dark mode" },
+      { token: "slds-color-dark-subtle-green", hex: "#062B1A", usage: "Success/Approved subtle background, dark mode" },
+      { token: "slds-color-dark-subtle-red", hex: "#330D0D", usage: "Error subtle background, dark mode" },
+      { token: "slds-color-dark-subtle-teal", hex: "#061F24", usage: "Info subtle background, dark mode" },
+      { token: "slds-color-dark-subtle-orange", hex: "#2E1800", usage: "Escalated/Draft subtle background, dark mode" },
+      { token: "slds-color-dark-subtle-purple", hex: "#1A0F38", usage: "On Hold subtle background, dark mode" },
+      { token: "slds-color-dark-subtle-blue", hex: "#0A1733", usage: "In Review/Submitted/Info subtle background, dark mode" },
+    ],
+  },
 ];
 
 export interface SemanticToken {
@@ -143,77 +169,116 @@ export const semanticColors: SemanticGroup[] = [
   {
     name: "Text",
     tokens: [
-      { token: "Text/Primary", light: "#111111", dark: "#FFFFFF", usage: "Body copy, headings" },
-      { token: "Text/Secondary", light: "#676C73", dark: "#B8BDC4", usage: "Supporting text, subtitles" },
-      { token: "Text/Tertiary", light: "#B8BDC4", dark: "#676C73", usage: "Placeholder, metadata" },
-      { token: "Text/Disabled", light: "#B8BDC4", dark: "#3F4548", usage: "Disabled labels" },
-      { token: "Text/Inverse", light: "#FFFFFF", dark: "#111111", usage: "Text on dark surfaces" },
-      { token: "Text/Link", light: "#111111", dark: "#FFD740", usage: "Hyperlinks" },
+      { token: "Text/Primary", light: "#111111", dark: "#FFFFFF", highContrast: "#000000", usage: "Body copy, headings" },
+      { token: "Text/Secondary", light: "#676C73", dark: "#B8BDC4", highContrast: "#000000", usage: "Supporting text, subtitles" },
+      { token: "Text/Tertiary", light: "#B8BDC4", dark: "#676C73", highContrast: "#000000", usage: "Placeholder, metadata" },
+      { token: "Text/Disabled", light: "#B8BDC4", dark: "#3F4548", highContrast: "#595959", usage: "Disabled labels" },
+      { token: "Text/Inverse", light: "#FFFFFF", dark: "#111111", highContrast: "#FFFFFF", usage: "Text on dark surfaces" },
+      { token: "Text/Link", light: "#111111", dark: "#FFD740", highContrast: "#000000", usage: "Hyperlinks" },
     ],
   },
   {
     name: "Surface",
     tokens: [
-      { token: "Surface/Page", light: "#FAFAFB", dark: "#111111", usage: "Root page background" },
-      { token: "Surface/Card", light: "#FFFFFF", dark: "#212529", usage: "Cards, panels, modals" },
-      { token: "Surface/Hover", light: "#F5F6F8", dark: "#212529", usage: "Row hover, menu hover" },
-      { token: "Surface/Sunken", light: "#F5F6F8", dark: "#111111", usage: "Inset areas, code blocks" },
-      { token: "Surface/Section Alt", light: "#F5F6F8", dark: "#212529", usage: "Alternating sections" },
-      { token: "Surface/Masthead", light: "#111111", dark: "#111111", usage: "Top navigation bar" },
-      { token: "Surface/Footer", light: "#111111", dark: "#030712", usage: "Page footer" },
-      { token: "Surface/Brand", light: "#FFC700", dark: "#FFC700", usage: "Gold brand surfaces" },
-      { token: "Surface/Inverse", light: "#111111", dark: "#FFFFFF", usage: "Inverse surfaces" },
+      { token: "Surface/Page", light: "#FAFAFB", dark: "#111111", highContrast: "#FFFFFF", usage: "Root page background" },
+      { token: "Surface/Card", light: "#FFFFFF", dark: "#212529", highContrast: "#FFFFFF", usage: "Cards, panels, modals" },
+      { token: "Surface/Hover", light: "#F5F6F8", dark: "#212529", highContrast: "#E8E8E8", usage: "Row hover, menu hover" },
+      { token: "Surface/Sunken", light: "#F5F6F8", dark: "#111111", highContrast: "#F0F0F0", usage: "Inset areas, code blocks" },
+      { token: "Surface/Section Alt", light: "#F5F6F8", dark: "#212529", highContrast: "#FFFFFF", usage: "Alternating sections" },
+      { token: "Surface/Masthead", light: "#111111", dark: "#111111", highContrast: "#000000", usage: "Top navigation bar" },
+      { token: "Surface/Footer", light: "#111111", dark: "#030712", highContrast: "#000000", usage: "Page footer" },
+      { token: "Surface/Brand", light: "#FFC700", dark: "#FFC700", highContrast: "#FFC700", usage: "Gold brand surfaces" },
+      { token: "Surface/Inverse", light: "#111111", dark: "#FFFFFF", highContrast: "#000000", usage: "Inverse surfaces" },
+      { token: "Surface/Hero Overlay", light: "#111111", dark: "#111111", highContrast: "#000000", usage: "Scrim over hero banner images" },
     ],
   },
   {
     name: "Action",
     tokens: [
-      { token: "Action/Primary", light: "#FFC700", dark: "#FFC700", usage: "Primary button background" },
-      { token: "Action/Primary Foreground", light: "#111111", dark: "#111111", usage: "Label on primary button" },
-      { token: "Action/Primary Hover", light: "#E0AE00", dark: "#FFD740", usage: "Primary hover" },
-      { token: "Action/Primary Pressed", light: "#E0AE00", dark: "#FFD740", usage: "Primary pressed" },
-      { token: "Action/Secondary", light: "#FFFFFF", dark: "#212529", usage: "Secondary button background" },
-      { token: "Action/Secondary Border", light: "#111111", dark: "#DADDE2", usage: "Secondary button border" },
+      { token: "Action/Primary", light: "#FFC700", dark: "#FFC700", highContrast: "#FFC700", usage: "Primary button background" },
+      { token: "Action/Primary Foreground", light: "#111111", dark: "#111111", highContrast: "#000000", usage: "Label on primary button" },
+      { token: "Action/Primary Hover", light: "#E0AE00", dark: "#FFD740", highContrast: "#E0AE00", usage: "Primary hover" },
+      { token: "Action/Primary Pressed", light: "#E0AE00", dark: "#FFD740", highContrast: "#B38A00", usage: "Primary pressed" },
+      { token: "Action/Primary Subtle", light: "#E3EDFF", dark: "#0A1733", highContrast: "#FFFFFF", usage: "Subtle background for primary-tinted surfaces" },
+      { token: "Action/Secondary", light: "#FFFFFF", dark: "#212529", highContrast: "#FFFFFF", usage: "Secondary button background" },
+      { token: "Action/Secondary Border", light: "#DADDE2", dark: "#212529", highContrast: "#000000", usage: "Secondary button border" },
       { token: "Action/Secondary Hover", light: "#F5F6F8", dark: "#2A2D31", highContrast: "#E8E8E8", usage: "Secondary button hover background" },
       { token: "Action/Secondary Pressed", light: "#ECEEF1", dark: "#3F4548", highContrast: "#D0D0D0", usage: "Secondary button pressed background" },
-      { token: "Action/Disabled Background", light: "#ECEEF1", dark: "#212529", usage: "Disabled background" },
-      { token: "Action/Disabled Foreground", light: "#B8BDC4", dark: "#676C73", usage: "Disabled label/icon" },
+      { token: "Action/Disabled Background", light: "#ECEEF1", dark: "#212529", highContrast: "#F0F0F0", usage: "Disabled background" },
+      { token: "Action/Disabled Foreground", light: "#B8BDC4", dark: "#676C73", highContrast: "#595959", usage: "Disabled label/icon" },
     ],
   },
   {
     name: "Border",
     tokens: [
-      { token: "Border/Default", light: "#8E949E", dark: "#3F4548", usage: "Input borders, card outlines" },
-      { token: "Border/Decorative", light: "#DADDE2", dark: "#212529", usage: "Dividers, separators" },
-      { token: "Border/Focus", light: "#B38A00", dark: "#B38A00", usage: "Focus ring" },
-      { token: "Border/Error", light: "#D32F2F", dark: "#F47272", usage: "Invalid input border" },
-      { token: "Border/Disabled", light: "#ECEEF1", dark: "#3F4548", usage: "Disabled input" },
-      { token: "Border/Strong", light: "#676C73", dark: "#8E949E", usage: "Prominent borders, table rules" },
+      { token: "Border/Default", light: "#8E949E", dark: "#3F4548", highContrast: "#000000", usage: "Input borders, card outlines" },
+      { token: "Border/Decorative", light: "#DADDE2", dark: "#212529", highContrast: "#000000", usage: "Dividers, separators" },
+      { token: "Border/Focus", light: "#B38A00", dark: "#B38A00", highContrast: "#000000", usage: "Focus ring" },
+      { token: "Border/Error", light: "#D32F2F", dark: "#F47272", highContrast: "#000000", usage: "Invalid input border" },
+      { token: "Border/Disabled", light: "#ECEEF1", dark: "#3F4548", highContrast: "#595959", usage: "Disabled input" },
+      { token: "Border/Strong", light: "#676C73", dark: "#8E949E", highContrast: "#000000", usage: "Prominent borders, table rules" },
     ],
   },
   {
     name: "Icon",
     tokens: [
-      { token: "Icon/Primary", light: "#111111", dark: "#FFFFFF", usage: "Default icons" },
-      { token: "Icon/Secondary", light: "#8E949E", dark: "#B8BDC4", usage: "Subdued icons" },
-      { token: "Icon/Action", light: "#B38A00", dark: "#B38A00", usage: "Action/interactive icons" },
-      { token: "Icon/Inverse", light: "#FFFFFF", dark: "#111111", usage: "Icons on dark backgrounds" },
+      { token: "Icon/Primary", light: "#111111", dark: "#FFFFFF", highContrast: "#000000", usage: "Default icons" },
+      { token: "Icon/Secondary", light: "#8E949E", dark: "#B8BDC4", highContrast: "#000000", usage: "Subdued icons" },
+      { token: "Icon/Action", light: "#B38A00", dark: "#B38A00", highContrast: "#000000", usage: "Action/interactive icons" },
+      { token: "Icon/Inverse", light: "#FFFFFF", dark: "#111111", highContrast: "#FFFFFF", usage: "Icons on dark backgrounds" },
     ],
   },
   {
     name: "Feedback",
     tokens: [
-      { token: "Feedback/Error", light: "#D32F2F", dark: "#F47272", usage: "Error icon" },
-      { token: "Feedback/Error Subtle", light: "#FDECEA", dark: "#330D0D", usage: "Error banner background" },
-      { token: "Feedback/Error Text", light: "#D32F2F", dark: "#F47272", usage: "Error message text" },
-      { token: "Feedback/Warning", light: "#B38A00", dark: "#B38A00", usage: "Warning icon" },
-      { token: "Feedback/Warning Subtle", light: "#FFF8D6", dark: "#2E2200", usage: "Warning banner background" },
-      { token: "Feedback/Warning Text", light: "#503D00", dark: "#FFE880", usage: "Warning message text" },
-      { token: "Feedback/Success", light: "#086B53", dark: "#5DC896", usage: "Success icon" },
-      { token: "Feedback/Success Subtle", light: "#E0F2EC", dark: "#062B1A", usage: "Success banner background" },
-      { token: "Feedback/Info", light: "#0D6B7B", dark: "#7DD8E8", usage: "Info icon" },
-      { token: "Feedback/Info Subtle", light: "#E3EDFF", dark: "#0A1733", usage: "Info banner background" },
-      { token: "Feedback/Info Text", light: "#1041A8", dark: "#93C5FD", usage: "Info message text" },
+      { token: "Feedback/Error", light: "#D32F2F", dark: "#D32F2F", highContrast: "#B91C1C", usage: "Error icon" },
+      { token: "Feedback/Error Focus", light: "#DC2626", dark: "#D32F2F", highContrast: "#000000", usage: "Error input on focus" },
+      { token: "Feedback/Error Hover", light: "#B91C1C", dark: "#B91C1C", highContrast: "#991B1B", usage: "Error action hover" },
+      { token: "Feedback/Error Pressed", light: "#B91C1C", dark: "#B91C1C", highContrast: "#7F1D1D", usage: "Error action pressed" },
+      { token: "Feedback/Error Subtle", light: "#FDECEA", dark: "#330D0D", highContrast: "#FFFFFF", usage: "Error banner background" },
+      { token: "Feedback/Error Text", light: "#D32F2F", dark: "#F47272", highContrast: "#B91C1C", usage: "Error message text" },
+      { token: "Feedback/Warning", light: "#B38A00", dark: "#B38A00", highContrast: "#503D00", usage: "Warning icon" },
+      { token: "Feedback/Warning Subtle", light: "#FFF8D6", dark: "#2E2200", highContrast: "#FFFFFF", usage: "Warning banner background" },
+      { token: "Feedback/Warning Text", light: "#503D00", dark: "#FFE880", highContrast: "#503D00", usage: "Warning message text" },
+      { token: "Feedback/Success", light: "#086B53", dark: "#5DC896", highContrast: "#065F46", usage: "Success icon" },
+      { token: "Feedback/Success Subtle", light: "#E0F2EC", dark: "#062B1A", highContrast: "#FFFFFF", usage: "Success banner background" },
+      { token: "Feedback/Info", light: "#0D6B7B", dark: "#7DD8E8", highContrast: "#0F4855", usage: "Info icon" },
+      { token: "Feedback/Info Subtle", light: "#E3EDFF", dark: "#0A1733", highContrast: "#FFFFFF", usage: "Info banner background" },
+      { token: "Feedback/Info Text", light: "#1041A8", dark: "#93C5FD", highContrast: "#1041A8", usage: "Info message text" },
+    ],
+  },
+  {
+    name: "Status",
+    tokens: [
+      { token: "Status/Approved", light: "#059669", dark: "#34D399", highContrast: "#065F46", usage: "Approved status text/icon" },
+      { token: "Status/Approved Subtle", light: "#E0F2EC", dark: "#064E3B", highContrast: "#FFFFFF", usage: "Approved badge background" },
+      { token: "Status/Submitted", light: "#0E9DB0", dark: "#67D2E1", highContrast: "#0F4855", usage: "Submitted status text/icon" },
+      { token: "Status/Submitted Subtle", light: "#D0F0F5", dark: "#0A1733", highContrast: "#FFFFFF", usage: "Submitted badge background" },
+      { token: "Status/In Review", light: "#1A56D6", dark: "#93C5FD", highContrast: "#1E3A8A", usage: "In Review status text/icon" },
+      { token: "Status/In Review Subtle", light: "#E3EDFF", dark: "#0A1733", highContrast: "#FFFFFF", usage: "In Review badge background" },
+      { token: "Status/On Hold", light: "#6747C7", dark: "#A78BFA", highContrast: "#4C1D95", usage: "On Hold status text/icon" },
+      { token: "Status/On Hold Subtle", light: "#EDE9FF", dark: "#1A0F38", highContrast: "#FFFFFF", usage: "On Hold badge background" },
+      { token: "Status/Escalated", light: "#F57C00", dark: "#FFD01A", highContrast: "#7C2D12", usage: "Escalated status text/icon" },
+      { token: "Status/Escalated Subtle", light: "#FEF0E3", dark: "#2E1800", highContrast: "#FFFFFF", usage: "Escalated badge background" },
+      { token: "Status/Rejected", light: "#D32F2F", dark: "#F87171", highContrast: "#B91C1C", usage: "Rejected status text/icon" },
+      { token: "Status/Rejected Subtle", light: "#FDECEA", dark: "#7F1D1D", highContrast: "#FFFFFF", usage: "Rejected badge background" },
+      { token: "Status/Draft", light: "#676C73", dark: "#B8BDC4", highContrast: "#374151", usage: "Draft status text/icon" },
+      { token: "Status/Draft Subtle", light: "#F5F6F8", dark: "#2E1800", highContrast: "#FFFFFF", usage: "Draft badge background" },
+      { token: "Status/Archived", light: "#B8BDC4", dark: "#676C73", highContrast: "#374151", usage: "Archived status text/icon" },
+      { token: "Status/Archived Subtle", light: "#F5F6F8", dark: "#111111", highContrast: "#FFFFFF", usage: "Archived badge background" },
+    ],
+  },
+  {
+    name: "DataViz",
+    tokens: [
+      { token: "DataViz/1", light: "#FFC700", dark: "#FFD01A", highContrast: "#78350F", usage: "Chart series 1 — graphical marks only, never text" },
+      { token: "DataViz/2", light: "#1A56D6", dark: "#93C5FD", highContrast: "#1E3A8A", usage: "Chart series 2 — primary chart colour" },
+      { token: "DataViz/3", light: "#DC2626", dark: "#F87171", highContrast: "#B91C1C", usage: "Chart series 3" },
+      { token: "DataViz/4", light: "#0E9DB0", dark: "#67D2E1", highContrast: "#0F4855", usage: "Chart series 4" },
+      { token: "DataViz/5", light: "#6747C7", dark: "#A78BFA", highContrast: "#4C1D95", usage: "Chart series 5" },
+      { token: "DataViz/6", light: "#F97316", dark: "#FB923C", highContrast: "#7C2D12", usage: "Chart series 6" },
+      { token: "DataViz/7", light: "#059669", dark: "#34D399", highContrast: "#065F46", usage: "Chart series 7" },
+      { token: "DataViz/8", light: "#676C73", dark: "#B8BDC4", highContrast: "#1F2937", usage: "Chart series 8 — use last to avoid confusion with error state" },
     ],
   },
 ];
@@ -224,35 +289,38 @@ export interface StatusToken {
   colorAlias: string;
   bg: string;
   bgAlias: string;
+  hcColor: string;
+  hcBg: string;
 }
 
 export const statusBadges: StatusToken[] = [
-  { status: "Approved", color: "#059669", colorAlias: "slds-color-green-600", bg: "#E0F2EC", bgAlias: "slds-color-green-100" },
-  { status: "Submitted", color: "#0E9DB0", colorAlias: "slds-color-teal-500", bg: "#D0F0F5", bgAlias: "slds-color-teal-100" },
-  { status: "In Review", color: "#1A56D6", colorAlias: "slds-color-blue-500", bg: "#E3EDFF", bgAlias: "slds-color-blue-100" },
-  { status: "On Hold", color: "#6747C7", colorAlias: "slds-color-purple-500", bg: "#EDE9FF", bgAlias: "slds-color-purple-100" },
-  { status: "Escalated", color: "#F57C00", colorAlias: "slds-color-orange-600", bg: "#FEF0E3", bgAlias: "slds-color-orange-100" },
-  { status: "Rejected", color: "#D32F2F", colorAlias: "slds-color-red-600", bg: "#FDECEA", bgAlias: "slds-color-red-100" },
-  { status: "Draft", color: "#676C73", colorAlias: "slds-color-neutral-600", bg: "#F5F6F8", bgAlias: "slds-color-neutral-100" },
-  { status: "Archived", color: "#B8BDC4", colorAlias: "slds-color-neutral-400", bg: "#F5F6F8", bgAlias: "slds-color-neutral-100" },
+  { status: "Approved", color: "#059669", colorAlias: "slds-color-green-600", bg: "#E0F2EC", bgAlias: "slds-color-green-100", hcColor: "#065F46", hcBg: "#FFFFFF" },
+  { status: "Submitted", color: "#0E9DB0", colorAlias: "slds-color-teal-500", bg: "#D0F0F5", bgAlias: "slds-color-teal-100", hcColor: "#0F4855", hcBg: "#FFFFFF" },
+  { status: "In Review", color: "#1A56D6", colorAlias: "slds-color-blue-500", bg: "#E3EDFF", bgAlias: "slds-color-blue-100", hcColor: "#1E3A8A", hcBg: "#FFFFFF" },
+  { status: "On Hold", color: "#6747C7", colorAlias: "slds-color-purple-500", bg: "#EDE9FF", bgAlias: "slds-color-purple-100", hcColor: "#4C1D95", hcBg: "#FFFFFF" },
+  { status: "Escalated", color: "#F57C00", colorAlias: "slds-color-orange-600", bg: "#FEF0E3", bgAlias: "slds-color-orange-100", hcColor: "#7C2D12", hcBg: "#FFFFFF" },
+  { status: "Rejected", color: "#D32F2F", colorAlias: "slds-color-red-600", bg: "#FDECEA", bgAlias: "slds-color-red-100", hcColor: "#B91C1C", hcBg: "#FFFFFF" },
+  { status: "Draft", color: "#676C73", colorAlias: "slds-color-neutral-600", bg: "#F5F6F8", bgAlias: "slds-color-neutral-100", hcColor: "#374151", hcBg: "#FFFFFF" },
+  { status: "Archived", color: "#B8BDC4", colorAlias: "slds-color-neutral-400", bg: "#F5F6F8", bgAlias: "slds-color-neutral-100", hcColor: "#374151", hcBg: "#FFFFFF" },
 ];
 
 export interface DataVizToken {
   index: number;
   light: string;
   dark: string;
+  highContrast: string;
   alias: string;
 }
 
 export const dataViz: DataVizToken[] = [
-  { index: 1, light: "#FFC700", dark: "#FFD01A", alias: "slds-color-gold-500 · slds-color-gold-400" },
-  { index: 2, light: "#1A56D6", dark: "#93C5FD", alias: "slds-color-blue-500 · slds-color-blue-300" },
-  { index: 3, light: "#DC2626", dark: "#F87171", alias: "slds-color-red-500 · slds-color-red-400" },
-  { index: 4, light: "#0E9DB0", dark: "#67D2E1", alias: "slds-color-teal-500 · slds-color-teal-300" },
-  { index: 5, light: "#6747C7", dark: "#A78BFA", alias: "slds-color-purple-500 · slds-color-purple-300" },
-  { index: 6, light: "#F97316", dark: "#FB923C", alias: "slds-color-orange-500 · slds-color-orange-400" },
-  { index: 7, light: "#059669", dark: "#34D399", alias: "slds-color-green-600 · slds-color-green-400" },
-  { index: 8, light: "#676C73", dark: "#B8BDC4", alias: "slds-color-neutral-600 · slds-color-neutral-400" },
+  { index: 1, light: "#FFC700", dark: "#FFD01A", highContrast: "#78350F", alias: "slds-color-gold-500 · slds-color-gold-400" },
+  { index: 2, light: "#1A56D6", dark: "#93C5FD", highContrast: "#1E3A8A", alias: "slds-color-blue-500 · slds-color-blue-300" },
+  { index: 3, light: "#DC2626", dark: "#F87171", highContrast: "#B91C1C", alias: "slds-color-red-500 · slds-color-red-400" },
+  { index: 4, light: "#0E9DB0", dark: "#67D2E1", highContrast: "#0F4855", alias: "slds-color-teal-500 · slds-color-teal-300" },
+  { index: 5, light: "#6747C7", dark: "#A78BFA", highContrast: "#4C1D95", alias: "slds-color-purple-500 · slds-color-purple-300" },
+  { index: 6, light: "#F97316", dark: "#FB923C", highContrast: "#7C2D12", alias: "slds-color-orange-500 · slds-color-orange-400" },
+  { index: 7, light: "#059669", dark: "#34D399", highContrast: "#065F46", alias: "slds-color-green-600 · slds-color-green-400" },
+  { index: 8, light: "#676C73", dark: "#B8BDC4", highContrast: "#1F2937", alias: "slds-color-neutral-600 · slds-color-neutral-400" },
 ];
 
 export interface TypeStyle {

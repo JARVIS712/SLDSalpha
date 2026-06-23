@@ -45,7 +45,7 @@ export default function TokenArchitecturePage() {
 
       <Section
         title="Try it — resolve a token through every tier"
-        description="Pick a semantic token and toggle Light/Dark mode to see exactly how it resolves, from raw hex value up to the CSS custom property a component reads."
+        description="Pick a semantic token and toggle Light / Dark / High Contrast mode to see exactly how it resolves, from raw hex value up to the CSS custom property a component reads."
       >
         <TokenResolver />
       </Section>

@@ -93,15 +93,27 @@ export const primitiveAnatomyExamples = [
 ];
 
 // Curated semantic token examples — also powers the interactive resolver.
-export const semanticAnatomyExamples = [
-  { token: "slds-color-action-primary", figmaPath: "Color/Semantic/Action/Primary", primitive: "slds-color-gold-500", light: "#FFC700", dark: "#FFC700" },
-  { token: "slds-color-action-primary-hover", figmaPath: "Color/Semantic/Action/Primary Hover", primitive: "slds-color-gold-600", light: "#E0AE00", dark: "#FFD740" },
-  { token: "slds-color-text-primary", figmaPath: "Color/Semantic/Text/Primary", primitive: "slds-color-neutral-900", light: "#111111", dark: "#FFFFFF" },
-  { token: "slds-color-text-secondary", figmaPath: "Color/Semantic/Text/Secondary", primitive: "slds-color-neutral-600", light: "#676C73", dark: "#B8BDC4" },
-  { token: "slds-color-surface-card", figmaPath: "Color/Semantic/Surface/Card", primitive: "slds-color-neutral-0", light: "#FFFFFF", dark: "#212529" },
-  { token: "slds-color-border-default", figmaPath: "Color/Semantic/Border/Default", primitive: "slds-color-neutral-500", light: "#8E949E", dark: "#3F4548" },
-  { token: "slds-color-feedback-error", figmaPath: "Color/Semantic/Feedback/Error", primitive: "slds-color-red-500", light: "#DC2626", dark: "#DC2626" },
-  { token: "slds-color-feedback-success", figmaPath: "Color/Semantic/Feedback/Success", primitive: "slds-color-green-600", light: "#059669", dark: "#059669" },
+// primitiveDark/primitiveHC are only set when the aliased primitive differs from the light-mode primitive.
+export interface SemanticAnatomyExample {
+  token: string;
+  figmaPath: string;
+  primitive: string;
+  light: string;
+  dark: string;
+  highContrast: string;
+  primitiveDark?: string;
+  primitiveHC?: string;
+}
+
+export const semanticAnatomyExamples: SemanticAnatomyExample[] = [
+  { token: "slds-color-action-primary", figmaPath: "Color/Semantic/Action/Primary", primitive: "slds-color-gold-500", light: "#FFC700", dark: "#FFC700", highContrast: "#FFC700" },
+  { token: "slds-color-action-primary-hover", figmaPath: "Color/Semantic/Action/Primary Hover", primitive: "slds-color-gold-600", light: "#E0AE00", dark: "#FFD740", primitiveDark: "slds-color-gold-300", highContrast: "#E0AE00" },
+  { token: "slds-color-text-primary", figmaPath: "Color/Semantic/Text/Primary", primitive: "slds-color-neutral-900", light: "#111111", dark: "#FFFFFF", primitiveDark: "slds-color-neutral-0", highContrast: "#000000", primitiveHC: "slds-color-neutral-1000" },
+  { token: "slds-color-text-secondary", figmaPath: "Color/Semantic/Text/Secondary", primitive: "slds-color-neutral-600", light: "#676C73", dark: "#B8BDC4", primitiveDark: "slds-color-neutral-400", highContrast: "#000000", primitiveHC: "slds-color-neutral-1000" },
+  { token: "slds-color-surface-card", figmaPath: "Color/Semantic/Surface/Card", primitive: "slds-color-neutral-0", light: "#FFFFFF", dark: "#212529", primitiveDark: "slds-color-neutral-800", highContrast: "#FFFFFF" },
+  { token: "slds-color-border-default", figmaPath: "Color/Semantic/Border/Default", primitive: "slds-color-neutral-500", light: "#8E949E", dark: "#3F4548", primitiveDark: "slds-color-neutral-700", highContrast: "#000000", primitiveHC: "slds-color-neutral-1000" },
+  { token: "slds-color-feedback-error", figmaPath: "Color/Semantic/Feedback/Error", primitive: "slds-color-red-600", light: "#D32F2F", dark: "#D32F2F", highContrast: "#B91C1C", primitiveHC: "slds-color-red-700" },
+  { token: "slds-color-feedback-success", figmaPath: "Color/Semantic/Feedback/Success", primitive: "slds-color-green-700", light: "#086B53", dark: "#5DC896", primitiveDark: "slds-color-green-300", highContrast: "#065F46", primitiveHC: "slds-color-green-800" },
 ];
 
 export const componentAnatomyExamples = [

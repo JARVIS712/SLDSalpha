@@ -25,12 +25,24 @@ function Arrow() {
   );
 }
 
+const MODES = [
+  { key: "light", label: "Light" },
+  { key: "dark", label: "Dark" },
+  { key: "hc", label: "High Contrast" },
+] as const;
+
+type Mode = (typeof MODES)[number]["key"];
+
 export function TokenResolver() {
   const [index, setIndex] = useState(0);
-  const [mode, setMode] = useState<"light" | "dark">("light");
+  const [mode, setMode] = useState<Mode>("light");
   const selected = semanticAnatomyExamples[index];
-  const hex = mode === "light" ? selected.light : selected.dark;
+
+  const hex = mode === "light" ? selected.light : mode === "dark" ? selected.dark : selected.highContrast;
+  const primitive =
+    mode === "dark" ? selected.primitiveDark ?? selected.primitive : mode === "hc" ? selected.primitiveHC ?? selected.primitive : selected.primitive;
   const cssVar = `--${selected.token.replace(/^slds-/, "slds-")}`;
+  const modeLabel = MODES.find((m) => m.key === mode)!.label;
 
   return (
     <div className="rounded-[var(--radius-xl)] border border-[var(--color-border-decorative)] bg-[var(--color-surface-section-alt)] p-5">
@@ -51,17 +63,17 @@ export function TokenResolver() {
         </label>
 
         <div className="inline-flex rounded-md border border-[var(--color-border-default)] p-0.5 text-sm">
-          {(["light", "dark"] as const).map((m) => (
+          {MODES.map((m) => (
             <button
-              key={m}
+              key={m.key}
               type="button"
-              onClick={() => setMode(m)}
-              aria-pressed={mode === m}
-              className={`rounded px-3 py-1 font-medium capitalize transition-colors ${
-                mode === m ? "bg-[var(--gold-500)] text-[var(--neutral-900)]" : "text-[var(--color-text-secondary)]"
+              onClick={() => setMode(m.key)}
+              aria-pressed={mode === m.key}
+              className={`whitespace-nowrap rounded px-3 py-1 font-medium transition-colors ${
+                mode === m.key ? "bg-[var(--gold-500)] text-[var(--neutral-900)]" : "text-[var(--color-text-secondary)]"
               }`}
             >
-              {m}
+              {m.label}
             </button>
           ))}
         </div>
@@ -70,17 +82,17 @@ export function TokenResolver() {
       <div className="mt-6 flex flex-col items-stretch gap-2 sm:flex-row sm:items-center">
         <Box label="Raw value" title={hex} hex={hex} />
         <Arrow />
-        <Box label="Primitive" title={selected.primitive} hex={hex} />
+        <Box label="Primitive" title={primitive} hex={hex} />
         <Arrow />
-        <Box label="Semantic" title={selected.figmaPath} sub={mode === "light" ? "Light mode" : "Dark mode"} hex={hex} />
+        <Box label="Semantic" title={selected.figmaPath} sub={`${modeLabel} mode`} hex={hex} />
         <Arrow />
         <Box label="Component (CSS)" title={cssVar} sub={`var(${cssVar})`} hex={hex} />
       </div>
 
-      {selected.light !== selected.dark && (
+      {(selected.light !== selected.dark || selected.light !== selected.highContrast) && (
         <p className="mt-4 text-xs leading-5 text-[var(--color-text-secondary)]">
           This token resolves to a different primitive in each mode — the name <code className="font-mono">{selected.token}</code> never
-          changes in code; only the value it points to does. Try the Light/Dark toggle above.
+          changes in code; only the value it points to does. Try the Light/Dark/High Contrast toggle above.
         </p>
       )}
     </div>
