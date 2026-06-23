@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { PageHeader, Section, Callout } from "@/components/Foundation";
 import { typeScaleMobile, typeScaleDesktop, type TypeStyle } from "@/data/tokens";
+import { ScriptComparison } from "@/components/ScriptComparison";
 
 export const metadata: Metadata = { title: "Typography" };
 
@@ -108,6 +109,17 @@ export default function TypographyPage() {
             This section will be updated.
           </Callout>
         </div>
+      </Section>
+
+      <Section
+        title="Script comparison"
+        description="The same font-size token resolves to a different pixel value depending on the active language mode. Sinhala and Tamil glyphs occupy more vertical space at the same point size, so the token values are reduced for those scripts to maintain consistent line rhythm and layout density."
+      >
+        <p className="mb-4 text-sm text-[var(--color-text-secondary)]">
+          Values are read from the <code className="font-mono text-xs">Typography/Mobile</code> Figma variable
+          collection. Use the language switcher in the header to highlight the active column.
+        </p>
+        <ScriptComparison />
       </Section>
 
       <Section title="Usage rules">

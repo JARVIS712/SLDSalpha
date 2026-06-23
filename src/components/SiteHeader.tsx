@@ -1,12 +1,22 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useLanguage, type Language } from "@/components/LanguageContext";
 
 const NAV_LINKS = [
   { href: "/foundations", label: "Foundations" },
   { href: "/components", label: "Components" },
 ];
 
+const LANGUAGE_OPTIONS: { code: Language; label: string }[] = [
+  { code: "en", label: "English" },
+  { code: "si", label: "සිංහල" },
+  { code: "ta", label: "தமிழ்" },
+];
+
 export function SiteHeader() {
+  const { language, setLanguage } = useLanguage();
   return (
     <header className="sticky top-0 z-[100] border-b border-[var(--color-border-decorative)] bg-[var(--color-surface-page)]/95 backdrop-blur supports-[backdrop-filter]:bg-[var(--color-surface-page)]/80">
       <a href="#main-content" className="skip-link">
@@ -38,17 +48,23 @@ export function SiteHeader() {
             v1.0 · Foundations
           </span>
           <nav aria-label="Language" className="flex items-center gap-1 text-xs text-[var(--color-text-secondary)]">
-            <button className="rounded px-2 py-1 font-medium text-[var(--color-text-primary)]" type="button">
-              English
-            </button>
-            <span aria-hidden="true">·</span>
-            <button className="rounded px-2 py-1" type="button">
-              සිංහල
-            </button>
-            <span aria-hidden="true">·</span>
-            <button className="rounded px-2 py-1" type="button">
-              தமிழ்
-            </button>
+            {LANGUAGE_OPTIONS.map((opt, i) => (
+              <span key={opt.code} className="flex items-center gap-1">
+                {i > 0 && <span aria-hidden="true">·</span>}
+                <button
+                  className={`rounded px-2 py-1 transition-colors ${
+                    language === opt.code
+                      ? "font-medium text-[var(--color-text-primary)]"
+                      : "hover:bg-[var(--color-surface-hover)] hover:text-[var(--color-text-primary)]"
+                  }`}
+                  type="button"
+                  aria-pressed={language === opt.code}
+                  onClick={() => setLanguage(opt.code)}
+                >
+                  {opt.label}
+                </button>
+              </span>
+            ))}
           </nav>
         </div>
       </div>
