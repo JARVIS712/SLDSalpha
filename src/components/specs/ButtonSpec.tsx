@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { CodeBlock } from "@/components/CodeBlock";
+import { Card, SectionHeading, CaretLeft, CaretRight } from "./shared";
 
 type Variant = "primary" | "secondary" | "ghost" | "destructive";
 type BSize = "xl" | "lg" | "md" | "sm";
@@ -40,21 +41,6 @@ function Spinner() {
   );
 }
 
-function CaretLeft({ size = 16 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden>
-      <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-function CaretRight({ size = 16 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden>
-      <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
 
 function LiveButton({ variant, size = "md" }: { variant: Variant; size?: BSize }) {
   const iconSize = SIZE_SPECS[size].iconSize;
@@ -141,17 +127,6 @@ function StateDemoButton({ variant, state }: { variant: Variant; state: BState }
   );
 }
 
-function SectionHeading({ children }: { children: React.ReactNode }) {
-  return <h2 className="mb-4 text-base font-semibold text-[var(--color-text-primary)]">{children}</h2>;
-}
-
-function Card({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  return (
-    <div className={`rounded-[var(--radius-xl)] border border-[var(--color-border-decorative)] bg-[var(--color-surface-card)] ${className}`}>
-      {children}
-    </div>
-  );
-}
 
 const BUTTON_CODE = `// Button — SLDS token implementation
 // Requires globals.css with SLDS design tokens
@@ -226,7 +201,7 @@ const TOKEN_ROWS = [
   { token: "--color-action-primary-foreground", light: "#111111",  dark: "#111111",  usage: "Primary label"          },
   { token: "--color-action-primary-hover",      light: "#e0ae00",  dark: "#ffd740",  usage: "Primary hover/pressed"  },
   { token: "--color-action-secondary",          light: "#ffffff",  dark: "#ffffff",  usage: "Secondary background"   },
-  { token: "--color-action-secondary-border",   light: "#111111",  dark: "#dadde2",  usage: "Secondary border"       },
+  { token: "--color-action-secondary-border",   light: "#dadde2",  dark: "#374151",  usage: "Secondary border"       },
   { token: "--color-action-disabled-bg",        light: "#eceef1",  dark: "#212529",  usage: "Disabled background"    },
   { token: "--color-action-disabled-fg",        light: "#b8bdc4",  dark: "#676c73",  usage: "Disabled label"         },
   { token: "--red-600",                         light: "#d32f2f",  dark: "#d32f2f",  usage: "Destructive background" },

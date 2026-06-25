@@ -16,14 +16,6 @@ function Box({ label, title, sub, hex }: { label: string; title: string; sub?: s
   );
 }
 
-function Arrow() {
-  return (
-    <div className="flex items-center justify-center px-1 text-[var(--color-text-tertiary)]" aria-hidden="true">
-      <span className="hidden text-lg sm:inline">→</span>
-      <span className="text-lg sm:hidden">↓</span>
-    </div>
-  );
-}
 
 const MODES = [
   { key: "light", label: "Light" },
@@ -81,11 +73,11 @@ export function TokenResolver() {
 
       <div className="mt-6 flex flex-col items-stretch gap-2 sm:flex-row sm:items-center">
         <Box label="Raw value" title={hex} hex={hex} />
-        <Arrow />
+        <div className="flex items-center justify-center px-1 text-[var(--color-text-tertiary)]" aria-hidden="true"><span className="hidden text-lg sm:inline">→</span><span className="text-lg sm:hidden">↓</span></div>
         <Box label="Primitive" title={primitive} hex={hex} />
-        <Arrow />
+        <div className="flex items-center justify-center px-1 text-[var(--color-text-tertiary)]" aria-hidden="true"><span className="hidden text-lg sm:inline">→</span><span className="text-lg sm:hidden">↓</span></div>
         <Box label="Semantic" title={selected.figmaPath} sub={`${modeLabel} mode`} hex={hex} />
-        <Arrow />
+        <div className="flex items-center justify-center px-1 text-[var(--color-text-tertiary)]" aria-hidden="true"><span className="hidden text-lg sm:inline">→</span><span className="text-lg sm:hidden">↓</span></div>
         <Box label="Component (CSS)" title={cssVar} sub={`var(${cssVar})`} hex={hex} />
       </div>
 

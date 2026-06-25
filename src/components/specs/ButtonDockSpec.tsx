@@ -1,22 +1,7 @@
 "use client";
 import { useState } from "react";
 import { CodeBlock } from "@/components/CodeBlock";
-
-function CaretLeft() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
-      <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-function CaretRight() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
-      <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
+import { Card, SectionHeading, CaretLeft, CaretRight } from "./shared";
 
 // ── Internal button used inside the dock ────────────────────────────────────
 type DockVariant = "primary" | "secondary" | "ghost";
@@ -37,9 +22,9 @@ function DockButton({ variant, label }: { variant: DockVariant; label: string })
         DOCK_BTN_CLASSES[variant],
       ].join(" ")}
     >
-      <CaretLeft />
+      <CaretLeft size={20} />
       {label}
-      <CaretRight />
+      <CaretRight size={20} />
     </button>
   );
 }
@@ -85,18 +70,6 @@ const CONFIGS = [
   },
 ] as const;
 
-// ── Shared UI helpers ────────────────────────────────────────────────────────
-function Card({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  return (
-    <div className={`rounded-[var(--radius-xl)] border border-[var(--color-border-decorative)] bg-[var(--color-surface-card)] ${className}`}>
-      {children}
-    </div>
-  );
-}
-
-function SectionHeading({ children }: { children: React.ReactNode }) {
-  return <h2 className="mb-4 text-base font-semibold text-[var(--color-text-primary)]">{children}</h2>;
-}
 
 // ── Code snippet ─────────────────────────────────────────────────────────────
 const DOCK_CODE = `// Button Dock — SLDS token implementation

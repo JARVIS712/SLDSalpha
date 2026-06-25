@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { CodeBlock } from "@/components/CodeBlock";
+import { Card, SectionHeading, PlusIcon } from "./shared";
 
 type Variant = "primary" | "secondary" | "destructive";
 type BState = "default" | "hover" | "focus" | "pressed" | "disabled" | "loading";
@@ -25,13 +26,6 @@ const FAB_BASE = [
   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--gold-500)]",
 ].join(" ");
 
-function PlusIcon() {
-  return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden>
-      <path d="M12 5v14M5 12h14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-    </svg>
-  );
-}
 
 function Spinner() {
   return (
@@ -83,13 +77,6 @@ function StateDemoFAB({ variant, state }: { variant: Variant; state: BState }) {
   );
 }
 
-function Card({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  return <div className={`rounded-[var(--radius-xl)] border border-[var(--color-border-decorative)] bg-[var(--color-surface-card)] ${className}`}>{children}</div>;
-}
-
-function SectionHeading({ children }: { children: React.ReactNode }) {
-  return <h2 className="mb-4 text-base font-semibold text-[var(--color-text-primary)]">{children}</h2>;
-}
 
 const FAB_CODE = `// Floating Action Button — SLDS token implementation
 // FAB is always fully circular (radius-full) with elevation/shadow.

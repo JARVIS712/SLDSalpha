@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { CodeBlock } from "@/components/CodeBlock";
+import { Card, SectionHeading } from "./shared";
 
 type Variant = "primary" | "secondary";
 const VARIANTS: Variant[] = ["primary", "secondary"];
@@ -11,14 +12,6 @@ const VARIANT_CLASSES: Record<Variant, string> = {
   primary:   "text-[var(--color-text-link)] hover:underline hover:text-[var(--color-text-primary)]",
   secondary: "text-[var(--color-text-secondary)] hover:underline hover:text-[var(--color-text-primary)]",
 };
-
-function Card({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  return <div className={`rounded-[var(--radius-xl)] border border-[var(--color-border-decorative)] bg-[var(--color-surface-card)] ${className}`}>{children}</div>;
-}
-
-function SectionHeading({ children }: { children: React.ReactNode }) {
-  return <h2 className="mb-4 text-base font-semibold text-[var(--color-text-primary)]">{children}</h2>;
-}
 
 function LiveLinkButton({ variant }: { variant: Variant }) {
   return (
@@ -148,20 +141,23 @@ export function LinkButtonSpec() {
             {isDark ? "☀ Light mode" : "☾ Dark mode"}
           </button>
         </div>
-        <div className={isDark ? "dark" : ""}>
-          <Card className="p-6">
-            <div className="flex flex-wrap gap-6">
-              {VARIANTS.map((v) => (
-                <div key={v} className="flex flex-col gap-1">
-                  <span className="text-xs text-[var(--color-text-tertiary)]">{VARIANT_LABELS[v]}</span>
-                  <LiveLinkButton variant={v} />
-                </div>
-              ))}
-            </div>
-            <p className="mt-4 text-xs text-[var(--color-text-tertiary)]">
-              Hover to see underline. Use as <code className="rounded bg-[var(--color-surface-section-alt)] px-1 py-0.5 text-xs">&lt;button&gt;</code> for actions or <code className="rounded bg-[var(--color-surface-section-alt)] px-1 py-0.5 text-xs">&lt;a&gt;</code> for navigation.
-            </p>
-          </Card>
+        <div className={[
+          "rounded-[var(--radius-xl)] p-6",
+          isDark
+            ? "dark bg-[var(--color-surface-page)]"
+            : "border border-[var(--color-border-decorative)] bg-[var(--color-surface-card)]",
+        ].join(" ")}>
+          <div className="flex flex-wrap gap-6">
+            {VARIANTS.map((v) => (
+              <div key={v} className="flex flex-col gap-1">
+                <span className="text-xs text-[var(--color-text-tertiary)]">{VARIANT_LABELS[v]}</span>
+                <LiveLinkButton variant={v} />
+              </div>
+            ))}
+          </div>
+          <p className="mt-4 text-xs text-[var(--color-text-tertiary)]">
+            Hover to see underline. Use as <code className="rounded bg-[var(--color-surface-section-alt)] px-1 py-0.5 text-xs">&lt;button&gt;</code> for actions or <code className="rounded bg-[var(--color-surface-section-alt)] px-1 py-0.5 text-xs">&lt;a&gt;</code> for navigation.
+          </p>
         </div>
       </section>
 
