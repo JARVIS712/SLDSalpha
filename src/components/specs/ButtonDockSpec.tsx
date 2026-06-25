@@ -185,7 +185,7 @@ export function ButtonDockSpec() {
             {isDark ? "☀ Light mode" : "☾ Dark mode"}
           </button>
         </div>
-        <div className={isDark ? "dark" : ""}>
+        <div className={isDark ? "dark bg-[var(--color-surface-page)] rounded-[var(--radius-xl)] p-4" : ""}>
           <Card className="overflow-hidden">
             <div className="flex items-center justify-center p-8 bg-[var(--color-surface-page)]">
               <ButtonDock

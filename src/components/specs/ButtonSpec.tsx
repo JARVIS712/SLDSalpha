@@ -251,7 +251,7 @@ export function ButtonSpec() {
             {isDark ? "☀ Light mode" : "☾ Dark mode"}
           </button>
         </div>
-        <div className={isDark ? "dark" : ""}>
+        <div className={isDark ? "dark bg-[var(--color-surface-page)] rounded-[var(--radius-xl)] p-4" : ""}>
           <Card className="p-6">
             <div className="flex flex-wrap gap-3">
               {VARIANTS.map((v) => <LiveButton key={v} variant={v} />)}
