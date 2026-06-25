@@ -3,6 +3,11 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { components, getComponentBySlug, PLATFORM_LABELS } from "@/data/components";
 import { Badge } from "@/components/Badge";
+import { ButtonSpec } from "@/components/specs/ButtonSpec";
+import { ButtonDockSpec } from "@/components/specs/ButtonDockSpec";
+import { IconButtonSpec } from "@/components/specs/IconButtonSpec";
+import { LinkButtonSpec } from "@/components/specs/LinkButtonSpec";
+import { FABSpec } from "@/components/specs/FABSpec";
 
 export function generateStaticParams() {
   return components.map((c) => ({ slug: c.slug }));
@@ -18,6 +23,19 @@ export async function generateMetadata({
   return { title: component ? component.name : "Component" };
 }
 
+type SpecComponent = () => React.ReactNode;
+
+const SPEC_REGISTRY: Record<string, SpecComponent> = {
+  "button-primary":       ButtonSpec,
+  "button-secondary":     ButtonSpec,
+  "button-tertiary-ghost": ButtonSpec,
+  "button-destructive":   ButtonSpec,
+  "button-group":         ButtonDockSpec,
+  "button-icon":          IconButtonSpec,
+  "button-text-link":     LinkButtonSpec,
+  "floating-action-button-fab": FABSpec,
+};
+
 export default async function ComponentPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const component = getComponentBySlug(slug);
@@ -26,6 +44,8 @@ export default async function ComponentPage({ params }: { params: Promise<{ slug
   const related = components
     .filter((c) => c.category === component.category && c.slug !== component.slug)
     .slice(0, 6);
+
+  const SpecComponent = SPEC_REGISTRY[component.slug] as SpecComponent | undefined;
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
@@ -66,16 +86,22 @@ export default async function ComponentPage({ params }: { params: Promise<{ slug
         </div>
       </section>
 
-      <section className="mb-10 flex min-h-[280px] flex-col items-center justify-center rounded-[var(--radius-xl)] border border-dashed border-[var(--color-border-default)] bg-[var(--color-surface-section-alt)] p-10 text-center">
-        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[var(--color-surface-card)] text-xl">
-          🧩
-        </span>
-        <h2 className="mt-4 text-lg font-semibold text-[var(--color-text-primary)]">Live spec coming soon</h2>
-        <p className="mt-2 max-w-md text-sm leading-6 text-[var(--color-text-secondary)]">
-          Anatomy, variants, states, props/usage guidance and code will be published here as
-          {" "}{component.name}{" "}is designed and built, following the SLDS component build order.
-        </p>
-      </section>
+      {SpecComponent ? (
+        <section className="mb-10">
+          <SpecComponent />
+        </section>
+      ) : (
+        <section className="mb-10 flex min-h-[280px] flex-col items-center justify-center rounded-[var(--radius-xl)] border border-dashed border-[var(--color-border-default)] bg-[var(--color-surface-section-alt)] p-10 text-center">
+          <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[var(--color-surface-card)] text-xl">
+            🧩
+          </span>
+          <h2 className="mt-4 text-lg font-semibold text-[var(--color-text-primary)]">Live spec coming soon</h2>
+          <p className="mt-2 max-w-md text-sm leading-6 text-[var(--color-text-secondary)]">
+            Anatomy, variants, states, props/usage guidance and code will be published here as{" "}
+            {component.name} is designed and built, following the SLDS component build order.
+          </p>
+        </section>
+      )}
 
       {related.length > 0 && (
         <section>
