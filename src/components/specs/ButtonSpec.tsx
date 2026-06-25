@@ -251,15 +251,18 @@ export function ButtonSpec() {
             {isDark ? "☀ Light mode" : "☾ Dark mode"}
           </button>
         </div>
-        <div className={isDark ? "dark bg-[var(--color-surface-page)] rounded-[var(--radius-xl)] p-4" : ""}>
-          <Card className="p-6">
-            <div className="flex flex-wrap gap-3">
-              {VARIANTS.map((v) => <LiveButton key={v} variant={v} />)}
-            </div>
-            <p className="mt-4 text-xs text-[var(--color-text-tertiary)]">
-              Hover, focus, or click each button to see interaction states.
-            </p>
-          </Card>
+        <div className={[
+          "rounded-[var(--radius-xl)] p-6",
+          isDark
+            ? "dark bg-[var(--color-surface-page)]"
+            : "border border-[var(--color-border-decorative)] bg-[var(--color-surface-card)]",
+        ].join(" ")}>
+          <div className="flex flex-wrap gap-3">
+            {VARIANTS.map((v) => <LiveButton key={v} variant={v} />)}
+          </div>
+          <p className="mt-4 text-xs text-[var(--color-text-tertiary)]">
+            Hover, focus, or click each button to see interaction states.
+          </p>
         </div>
       </section>
 

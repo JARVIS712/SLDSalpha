@@ -178,15 +178,18 @@ export function IconButtonSpec() {
             {isDark ? "☀ Light mode" : "☾ Dark mode"}
           </button>
         </div>
-        <div className={isDark ? "dark bg-[var(--color-surface-page)] rounded-[var(--radius-xl)] p-4" : ""}>
-          <Card className="p-6">
-            <div className="flex flex-wrap gap-3">
-              {VARIANTS.map((v) => <LiveIconButton key={v} variant={v} size="lg" />)}
-            </div>
-            <p className="mt-4 text-xs text-[var(--color-text-tertiary)]">
-              Icon buttons require an <code className="rounded bg-[var(--color-surface-section-alt)] px-1 py-0.5 text-xs">aria-label</code> for accessibility.
-            </p>
-          </Card>
+        <div className={[
+          "rounded-[var(--radius-xl)] p-6",
+          isDark
+            ? "dark bg-[var(--color-surface-page)]"
+            : "border border-[var(--color-border-decorative)] bg-[var(--color-surface-card)]",
+        ].join(" ")}>
+          <div className="flex flex-wrap gap-3">
+            {VARIANTS.map((v) => <LiveIconButton key={v} variant={v} size="lg" />)}
+          </div>
+          <p className="mt-4 text-xs text-[var(--color-text-tertiary)]">
+            Icon buttons require an <code className="rounded bg-[var(--color-surface-section-alt)] px-1 py-0.5 text-xs">aria-label</code> for accessibility.
+          </p>
         </div>
       </section>
 

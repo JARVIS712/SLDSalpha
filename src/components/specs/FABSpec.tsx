@@ -153,20 +153,23 @@ export function FABSpec() {
             {isDark ? "☀ Light mode" : "☾ Dark mode"}
           </button>
         </div>
-        <div className={isDark ? "dark bg-[var(--color-surface-page)] rounded-[var(--radius-xl)] p-4" : ""}>
-          <Card className="p-6">
-            <div className="flex flex-wrap items-end gap-4">
-              {VARIANTS.map((v) => (
-                <div key={v} className="flex flex-col items-center gap-2">
-                  <LiveFAB variant={v} />
-                  <span className="text-xs text-[var(--color-text-tertiary)]">{VARIANT_LABELS[v]}</span>
-                </div>
-              ))}
-            </div>
-            <p className="mt-4 text-xs text-[var(--color-text-tertiary)]">
-              FAB is always 56×56px, fully circular, with Elevation/3 shadow. Mobile-only pattern.
-            </p>
-          </Card>
+        <div className={[
+          "rounded-[var(--radius-xl)] p-6",
+          isDark
+            ? "dark bg-[var(--color-surface-page)]"
+            : "border border-[var(--color-border-decorative)] bg-[var(--color-surface-card)]",
+        ].join(" ")}>
+          <div className="flex flex-wrap items-end gap-4">
+            {VARIANTS.map((v) => (
+              <div key={v} className="flex flex-col items-center gap-2">
+                <LiveFAB variant={v} />
+                <span className="text-xs text-[var(--color-text-tertiary)]">{VARIANT_LABELS[v]}</span>
+              </div>
+            ))}
+          </div>
+          <p className="mt-4 text-xs text-[var(--color-text-tertiary)]">
+            FAB is always 56×56px, fully circular, with Elevation/3 shadow. Mobile-only pattern.
+          </p>
         </div>
       </section>
 

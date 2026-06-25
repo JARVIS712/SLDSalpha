@@ -185,19 +185,22 @@ export function ButtonDockSpec() {
             {isDark ? "☀ Light mode" : "☾ Dark mode"}
           </button>
         </div>
-        <div className={isDark ? "dark bg-[var(--color-surface-page)] rounded-[var(--radius-xl)] p-4" : ""}>
-          <Card className="overflow-hidden">
-            <div className="flex items-center justify-center p-8 bg-[var(--color-surface-page)]">
-              <ButtonDock
-                primary="Save changes"
-                secondary="Save as draft"
-                ghost="Discard"
-              />
-            </div>
-            <p className="border-t border-[var(--color-border-decorative)] px-5 py-3 text-xs text-[var(--color-text-tertiary)] bg-[var(--color-surface-card)]">
-              Full-width XL buttons, stacked vertically. Always Primary first, Ghost last.
-            </p>
-          </Card>
+        <div className={[
+          "rounded-[var(--radius-xl)] p-6",
+          isDark
+            ? "dark bg-[var(--color-surface-page)]"
+            : "border border-[var(--color-border-decorative)] bg-[var(--color-surface-card)]",
+        ].join(" ")}>
+          <div className="flex items-center justify-center">
+            <ButtonDock
+              primary="Save changes"
+              secondary="Save as draft"
+              ghost="Discard"
+            />
+          </div>
+          <p className="mt-4 text-xs text-[var(--color-text-tertiary)]">
+            Full-width XL buttons, stacked vertically. Always Primary first, Ghost last.
+          </p>
         </div>
       </section>
 
