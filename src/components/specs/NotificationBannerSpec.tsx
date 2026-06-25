@@ -101,6 +101,14 @@ const VARIANT_CONFIG: Record<Variant, {
   },
 };
 
+// Dark mode token overrides (Figma node 511-1364)
+const DARK_VARIANT_CONFIG: Record<Variant, { bg: string; border: string; iconColor: string; textColor: string }> = {
+  success: { bg: "var(--dark-subtle-green)", border: "var(--green-300)",  iconColor: "var(--green-300)",  textColor: "var(--color-text-primary)" },
+  warning: { bg: "var(--dark-subtle-gold)",  border: "var(--gold-700)",   iconColor: "var(--gold-700)",   textColor: "#ffe880" },
+  error:   { bg: "var(--dark-subtle-red)",   border: "var(--red-600)",    iconColor: "var(--red-600)",    textColor: "var(--color-text-primary)" },
+  info:    { bg: "#1f2937",                  border: "var(--teal-200)",   iconColor: "var(--teal-200)",   textColor: "var(--color-text-primary)" },
+};
+
 const VARIANTS: Variant[] = ["success", "warning", "error", "info"];
 
 // ── Banner component ───────────────────────────────────────────────────────
@@ -110,34 +118,37 @@ function NotificationBanner({
   message,
   showLink = true,
   onClose,
+  darkMode = false,
 }: {
   variant: Variant;
   message?: string;
   showLink?: boolean;
   onClose?: () => void;
+  darkMode?: boolean;
 }) {
-  const cfg = VARIANT_CONFIG[variant];
-  const { Icon } = cfg;
+  const base = VARIANT_CONFIG[variant];
+  const theme = darkMode ? DARK_VARIANT_CONFIG[variant] : base;
+  const { Icon } = base;
   return (
     <div
       role="alert"
       className="flex w-full items-start rounded-[var(--radius-lg)] border pl-3 pr-2 py-2 gap-6"
       style={{
-        background: cfg.bg,
-        borderColor: cfg.border,
+        background: theme.bg,
+        borderColor: theme.border,
         boxShadow: "0 10px 15px 0 rgba(0,0,0,0.12)",
       }}
     >
       {/* Icon + text */}
       <div className="flex min-w-0 flex-1 items-start gap-2">
-        <span className="mt-0.5 shrink-0" style={{ color: cfg.iconColor }}>
+        <span className="mt-0.5 shrink-0" style={{ color: theme.iconColor }}>
           <Icon />
         </span>
         <p
           className="text-[14px] leading-[22px] tracking-[0px]"
-          style={{ color: cfg.textColor }}
+          style={{ color: theme.textColor }}
         >
-          {message ?? cfg.message}
+          {message ?? base.message}
         </p>
       </div>
 
@@ -146,9 +157,9 @@ function NotificationBanner({
         {showLink && (
           <button
             className="h-6 whitespace-nowrap text-[15px] leading-5 underline decoration-solid"
-            style={{ color: "var(--color-text-primary)" }}
+            style={{ color: theme.textColor }}
           >
-            {cfg.linkLabel}
+            {base.linkLabel}
           </button>
         )}
         <button
@@ -167,15 +178,23 @@ function NotificationBanner({
 
 const BANNER_CODE = `// Notification Banner — SLDS token implementation
 // 4 variants: success · warning · error · info
-// Each has a distinct background, border, icon, and (for warning) text color.
+// Separate token maps for light and dark mode.
 
 type Variant = "success" | "warning" | "error" | "info";
+type ThemeTokens = { bg: string; border: string; iconColor: string; textColor: string };
 
-const TOKENS: Record<Variant, { bg: string; border: string; iconColor: string; textColor: string }> = {
-  success: { bg: "var(--green-100)",             border: "var(--green-500)",   iconColor: "var(--green-500)",   textColor: "var(--color-text-primary)" },
-  warning: { bg: "var(--gold-100)",              border: "var(--gold-700)",    iconColor: "var(--gold-700)",    textColor: "var(--gold-900)" },
-  error:   { bg: "var(--red-100)",               border: "var(--red-600)",     iconColor: "var(--red-600)",     textColor: "var(--color-text-primary)" },
-  info:    { bg: "var(--color-surface-sunken)",  border: "var(--teal-600)",    iconColor: "var(--teal-600)",    textColor: "var(--color-text-primary)" },
+const LIGHT_TOKENS: Record<Variant, ThemeTokens> = {
+  success: { bg: "var(--green-100)",             border: "var(--green-500)",  iconColor: "var(--green-500)",  textColor: "var(--color-text-primary)" },
+  warning: { bg: "var(--gold-100)",              border: "var(--gold-700)",   iconColor: "var(--gold-700)",   textColor: "var(--gold-900)" },
+  error:   { bg: "var(--red-100)",               border: "var(--red-600)",    iconColor: "var(--red-600)",    textColor: "var(--color-text-primary)" },
+  info:    { bg: "var(--color-surface-sunken)",  border: "var(--teal-600)",   iconColor: "var(--teal-600)",   textColor: "var(--color-text-primary)" },
+};
+
+const DARK_TOKENS: Record<Variant, ThemeTokens> = {
+  success: { bg: "var(--dark-subtle-green)",  border: "var(--green-300)",  iconColor: "var(--green-300)",  textColor: "var(--color-text-primary)" },
+  warning: { bg: "var(--dark-subtle-gold)",   border: "var(--gold-700)",   iconColor: "var(--gold-700)",   textColor: "#ffe880" },
+  error:   { bg: "var(--dark-subtle-red)",    border: "var(--red-600)",    iconColor: "var(--red-600)",    textColor: "var(--color-text-primary)" },
+  info:    { bg: "#1f2937",                   border: "var(--teal-200)",   iconColor: "var(--teal-200)",   textColor: "var(--color-text-primary)" },
 };
 
 interface NotificationBannerProps {
@@ -294,6 +313,7 @@ export function NotificationBannerSpec() {
                   key={v}
                   variant={v}
                   onClose={() => dismiss(v)}
+                  darkMode={isDark}
                 />
               )
             )
@@ -377,10 +397,14 @@ export function NotificationBannerSpec() {
             { prop: "Gap (left → right)",    value: "24px between icon+text and action area · 8px within each group" },
             { prop: "Icon size",             value: "24×24px · filled variant · color matches border" },
             { prop: "Message",               value: "14px · leading-[22px] · tracking-[0px] — Desktop/Body 2" },
-            { prop: "Success bg / border",   value: "--green-100 / --green-500 · text: --color-text-primary" },
-            { prop: "Warning bg / border",   value: "--gold-100 / --gold-700 · text: --gold-900 (darker — contrast)" },
-            { prop: "Error bg / border",     value: "--red-100 / --red-600 · text: --color-text-primary" },
-            { prop: "Info bg / border",      value: "--color-surface-sunken / --teal-600 · text: --color-text-primary" },
+            { prop: "Success (light)",        value: "bg --green-100 · border --green-500 · icon --green-500 · text --color-text-primary" },
+            { prop: "Warning (light)",        value: "bg --gold-100 · border --gold-700 · icon --gold-700 · text --gold-900" },
+            { prop: "Error (light)",          value: "bg --red-100 · border --red-600 · icon --red-600 · text --color-text-primary" },
+            { prop: "Info (light)",           value: "bg --color-surface-sunken · border --teal-600 · icon --teal-600 · text --color-text-primary" },
+            { prop: "Success (dark)",         value: "bg --dark-subtle-green (#062b1a) · border --green-300 (#5dc896) · icon --green-300" },
+            { prop: "Warning (dark)",         value: "bg --dark-subtle-gold (#2e2200) · border --gold-700 (#b38a00) · text #ffe880" },
+            { prop: "Error (dark)",           value: "bg --dark-subtle-red (#330d0d) · border --red-600 (#d32f2f) · icon --red-600" },
+            { prop: "Info (dark)",            value: "bg #1f2937 · border --teal-200 (#7dd8e8) · icon --teal-200" },
             { prop: "Link button",           value: "--color-text-primary · 15px · underline · height 24px" },
             { prop: "Close button",          value: "28×28px · --radius-md (8px) · icon 16×16px X · --color-icon-secondary" },
           ].map(({ prop, value }) => (
