@@ -18,15 +18,22 @@
   --neutral-0: #ffffff;
   --neutral-50: #fafafb;
   --neutral-100: #f5f6f8;
+  --neutral-150: #f0f0f0;
+  --neutral-175: #e8e8e8;
   --neutral-200: #eceef1;
+  --neutral-250: #d0d0d0;
   --neutral-300: #dadde2;
   --neutral-400: #b8bdc4;
   --neutral-500: #8e949e;
   --neutral-600: #676c73;
+  --neutral-650: #595959;
   --neutral-700: #3f4548;
+  --neutral-750: #374151;
   --neutral-800: #212529;
+  --neutral-820: #1f2937;
   --neutral-900: #111111;
   --neutral-950: #030712;
+  --neutral-1000: #000000;
 
   /* Feedback families */
   --red-100: #fdecea;
@@ -75,14 +82,14 @@
   --color-action-primary-pressed: var(--gold-600);
   --color-action-secondary: #ffffff;
   --color-action-secondary-foreground: var(--neutral-900);
-  --color-action-secondary-border: var(--neutral-900);
+  --color-action-secondary-border: var(--neutral-300);
   --color-action-secondary-hover: var(--neutral-100);
   --color-action-disabled-bg: var(--neutral-200);
   --color-action-disabled-fg: var(--neutral-400);
 
   --color-border-default: var(--neutral-500);
   --color-border-decorative: var(--neutral-300);
-  --color-border-focus: var(--gold-700);
+  --color-border-focus: var(--gold-600);
   --color-border-error: var(--red-600);
   --color-border-disabled: var(--neutral-200);
   --color-border-strong: var(--neutral-600);
@@ -96,7 +103,7 @@
   --color-feedback-error-subtle: var(--red-100);
   --color-feedback-warning: var(--gold-700);
   --color-feedback-warning-subtle: var(--gold-100);
-  --color-feedback-success: var(--green-700);
+  --color-feedback-success: var(--green-500);
   --color-feedback-success-subtle: var(--green-100);
   --color-feedback-info: var(--teal-600);
   --color-feedback-info-subtle: var(--blue-100);
@@ -155,13 +162,13 @@
   --color-text-secondary: var(--neutral-400);
   --color-text-tertiary: var(--neutral-600);
   --color-text-disabled: var(--neutral-700);
-  --color-text-inverse: var(--neutral-900);
+  --color-text-inverse: #ffffff;
   --color-text-link: var(--gold-300);
 
   --color-surface-page: var(--neutral-900);
   --color-surface-card: var(--neutral-800);
   --color-surface-hover: var(--neutral-800);
-  --color-surface-sunken: var(--neutral-900);
+  --color-surface-sunken: var(--neutral-820);
   --color-surface-section-alt: var(--neutral-800);
   --color-surface-masthead: var(--neutral-900);
   --color-surface-footer: var(--neutral-950);
@@ -172,16 +179,16 @@
   --color-action-primary-foreground: var(--neutral-900);
   --color-action-primary-hover: var(--gold-300);
   --color-action-primary-pressed: var(--gold-300);
-  --color-action-secondary: #ffffff;
-  --color-action-secondary-foreground: var(--neutral-900);
-  --color-action-secondary-border: var(--neutral-300);
-  --color-action-secondary-hover: var(--neutral-100);
+  --color-action-secondary: var(--neutral-800);
+  --color-action-secondary-foreground: #ffffff;
+  --color-action-secondary-border: var(--neutral-750);
+  --color-action-secondary-hover: #2a2d31;
   --color-action-disabled-bg: var(--neutral-800);
   --color-action-disabled-fg: var(--neutral-600);
 
   --color-border-default: var(--neutral-700);
   --color-border-decorative: var(--neutral-800);
-  --color-border-focus: var(--gold-700);
+  --color-border-focus: var(--gold-600);
   --color-border-error: #f47272;
   --color-border-disabled: var(--neutral-700);
   --color-border-strong: var(--neutral-500);
@@ -191,7 +198,7 @@
   --color-icon-action: var(--gold-700);
   --color-icon-inverse: var(--neutral-900);
 
-  --color-feedback-error: #f47272;
+  --color-feedback-error: var(--red-600);
   --color-feedback-error-subtle: #330d0d;
   --color-feedback-warning: var(--gold-700);
   --color-feedback-warning-subtle: #2e2200;
@@ -277,15 +284,22 @@
   --color-neutral-0: var(--neutral-0);
   --color-neutral-50: var(--neutral-50);
   --color-neutral-100: var(--neutral-100);
+  --color-neutral-150: var(--neutral-150);
+  --color-neutral-175: var(--neutral-175);
   --color-neutral-200: var(--neutral-200);
+  --color-neutral-250: var(--neutral-250);
   --color-neutral-300: var(--neutral-300);
   --color-neutral-400: var(--neutral-400);
   --color-neutral-500: var(--neutral-500);
   --color-neutral-600: var(--neutral-600);
+  --color-neutral-650: var(--neutral-650);
   --color-neutral-700: var(--neutral-700);
+  --color-neutral-750: var(--neutral-750);
   --color-neutral-800: var(--neutral-800);
+  --color-neutral-820: var(--neutral-820);
   --color-neutral-900: var(--neutral-900);
   --color-neutral-950: var(--neutral-950);
+  --color-neutral-1000: var(--neutral-1000);
 
   --color-text-primary: var(--color-text-primary);
   --color-text-secondary: var(--color-text-secondary);
@@ -307,6 +321,7 @@
   --color-action-primary: var(--color-action-primary);
   --color-action-primary-foreground: var(--color-action-primary-foreground);
   --color-action-primary-hover: var(--color-action-primary-hover);
+  --color-action-primary-pressed: var(--color-action-primary-pressed);
   --color-action-secondary: var(--color-action-secondary);
   --color-action-secondary-foreground: var(--color-action-secondary-foreground);
   --color-action-secondary-border: var(--color-action-secondary-border);
@@ -318,6 +333,7 @@
   --color-border-decorative: var(--color-border-decorative);
   --color-border-focus: var(--color-border-focus);
   --color-border-error: var(--color-border-error);
+  --color-border-disabled: var(--color-border-disabled);
   --color-border-strong: var(--color-border-strong);
 
   --color-feedback-error: var(--color-feedback-error);
