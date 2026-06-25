@@ -3,30 +3,24 @@ import { useState, useEffect } from "react";
 import { CodeBlock } from "@/components/CodeBlock";
 import { Card, SectionHeading } from "./shared";
 
-// ── Spinner ────────────────────────────────────────────────────────────────
+// ── SpinnerGap icon (Phosphor · Outline · Regular · 24px) ─────────────────
 
-function Spinner({ size = 20 }: { size?: number }) {
+function Spinner({ size = 24 }: { size?: number }) {
   return (
     <svg
       width={size}
       height={size}
-      viewBox="0 0 20 20"
+      viewBox="0 0 256 256"
       fill="none"
       aria-hidden
       style={{ animation: "ptr-spin 0.8s linear infinite" }}
     >
       <path
-        d="M10 2.5A7.5 7.5 0 1 1 2.5 10"
+        d="M128,32A96,96,0,1,0,224,128"
         stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-      <path
-        d="M10 2.5L7 5.5M10 2.5L13 5.5"
-        stroke="currentColor"
-        strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeWidth="16"
       />
     </svg>
   );
@@ -86,7 +80,7 @@ export function PullToRefreshStrip({ state }: { state: PTRState }) {
         ].join(" ")}
       >
         <span className="text-[var(--color-text-secondary)]">
-          <SpinnerIcon size={20} />  {/* 20×20 spinning arrow */}
+          <SpinnerGapIcon size={24} />  {/* 24×24 SpinnerGap — Phosphor Outline/Regular */}
         </span>
         <p
           className="text-[15px] leading-[20px] text-[var(--color-text-secondary)]"
@@ -250,7 +244,7 @@ export function PullToRefreshSpec() {
             { prop: "Height (loading)",   value: "52px (16px padding top + 20px content + 16px padding bottom)" },
             { prop: "Height (collapsed)", value: "0px — transition-all duration-300" },
             { prop: "Background",         value: "--color-surface-sunken (neutral-100 · #f5f6f8) · backdrop-blur-[6px]" },
-            { prop: "Spinner",            value: "20×20px · rotating arrow · color: --color-text-secondary" },
+            { prop: "Spinner",            value: "24×24px · SpinnerGap (Phosphor, Outline/Regular) · color: --color-text-secondary" },
             { prop: "Label",              value: '"Loading..." · 15px · leading-[20px] · tracking-[0px]' },
             { prop: "Label color",        value: "--color-text-secondary (neutral-600 · #676c73)" },
             { prop: "Gap",                value: "4px between spinner and label" },
