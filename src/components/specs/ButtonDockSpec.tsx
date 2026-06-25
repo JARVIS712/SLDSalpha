@@ -2,6 +2,22 @@
 import { useState } from "react";
 import { CodeBlock } from "@/components/CodeBlock";
 
+function CaretLeft() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
+      <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function CaretRight() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
+      <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 // ── Internal button used inside the dock ────────────────────────────────────
 type DockVariant = "primary" | "secondary" | "ghost";
 
@@ -15,13 +31,15 @@ function DockButton({ variant, label }: { variant: DockVariant; label: string })
   return (
     <button
       className={[
-        "flex h-14 w-full items-center justify-center rounded-[var(--radius-lg)]",
+        "flex h-14 w-full items-center justify-center gap-2 rounded-[var(--radius-lg)]",
         "text-[17px] font-medium transition-colors duration-[var(--duration-fast)]",
         "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--gold-500)]",
         DOCK_BTN_CLASSES[variant],
       ].join(" ")}
     >
+      <CaretLeft />
       {label}
+      <CaretRight />
     </button>
   );
 }
@@ -118,7 +136,9 @@ function DockButton({ variant, label, onClick, disabled }: DockButtonProps) {
           : dockButtonStyles[variant],
       ].join(' ')}
     >
+      {leadingIcon}
       {label}
+      {trailingIcon}
     </button>
   );
 }
@@ -208,7 +228,7 @@ export function ButtonDockSpec() {
             { prop: "Button width",   value: "Full-width (w-full) — stretches to container" },
             { prop: "Gap",            value: "--space-12 · 12px between buttons" },
             { prop: "Padding",        value: "--space-16 · 16px around the dock" },
-            { prop: "Border radius",  value: "--radius-2xl · 24px per button" },
+            { prop: "Border radius",  value: "--radius-lg · 12px per button" },
             { prop: "Order",          value: "Primary → Secondary → Ghost (top to bottom)" },
             { prop: "Max buttons",    value: "3 — one per variant" },
             { prop: "Platform",       value: "Mobile App, Web (PWA)" },

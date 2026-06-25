@@ -14,11 +14,11 @@ const VARIANT_LABELS: Record<Variant, string> = {
   primary: "Primary", secondary: "Secondary", ghost: "Ghost", destructive: "Destructive",
 };
 
-const SIZE_SPECS: Record<BSize, { label: string; height: string; font: string; padding: string; radius: string; classes: string }> = {
-  xl: { label: "Extra Large", height: "56px", font: "17px", padding: "16px", radius: "12px", classes: "h-14 px-4 text-[17px] gap-2 min-w-[120px] rounded-[var(--radius-lg)]" },
-  lg: { label: "Large",       height: "48px", font: "16px", padding: "16px", radius: "12px", classes: "h-12 px-4 text-[16px] gap-2 min-w-[108px] rounded-[var(--radius-lg)]" },
-  md: { label: "Medium",      height: "36px", font: "14px", padding: "12px", radius: "8px",  classes: "h-9  px-3 text-sm  gap-1.5 min-w-[96px]  rounded-[var(--radius-md)]"  },
-  sm: { label: "Small",       height: "28px", font: "12px", padding: "8px",  radius: "8px",  classes: "h-7  px-2.5 text-xs gap-1 min-w-[80px]   rounded-[var(--radius-md)]"  },
+const SIZE_SPECS: Record<BSize, { label: string; height: string; font: string; padding: string; radius: string; iconSize: number; classes: string }> = {
+  xl: { label: "Extra Large", height: "56px", font: "17px", padding: "16px", radius: "12px", iconSize: 20, classes: "h-14 px-4 text-[17px] gap-2 min-w-[120px] rounded-[var(--radius-lg)]" },
+  lg: { label: "Large",       height: "48px", font: "16px", padding: "16px", radius: "12px", iconSize: 18, classes: "h-12 px-4 text-[16px] gap-2 min-w-[108px] rounded-[var(--radius-lg)]" },
+  md: { label: "Medium",      height: "36px", font: "14px", padding: "12px", radius: "8px",  iconSize: 16, classes: "h-9  px-3 text-sm  gap-1.5 min-w-[96px]  rounded-[var(--radius-md)]"  },
+  sm: { label: "Small",       height: "28px", font: "12px", padding: "8px",  radius: "8px",  iconSize: 14, classes: "h-7  px-2.5 text-xs gap-1 min-w-[80px]   rounded-[var(--radius-md)]"  },
 };
 
 const LIVE_VARIANT_CLASSES: Record<Variant, string> = {
@@ -40,10 +40,29 @@ function Spinner() {
   );
 }
 
+function CaretLeft({ size = 16 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden>
+      <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function CaretRight({ size = 16 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden>
+      <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 function LiveButton({ variant, size = "md" }: { variant: Variant; size?: BSize }) {
+  const iconSize = SIZE_SPECS[size].iconSize;
   return (
     <button className={`${BTN_BASE} ${FOCUS_RING} ${SIZE_SPECS[size].classes} ${LIVE_VARIANT_CLASSES[variant]}`}>
+      <CaretLeft size={iconSize} />
       {VARIANT_LABELS[variant]}
+      <CaretRight size={iconSize} />
     </button>
   );
 }
@@ -96,12 +115,13 @@ function getStateStyle(variant: Variant, state: BState): React.CSSProperties {
 }
 
 function StateDemoButton({ variant, state }: { variant: Variant; state: BState }) {
+  const isLoading = state === "loading";
   return (
     <div
       style={{
         ...getStateStyle(variant, state),
         height: 36,
-        minWidth: 88,
+        minWidth: 96,
         display: "inline-flex",
         alignItems: "center",
         justifyContent: "center",
@@ -114,8 +134,9 @@ function StateDemoButton({ variant, state }: { variant: Variant; state: BState }
         userSelect: "none",
       }}
     >
-      {state === "loading" && <Spinner />}
-      <span>{state === "loading" ? "Loading" : "Button"}</span>
+      {isLoading ? <Spinner /> : <CaretLeft size={16} />}
+      <span>{isLoading ? "Loading" : "Button"}</span>
+      {!isLoading && <CaretRight size={16} />}
     </div>
   );
 }
@@ -163,6 +184,8 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: Variant;
   size?: Size;
   loading?: boolean;
+  leadingIcon?: React.ReactNode;
+  trailingIcon?: React.ReactNode;
 }
 
 export function Button({
@@ -170,6 +193,8 @@ export function Button({
   size = 'md',
   disabled,
   loading,
+  leadingIcon,
+  trailingIcon,
   children,
   className = '',
   ...props
@@ -189,8 +214,9 @@ export function Button({
         className,
       ].join(' ')}
     >
-      {loading && <LoadingSpinner />}
+      {loading ? <LoadingSpinner /> : leadingIcon}
       {children}
+      {!loading && trailingIcon}
     </button>
   );
 }`;
