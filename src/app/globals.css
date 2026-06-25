@@ -74,7 +74,9 @@
   --color-action-primary-hover: var(--gold-600);
   --color-action-primary-pressed: var(--gold-600);
   --color-action-secondary: #ffffff;
+  --color-action-secondary-foreground: var(--neutral-900);
   --color-action-secondary-border: var(--neutral-900);
+  --color-action-secondary-hover: var(--neutral-100);
   --color-action-disabled-bg: var(--neutral-200);
   --color-action-disabled-fg: var(--neutral-400);
 
@@ -170,8 +172,10 @@
   --color-action-primary-foreground: var(--neutral-900);
   --color-action-primary-hover: var(--gold-300);
   --color-action-primary-pressed: var(--gold-300);
-  --color-action-secondary: var(--neutral-800);
+  --color-action-secondary: #ffffff;
+  --color-action-secondary-foreground: var(--neutral-900);
   --color-action-secondary-border: var(--neutral-300);
+  --color-action-secondary-hover: var(--neutral-100);
   --color-action-disabled-bg: var(--neutral-800);
   --color-action-disabled-fg: var(--neutral-600);
 
@@ -223,7 +227,9 @@
   --color-action-primary-hover: var(--gold-600);
   --color-action-primary-pressed: var(--gold-700);
   --color-action-secondary: #ffffff;
+  --color-action-secondary-foreground: #000000;
   --color-action-secondary-border: #000000;
+  --color-action-secondary-hover: #e8e8e8;
   --color-action-disabled-bg: #f0f0f0;
   --color-action-disabled-fg: #595959;
 
@@ -302,7 +308,9 @@
   --color-action-primary-foreground: var(--color-action-primary-foreground);
   --color-action-primary-hover: var(--color-action-primary-hover);
   --color-action-secondary: var(--color-action-secondary);
+  --color-action-secondary-foreground: var(--color-action-secondary-foreground);
   --color-action-secondary-border: var(--color-action-secondary-border);
+  --color-action-secondary-hover: var(--color-action-secondary-hover);
   --color-action-disabled-bg: var(--color-action-disabled-bg);
   --color-action-disabled-fg: var(--color-action-disabled-fg);
 

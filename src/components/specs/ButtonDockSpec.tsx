@@ -23,7 +23,7 @@ type DockVariant = "primary" | "secondary" | "ghost";
 
 const DOCK_BTN_CLASSES: Record<DockVariant, string> = {
   primary:   "bg-[var(--color-action-primary)] text-[var(--color-action-primary-foreground)] hover:bg-[var(--color-action-primary-hover)]",
-  secondary: "bg-[var(--color-action-secondary)] text-[var(--color-text-primary)] border-2 border-[var(--color-action-secondary-border)] hover:bg-[var(--color-surface-hover)]",
+  secondary: "bg-[var(--color-action-secondary)] text-[var(--color-action-secondary-foreground)] border-2 border-[var(--color-action-secondary-border)] hover:bg-[var(--color-action-secondary-hover)]",
   ghost:     "bg-transparent text-[var(--color-text-primary)] hover:bg-[var(--color-surface-hover)]",
 };
 
@@ -107,7 +107,7 @@ const dockButtonStyles = {
   primary:
     'bg-[var(--color-action-primary)] text-[var(--color-action-primary-foreground)] hover:bg-[var(--color-action-primary-hover)]',
   secondary:
-    'bg-[var(--color-action-secondary)] text-[var(--color-text-primary)] border-2 border-[var(--color-action-secondary-border)] hover:bg-[var(--color-surface-hover)]',
+    'bg-[var(--color-action-secondary)] text-[var(--color-action-secondary-foreground)] border-2 border-[var(--color-action-secondary-border)] hover:bg-[var(--color-action-secondary-hover)]',
   ghost:
     'bg-transparent text-[var(--color-text-primary)] hover:bg-[var(--color-surface-hover)]',
 };

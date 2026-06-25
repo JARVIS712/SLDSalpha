@@ -23,7 +23,7 @@ const SIZE_SPECS: Record<BSize, { label: string; height: string; font: string; p
 
 const LIVE_VARIANT_CLASSES: Record<Variant, string> = {
   primary:     "bg-[var(--color-action-primary)] text-[var(--color-action-primary-foreground)] hover:bg-[var(--color-action-primary-hover)] active:bg-[var(--color-action-primary-pressed)]",
-  secondary:   "bg-[var(--color-action-secondary)] text-[var(--color-text-primary)] border-2 border-[var(--color-action-secondary-border)] hover:bg-[var(--color-surface-hover)]",
+  secondary:   "bg-[var(--color-action-secondary)] text-[var(--color-action-secondary-foreground)] border-2 border-[var(--color-action-secondary-border)] hover:bg-[var(--color-action-secondary-hover)]",
   ghost:       "bg-transparent text-[var(--color-text-primary)] hover:bg-[var(--color-surface-hover)]",
   destructive: "bg-[var(--red-600)] text-white hover:bg-[var(--red-700)]",
 };
@@ -92,8 +92,8 @@ function getStateStyle(variant: Variant, state: BState): React.CSSProperties {
       };
     case "secondary":
       return {
-        background: active ? "var(--color-surface-hover)" : "var(--color-action-secondary)",
-        color: "var(--color-text-primary)",
+        background: active ? "var(--color-action-secondary-hover)" : "var(--color-action-secondary)",
+        color: "var(--color-action-secondary-foreground)",
         border: "2px solid var(--color-action-secondary-border)",
         ...ring,
       };
@@ -170,7 +170,7 @@ const variantStyles: Record<Variant, string> = {
   primary:
     'bg-[var(--color-action-primary)] text-[var(--color-action-primary-foreground)] hover:bg-[var(--color-action-primary-hover)]',
   secondary:
-    'bg-[var(--color-action-secondary)] text-[var(--color-text-primary)] border-2 border-[var(--color-action-secondary-border)] hover:bg-[var(--color-surface-hover)]',
+    'bg-[var(--color-action-secondary)] text-[var(--color-action-secondary-foreground)] border-2 border-[var(--color-action-secondary-border)] hover:bg-[var(--color-action-secondary-hover)]',
   ghost:
     'bg-transparent text-[var(--color-text-primary)] hover:bg-[var(--color-surface-hover)]',
   destructive:
@@ -225,7 +225,7 @@ const TOKEN_ROWS = [
   { token: "--color-action-primary",            light: "#ffc700",  dark: "#ffc700",  usage: "Primary background"     },
   { token: "--color-action-primary-foreground", light: "#111111",  dark: "#111111",  usage: "Primary label"          },
   { token: "--color-action-primary-hover",      light: "#e0ae00",  dark: "#ffd740",  usage: "Primary hover/pressed"  },
-  { token: "--color-action-secondary",          light: "#ffffff",  dark: "#212529",  usage: "Secondary background"   },
+  { token: "--color-action-secondary",          light: "#ffffff",  dark: "#ffffff",  usage: "Secondary background"   },
   { token: "--color-action-secondary-border",   light: "#111111",  dark: "#dadde2",  usage: "Secondary border"       },
   { token: "--color-action-disabled-bg",        light: "#eceef1",  dark: "#212529",  usage: "Disabled background"    },
   { token: "--color-action-disabled-fg",        light: "#b8bdc4",  dark: "#676c73",  usage: "Disabled label"         },

@@ -14,7 +14,7 @@ const VARIANT_LABELS: Record<Variant, string> = {
 
 const LIVE_VARIANT_CLASSES: Record<Variant, string> = {
   primary:     "bg-[var(--color-action-primary)] text-[var(--color-action-primary-foreground)] hover:bg-[var(--color-action-primary-hover)] active:bg-[var(--color-action-primary-pressed)]",
-  secondary:   "bg-[var(--color-action-secondary)] text-[var(--color-text-primary)] border-2 border-[var(--color-action-secondary-border)] hover:bg-[var(--color-surface-hover)]",
+  secondary:   "bg-[var(--color-action-secondary)] text-[var(--color-action-secondary-foreground)] border-2 border-[var(--color-action-secondary-border)] hover:bg-[var(--color-action-secondary-hover)]",
   destructive: "bg-[var(--red-600)] text-white hover:bg-[var(--red-700)]",
 };
 
@@ -61,7 +61,7 @@ function getStateStyle(variant: Variant, state: BState): React.CSSProperties {
     case "primary":
       return { background: active ? "var(--color-action-primary-hover)" : "var(--color-action-primary)", color: "var(--color-action-primary-foreground)", border: "2px solid transparent", boxShadow: shadow, ...ring };
     case "secondary":
-      return { background: active ? "var(--color-surface-hover)" : "var(--color-action-secondary)", color: "var(--color-text-primary)", border: "2px solid var(--color-action-secondary-border)", boxShadow: shadow, ...ring };
+      return { background: active ? "var(--color-action-secondary-hover)" : "var(--color-action-secondary)", color: "var(--color-action-secondary-foreground)", border: "2px solid var(--color-action-secondary-border)", boxShadow: shadow, ...ring };
     case "destructive":
       return { background: active ? "var(--red-700)" : "var(--red-600)", color: "#ffffff", border: "2px solid transparent", boxShadow: shadow, ...ring };
   }
@@ -101,7 +101,7 @@ const variantStyles: Record<Variant, string> = {
   primary:
     'bg-[var(--color-action-primary)] text-[var(--color-action-primary-foreground)] hover:bg-[var(--color-action-primary-hover)]',
   secondary:
-    'bg-[var(--color-action-secondary)] text-[var(--color-text-primary)] border-2 border-[var(--color-action-secondary-border)] hover:bg-[var(--color-surface-hover)]',
+    'bg-[var(--color-action-secondary)] text-[var(--color-action-secondary-foreground)] border-2 border-[var(--color-action-secondary-border)] hover:bg-[var(--color-action-secondary-hover)]',
   destructive:
     'bg-[var(--red-600)] text-white hover:bg-[var(--red-700)]',
 };

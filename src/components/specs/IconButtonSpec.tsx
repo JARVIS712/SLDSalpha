@@ -23,7 +23,7 @@ const SIZE_SPECS: Record<BSize, { label: string; dim: string; icon: number; clas
 
 const LIVE_VARIANT_CLASSES: Record<Variant, string> = {
   primary:     "bg-[var(--color-action-primary)] text-[var(--color-action-primary-foreground)] hover:bg-[var(--color-action-primary-hover)] active:bg-[var(--color-action-primary-pressed)]",
-  secondary:   "bg-[var(--color-action-secondary)] text-[var(--color-text-primary)] border-2 border-[var(--color-action-secondary-border)] hover:bg-[var(--color-surface-hover)]",
+  secondary:   "bg-[var(--color-action-secondary)] text-[var(--color-action-secondary-foreground)] border-2 border-[var(--color-action-secondary-border)] hover:bg-[var(--color-action-secondary-hover)]",
   ghost:       "bg-transparent text-[var(--color-text-primary)] hover:bg-[var(--color-surface-hover)]",
   destructive: "bg-[var(--red-600)] text-white hover:bg-[var(--red-700)]",
 };
@@ -73,7 +73,7 @@ function getStateStyle(variant: Variant, state: BState): React.CSSProperties {
     case "primary":
       return { background: active ? "var(--color-action-primary-hover)" : "var(--color-action-primary)", color: "var(--color-action-primary-foreground)", border: "2px solid transparent", ...ring };
     case "secondary":
-      return { background: active ? "var(--color-surface-hover)" : "var(--color-action-secondary)", color: "var(--color-text-primary)", border: "2px solid var(--color-action-secondary-border)", ...ring };
+      return { background: active ? "var(--color-action-secondary-hover)" : "var(--color-action-secondary)", color: "var(--color-action-secondary-foreground)", border: "2px solid var(--color-action-secondary-border)", ...ring };
     case "ghost":
       return { background: active ? "var(--color-surface-hover)" : "transparent", color: "var(--color-text-primary)", border: "2px solid transparent", ...ring };
     case "destructive":
@@ -123,7 +123,7 @@ const variantStyles: Record<Variant, string> = {
   primary:
     'bg-[var(--color-action-primary)] text-[var(--color-action-primary-foreground)] hover:bg-[var(--color-action-primary-hover)]',
   secondary:
-    'bg-[var(--color-action-secondary)] text-[var(--color-text-primary)] border-2 border-[var(--color-action-secondary-border)] hover:bg-[var(--color-surface-hover)]',
+    'bg-[var(--color-action-secondary)] text-[var(--color-action-secondary-foreground)] border-2 border-[var(--color-action-secondary-border)] hover:bg-[var(--color-action-secondary-hover)]',
   ghost:
     'bg-transparent text-[var(--color-text-primary)] hover:bg-[var(--color-surface-hover)]',
   destructive:
