@@ -8,6 +8,7 @@ import { ButtonDockSpec } from "@/components/specs/ButtonDockSpec";
 import { IconButtonSpec } from "@/components/specs/IconButtonSpec";
 import { LinkButtonSpec } from "@/components/specs/LinkButtonSpec";
 import { FABSpec } from "@/components/specs/FABSpec";
+import { BottomTabBarSpec } from "@/components/specs/BottomTabBarSpec";
 
 export function generateStaticParams() {
   return components.map((c) => ({ slug: c.slug }));
@@ -34,6 +35,7 @@ const SPEC_REGISTRY: Record<string, SpecComponent> = {
   "button-icon":          IconButtonSpec,
   "button-text-link":     LinkButtonSpec,
   "floating-action-button-fab": FABSpec,
+  "bottom-tab-bar":             BottomTabBarSpec,
 };
 
 export default async function ComponentPage({ params }: { params: Promise<{ slug: string }> }) {
