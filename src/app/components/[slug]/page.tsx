@@ -10,6 +10,7 @@ import { LinkButtonSpec } from "@/components/specs/LinkButtonSpec";
 import { FABSpec } from "@/components/specs/FABSpec";
 import { BottomTabBarSpec } from "@/components/specs/BottomTabBarSpec";
 import { TopNavBarSpec } from "@/components/specs/TopNavBarSpec";
+import { PullToRefreshSpec } from "@/components/specs/PullToRefreshSpec";
 
 export function generateStaticParams() {
   return components.map((c) => ({ slug: c.slug }));
@@ -38,6 +39,7 @@ const SPEC_REGISTRY: Record<string, SpecComponent> = {
   "floating-action-button-fab": FABSpec,
   "bottom-tab-bar":             BottomTabBarSpec,
   "top-navigation-bar":         TopNavBarSpec,
+  "pull-to-refresh":            PullToRefreshSpec,
 };
 
 export default async function ComponentPage({ params }: { params: Promise<{ slug: string }> }) {
