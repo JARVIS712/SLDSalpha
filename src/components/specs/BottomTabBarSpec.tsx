@@ -116,7 +116,7 @@ function BottomTabBar({
             className="flex flex-1 flex-col items-center py-1.5 gap-0.5 min-w-0 transition-colors"
           >
             <div className="relative flex h-8 w-14 items-center justify-center rounded-2xl">
-              <span className={isActive ? "text-[var(--color-icon-action)]" : "text-[var(--color-text-secondary)]"}>
+              <span className={isActive ? "text-[var(--color-icon-primary)]" : "text-[var(--color-icon-secondary)]"}>
                 <tab.Icon filled={isActive} />
               </span>
               {tab.badge != null && (
@@ -144,7 +144,7 @@ function DemoTab({ tab, isActive, hasBadge = false }: { tab: TabDef; isActive: b
   return (
     <div className="inline-flex flex-col items-center py-1.5 gap-0.5 w-[80px]">
       <div className="relative flex h-8 w-14 items-center justify-center rounded-2xl">
-        <span className={isActive ? "text-[var(--color-icon-action)]" : "text-[var(--color-text-secondary)]"}>
+        <span className={isActive ? "text-[var(--color-icon-primary)]" : "text-[var(--color-icon-secondary)]"}>
           <tab.Icon filled={isActive} />
         </span>
         {hasBadge && (
@@ -202,8 +202,8 @@ export function BottomTabBar({ tabs, activeIndex, onTabChange }: BottomTabBarPro
           >
             <div className='relative flex h-8 w-14 items-center justify-center rounded-2xl'>
               <span className={isActive
-                ? 'text-[var(--color-icon-action)]'
-                : 'text-[var(--color-text-secondary)]'
+                ? 'text-[var(--color-icon-primary)]'
+                : 'text-[var(--color-icon-secondary)]'
               }>
                 <tab.Icon filled={isActive} />
               </span>
@@ -282,7 +282,7 @@ export function BottomTabBarSpec() {
               <tr>
                 <td className="py-4 pl-5 pr-4 text-xs font-medium text-[var(--color-text-secondary)]">Active</td>
                 <td className="px-4 py-4"><DemoTab tab={TABS[0]} isActive /></td>
-                <td className="px-4 py-4 text-xs text-[var(--color-text-secondary)]">Filled icon in gold · label in text-primary · indicates current screen</td>
+                <td className="px-4 py-4 text-xs text-[var(--color-text-secondary)]">Filled icon in icon-primary · label in text-primary · indicates current screen</td>
               </tr>
               <tr>
                 <td className="py-4 pl-5 pr-4 text-xs font-medium text-[var(--color-text-secondary)]">Default</td>
@@ -323,7 +323,7 @@ export function BottomTabBarSpec() {
                   {TABS.slice(0, count).map((tab, i) => (
                     <div key={tab.label} className="flex flex-1 flex-col items-center py-1.5 gap-0.5 min-w-0">
                       <div className="relative flex h-8 w-14 items-center justify-center rounded-2xl">
-                        <span className={i === 0 ? "text-[var(--color-icon-action)]" : "text-[var(--color-text-secondary)]"}>
+                        <span className={i === 0 ? "text-[var(--color-icon-primary)]" : "text-[var(--color-icon-secondary)]"}>
                           <tab.Icon filled={i === 0} />
                         </span>
                       </div>
@@ -351,8 +351,8 @@ export function BottomTabBarSpec() {
             { prop: "Tab count",       value: "3–5 tabs · equal flex-1 width · no fewer, no more" },
             { prop: "Background",      value: "--color-surface-page · backdrop-blur-[6px]" },
             { prop: "Border",          value: "1px solid --color-border-decorative · top only" },
-            { prop: "Active icon",     value: "--color-icon-action (gold-700 · #b38a00)" },
-            { prop: "Default icon",    value: "--color-text-secondary (neutral-600 · #676c73)" },
+            { prop: "Active icon",     value: "--color-icon-primary (neutral-900 · #111111)" },
+            { prop: "Default icon",    value: "--color-icon-secondary (neutral-500 · #8e949e)" },
             { prop: "Active label",    value: "--color-text-primary · font-medium" },
             { prop: "Default label",   value: "--color-text-secondary · font-normal" },
             { prop: "Badge bg",        value: "--blue-100 (#e3edff)" },
