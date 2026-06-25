@@ -15,10 +15,10 @@ const VARIANT_LABELS: Record<Variant, string> = {
 };
 
 const SIZE_SPECS: Record<BSize, { label: string; dim: string; icon: number; classes: string }> = {
-  xl: { label: "Extra Large", dim: "56px", icon: 24, classes: "size-14" },
-  lg: { label: "Large",       dim: "48px", icon: 24, classes: "size-12" },
-  md: { label: "Medium",      dim: "36px", icon: 20, classes: "size-9"  },
-  sm: { label: "Small",       dim: "28px", icon: 16, classes: "size-7"  },
+  xl: { label: "Extra Large", dim: "56px", icon: 24, classes: "size-14 rounded-[var(--radius-lg)]" },
+  lg: { label: "Large",       dim: "48px", icon: 24, classes: "size-12 rounded-[var(--radius-lg)]" },
+  md: { label: "Medium",      dim: "36px", icon: 20, classes: "size-9  rounded-[var(--radius-md)]" },
+  sm: { label: "Small",       dim: "28px", icon: 16, classes: "size-7  rounded-[var(--radius-md)]" },
 };
 
 const LIVE_VARIANT_CLASSES: Record<Variant, string> = {
@@ -51,7 +51,7 @@ function LiveIconButton({ variant, size = "md" }: { variant: Variant; size?: BSi
     <button
       aria-label={`${VARIANT_LABELS[variant]} icon button`}
       className={[
-        "inline-flex items-center justify-center shrink-0 rounded-[var(--radius-2xl)]",
+        "inline-flex items-center justify-center shrink-0",
         "transition-colors duration-[var(--duration-fast)]",
         "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--gold-500)]",
         s.classes,
@@ -89,7 +89,7 @@ function StateDemoIconButton({ variant, state }: { variant: Variant; state: BSta
         ...getStateStyle(variant, state),
         width: 36, height: 36,
         display: "inline-flex", alignItems: "center", justifyContent: "center",
-        borderRadius: "var(--radius-2xl)",
+        borderRadius: "var(--radius-md)",
         userSelect: "none",
         flexShrink: 0,
       }}
@@ -113,10 +113,10 @@ type Variant = 'primary' | 'secondary' | 'ghost' | 'destructive';
 type Size    = 'xl' | 'lg' | 'md' | 'sm';
 
 const sizeStyles: Record<Size, string> = {
-  xl: 'size-14', // 56×56px
-  lg: 'size-12', // 48×48px
-  md: 'size-9',  // 36×36px
-  sm: 'size-7',  // 28×28px
+  xl: 'size-14 rounded-[var(--radius-lg)]', // 56×56px, r=12px
+  lg: 'size-12 rounded-[var(--radius-lg)]', // 48×48px, r=12px
+  md: 'size-9  rounded-[var(--radius-md)]', // 36×36px, r=8px
+  sm: 'size-7  rounded-[var(--radius-md)]', // 28×28px, r=8px
 };
 
 const variantStyles: Record<Variant, string> = {
@@ -146,7 +146,7 @@ export function IconButton({ variant = 'primary', size = 'md', icon, label, disa
       disabled={disabled}
       aria-label={label}
       className={[
-        'inline-flex items-center justify-center shrink-0 rounded-[var(--radius-2xl)]',
+        'inline-flex items-center justify-center shrink-0',
         'transition-colors duration-[var(--duration-fast)]',
         'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2',
         'focus-visible:outline-[var(--gold-500)]',

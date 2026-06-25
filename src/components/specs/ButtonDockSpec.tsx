@@ -15,7 +15,7 @@ function DockButton({ variant, label }: { variant: DockVariant; label: string })
   return (
     <button
       className={[
-        "flex h-14 w-full items-center justify-center rounded-[var(--radius-2xl)]",
+        "flex h-14 w-full items-center justify-center rounded-[var(--radius-lg)]",
         "text-[17px] font-medium transition-colors duration-[var(--duration-fast)]",
         "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--gold-500)]",
         DOCK_BTN_CLASSES[variant],
@@ -109,7 +109,7 @@ function DockButton({ variant, label, onClick, disabled }: DockButtonProps) {
       onClick={onClick}
       disabled={disabled}
       className={[
-        'flex h-14 w-full items-center justify-center rounded-[var(--radius-2xl)]',
+        'flex h-14 w-full items-center justify-center rounded-[var(--radius-lg)]',
         'text-[17px] font-medium transition-colors duration-[var(--duration-fast)]',
         'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2',
         'focus-visible:outline-[var(--gold-500)]',

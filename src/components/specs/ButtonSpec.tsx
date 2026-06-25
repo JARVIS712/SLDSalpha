@@ -14,11 +14,11 @@ const VARIANT_LABELS: Record<Variant, string> = {
   primary: "Primary", secondary: "Secondary", ghost: "Ghost", destructive: "Destructive",
 };
 
-const SIZE_SPECS: Record<BSize, { label: string; height: string; font: string; padding: string; classes: string }> = {
-  xl: { label: "Extra Large", height: "56px", font: "17px", padding: "16px", classes: "h-14 px-4 text-[17px] gap-2 min-w-[120px]" },
-  lg: { label: "Large",       height: "48px", font: "16px", padding: "16px", classes: "h-12 px-4 text-[16px] gap-2 min-w-[108px]" },
-  md: { label: "Medium",      height: "36px", font: "14px", padding: "12px", classes: "h-9  px-3 text-sm  gap-1.5 min-w-[96px]"  },
-  sm: { label: "Small",       height: "28px", font: "12px", padding: "8px",  classes: "h-7  px-2.5 text-xs gap-1 min-w-[80px]"    },
+const SIZE_SPECS: Record<BSize, { label: string; height: string; font: string; padding: string; radius: string; classes: string }> = {
+  xl: { label: "Extra Large", height: "56px", font: "17px", padding: "16px", radius: "12px", classes: "h-14 px-4 text-[17px] gap-2 min-w-[120px] rounded-[var(--radius-lg)]" },
+  lg: { label: "Large",       height: "48px", font: "16px", padding: "16px", radius: "12px", classes: "h-12 px-4 text-[16px] gap-2 min-w-[108px] rounded-[var(--radius-lg)]" },
+  md: { label: "Medium",      height: "36px", font: "14px", padding: "12px", radius: "8px",  classes: "h-9  px-3 text-sm  gap-1.5 min-w-[96px]  rounded-[var(--radius-md)]"  },
+  sm: { label: "Small",       height: "28px", font: "12px", padding: "8px",  radius: "8px",  classes: "h-7  px-2.5 text-xs gap-1 min-w-[80px]   rounded-[var(--radius-md)]"  },
 };
 
 const LIVE_VARIANT_CLASSES: Record<Variant, string> = {
@@ -28,7 +28,7 @@ const LIVE_VARIANT_CLASSES: Record<Variant, string> = {
   destructive: "bg-[var(--red-600)] text-white hover:bg-[var(--red-700)]",
 };
 
-const BTN_BASE = "inline-flex items-center justify-center font-medium rounded-[var(--radius-2xl)] whitespace-nowrap transition-colors duration-[var(--duration-fast)]";
+const BTN_BASE = "inline-flex items-center justify-center font-medium whitespace-nowrap transition-colors duration-[var(--duration-fast)]";
 const FOCUS_RING = "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--gold-500)]";
 
 function Spinner() {
@@ -105,7 +105,7 @@ function StateDemoButton({ variant, state }: { variant: Variant; state: BState }
         display: "inline-flex",
         alignItems: "center",
         justifyContent: "center",
-        borderRadius: "var(--radius-2xl)",
+        borderRadius: "var(--radius-md)",
         fontSize: 14,
         fontWeight: 500,
         gap: 6,
@@ -139,10 +139,10 @@ type Variant = 'primary' | 'secondary' | 'ghost' | 'destructive';
 type Size    = 'xl' | 'lg' | 'md' | 'sm';
 
 const sizeStyles: Record<Size, string> = {
-  xl: 'h-14 px-4 text-[17px] gap-2',
-  lg: 'h-12 px-4 text-[16px] gap-2',
-  md: 'h-9  px-3 text-sm gap-1.5',
-  sm: 'h-7  px-2.5 text-xs gap-1',
+  xl: 'h-14 px-4 text-[17px] gap-2 rounded-[var(--radius-lg)]',
+  lg: 'h-12 px-4 text-[16px] gap-2 rounded-[var(--radius-lg)]',
+  md: 'h-9  px-3 text-sm gap-1.5 rounded-[var(--radius-md)]',
+  sm: 'h-7  px-2.5 text-xs gap-1 rounded-[var(--radius-md)]',
 };
 
 const variantStyles: Record<Variant, string> = {
@@ -180,7 +180,7 @@ export function Button({
       {...props}
       disabled={isDisabled}
       className={[
-        'inline-flex items-center justify-center font-medium rounded-[var(--radius-2xl)]',
+        'inline-flex items-center justify-center font-medium',
         'transition-colors duration-[var(--duration-fast)] whitespace-nowrap',
         'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2',
         'focus-visible:outline-[var(--gold-500)]',
@@ -204,7 +204,8 @@ const TOKEN_ROWS = [
   { token: "--color-action-disabled-bg",        light: "#eceef1",  dark: "#212529",  usage: "Disabled background"    },
   { token: "--color-action-disabled-fg",        light: "#b8bdc4",  dark: "#676c73",  usage: "Disabled label"         },
   { token: "--red-600",                         light: "#d32f2f",  dark: "#d32f2f",  usage: "Destructive background" },
-  { token: "--radius-2xl",                      light: "24px",     dark: "24px",     usage: "Border radius"          },
+  { token: "--radius-lg",                       light: "12px",     dark: "12px",     usage: "Border radius — XL, L"  },
+  { token: "--radius-md",                       light: "8px",      dark: "8px",      usage: "Border radius — M, S"   },
 ];
 
 export function ButtonSpec() {
