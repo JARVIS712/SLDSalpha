@@ -50,7 +50,7 @@ function Toast({
         {actionLabel && (
           <button
             onClick={onAction}
-            className="h-7 shrink-0 rounded-[var(--radius-xl)] bg-[var(--color-action-primary)] px-2 py-1 text-[15px] leading-5 font-medium text-[var(--color-action-primary-foreground)] whitespace-nowrap"
+            className="h-7 shrink-0 rounded-[var(--radius-md)] bg-[var(--color-action-primary)] px-2 py-1 text-[15px] leading-5 tracking-[0px] text-[var(--color-action-primary-foreground)] whitespace-nowrap"
           >
             {actionLabel}
           </button>
@@ -94,7 +94,7 @@ function ToastExample({
         )}
       </div>
       {actionLabel && (
-        <button className="h-7 shrink-0 rounded-[var(--radius-xl)] bg-[var(--color-action-primary)] px-2 py-1 text-[15px] leading-5 font-medium text-[var(--color-action-primary-foreground)] whitespace-nowrap">
+        <button className="h-7 shrink-0 rounded-[var(--radius-md)] bg-[var(--color-action-primary)] px-2 py-1 text-[15px] leading-5 tracking-[0px] text-[var(--color-action-primary-foreground)] whitespace-nowrap">
           {actionLabel}
         </button>
       )}
@@ -153,10 +153,10 @@ export function Toast({ title, description, actionLabel, onAction, onDismiss, vi
             onClick={onAction}
             className={[
               "h-7 shrink-0 px-2 py-1",
-              "rounded-[var(--radius-xl)]",                    // 8px
+              "rounded-[var(--radius-md)]",                    // 8px — Figma: --radius-xl,8px fallback
               "bg-[var(--color-action-primary)]",              // gold-500 · #ffc700
               "text-[var(--color-action-primary-foreground)]", // neutral-900 · #111
-              "text-[15px] leading-5 font-medium whitespace-nowrap",
+              "text-[15px] leading-5 tracking-[0px] whitespace-nowrap",
             ].join(" ")}
           >
             {actionLabel}
@@ -364,7 +364,7 @@ export function ToastSnackbarSpec() {
             { prop: "Description",     value: "--color-text-secondary · 12px · leading-[18px] · tracking-[0.2px] — Caption 1" },
             { prop: "Action button bg",    value: "--color-action-primary (gold-500 · #ffc700)" },
             { prop: "Action button text",  value: "--color-action-primary-foreground (neutral-900 · #111111)" },
-            { prop: "Action button height",value: "28px · --radius-xl (8px) · px-8px · 15px / leading-5" },
+            { prop: "Action button height",value: "28px · --radius-md (8px) · px-8px · 15px / leading-5 / tracking-0" },
             { prop: "Position",        value: "Fixed · bottom-4 · left-4 · right-4 · z-50 (in production)" },
             { prop: "Auto-dismiss",    value: "4 000ms on mobile. No persistent close button." },
             { prop: "Animation",       value: "translateY(12px)→0 + opacity 0→1 · 300ms ease-out on enter · reverse on dismiss" },
