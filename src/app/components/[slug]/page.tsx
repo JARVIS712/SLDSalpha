@@ -14,6 +14,7 @@ import { PullToRefreshSpec } from "@/components/specs/PullToRefreshSpec";
 import { TabStripSpec } from "@/components/specs/TabStripSpec";
 import { NotificationBannerSpec } from "@/components/specs/NotificationBannerSpec";
 import { ToastSnackbarSpec } from "@/components/specs/ToastSnackbarSpec";
+import { AlertDialogSpec } from "@/components/specs/AlertDialogSpec";
 
 export function generateStaticParams() {
   return components.map((c) => ({ slug: c.slug }));
@@ -46,6 +47,7 @@ const SPEC_REGISTRY: Record<string, SpecComponent> = {
   "tabs-tab-strip":             TabStripSpec,
   "notification-banner":        NotificationBannerSpec,
   "toast-snackbar":             ToastSnackbarSpec,
+  "alert-dialog":               AlertDialogSpec,
 };
 
 export default async function ComponentPage({ params }: { params: Promise<{ slug: string }> }) {
