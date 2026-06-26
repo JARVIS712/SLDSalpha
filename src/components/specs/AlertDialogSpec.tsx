@@ -8,9 +8,10 @@ import { Card, SectionHeading } from "./shared";
 interface AlertDialogProps {
   title: string;
   body: string;
-  cancelLabel?: string;   // optional link button — left side
-  declineLabel?: string;  // secondary button
-  confirmLabel: string;   // primary button
+  cancelLabel?: string;         // optional link button — left side
+  declineLabel?: string;        // secondary button
+  confirmLabel: string;         // primary button
+  confirmDestructive?: boolean; // use destructive (red) styling for confirm
   onCancel?: () => void;
   onDecline?: () => void;
   onConfirm?: () => void;
@@ -20,7 +21,7 @@ interface AlertDialogProps {
 
 function AlertDialog({
   title, body,
-  cancelLabel, declineLabel, confirmLabel,
+  cancelLabel, declineLabel, confirmLabel, confirmDestructive = false,
   onCancel, onDecline, onConfirm,
   labelledById = "ad-title",
   describedById = "ad-body",
@@ -74,7 +75,12 @@ function AlertDialog({
           )}
           <button
             onClick={onConfirm}
-            className="flex h-9 items-center justify-center rounded-[var(--radius-md)] bg-[var(--color-action-primary)] px-2 text-[15px] leading-5 tracking-[0px] text-[var(--color-action-primary-foreground)] whitespace-nowrap"
+            className={[
+              "flex h-9 items-center justify-center rounded-[var(--radius-md)] px-2 text-[15px] leading-5 tracking-[0px] whitespace-nowrap",
+              confirmDestructive
+                ? "bg-[var(--red-600)] text-white"
+                : "bg-[var(--color-action-primary)] text-[var(--color-action-primary-foreground)]",
+            ].join(" ")}
           >
             {confirmLabel}
           </button>
@@ -87,13 +93,14 @@ function AlertDialog({
 // ── Static example (no ARIA ids — for non-interactive display) ─────────────
 
 function AlertDialogStatic({
-  title, body, cancelLabel, declineLabel, confirmLabel,
+  title, body, cancelLabel, declineLabel, confirmLabel, confirmDestructive = false,
 }: {
   title: string;
   body: string;
   cancelLabel?: string;
   declineLabel?: string;
   confirmLabel: string;
+  confirmDestructive?: boolean;
 }) {
   return (
     <div
@@ -114,7 +121,12 @@ function AlertDialogStatic({
               {declineLabel}
             </span>
           )}
-          <span className="flex h-9 items-center justify-center rounded-[var(--radius-md)] bg-[var(--color-action-primary)] px-2 text-[15px] leading-5 tracking-[0px] text-[var(--color-action-primary-foreground)] whitespace-nowrap">
+          <span className={[
+            "flex h-9 items-center justify-center rounded-[var(--radius-md)] px-2 text-[15px] leading-5 tracking-[0px] whitespace-nowrap",
+            confirmDestructive
+              ? "bg-[var(--red-600)] text-white"
+              : "bg-[var(--color-action-primary)] text-[var(--color-action-primary-foreground)]",
+          ].join(" ")}>
             {confirmLabel}
           </span>
         </div>
@@ -257,6 +269,7 @@ const SCENARIOS = [
     cancelLabel: "Cancel" as const,
     declineLabel: "Keep",
     confirmLabel: "Delete",
+    confirmDestructive: true,
   },
 ];
 
@@ -346,6 +359,7 @@ export function AlertDialogSpec() {
                   cancelLabel={scenario.cancelLabel}
                   declineLabel={scenario.declineLabel}
                   confirmLabel={scenario.confirmLabel}
+                  confirmDestructive={"confirmDestructive" in scenario ? scenario.confirmDestructive : false}
                   onCancel={() => closeWith("Cancel")}
                   onDecline={() => closeWith(scenario.declineLabel ?? "Decline")}
                   onConfirm={() => closeWith(scenario.confirmLabel)}
@@ -408,6 +422,7 @@ export function AlertDialogSpec() {
                   cancelLabel={s.cancelLabel}
                   declineLabel={s.declineLabel}
                   confirmLabel={s.confirmLabel}
+                  confirmDestructive={"confirmDestructive" in s ? s.confirmDestructive : false}
                 />
               </div>
             </Card>
