@@ -15,6 +15,11 @@ import { TabStripSpec } from "@/components/specs/TabStripSpec";
 import { NotificationBannerSpec } from "@/components/specs/NotificationBannerSpec";
 import { ToastSnackbarSpec } from "@/components/specs/ToastSnackbarSpec";
 import { AlertDialogSpec } from "@/components/specs/AlertDialogSpec";
+import { ProgressBarSpec } from "@/components/specs/ProgressBarSpec";
+import { EmptyStateSpec } from "@/components/specs/EmptyStateSpec";
+import { ErrorStateSpec } from "@/components/specs/ErrorStateSpec";
+import { StatusBadgeSpec } from "@/components/specs/StatusBadgeSpec";
+import { TextInputSpec } from "@/components/specs/TextInputSpec";
 
 export function generateStaticParams() {
   return components.map((c) => ({ slug: c.slug }));
@@ -48,6 +53,11 @@ const SPEC_REGISTRY: Record<string, SpecComponent> = {
   "notification-banner":        NotificationBannerSpec,
   "toast-snackbar":             ToastSnackbarSpec,
   "alert-dialog":               AlertDialogSpec,
+  "progress-bar":               ProgressBarSpec,
+  "empty-state":                EmptyStateSpec,
+  "error-state-error-page":     ErrorStateSpec,
+  "status-badge":               StatusBadgeSpec,
+  "text-input":                 TextInputSpec,
 };
 
 export default async function ComponentPage({ params }: { params: Promise<{ slug: string }> }) {
