@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { CodeBlock } from "@/components/CodeBlock";
 import { Card, SectionHeading } from "./shared";
 
@@ -113,11 +113,6 @@ export function PullToRefreshSpec() {
     }, 2000);
   }
 
-  // Reset when switching dark/light so animation is visible again
-  useEffect(() => {
-    setPtrState("collapsed");
-  }, [isDark]);
-
   const stateLabel: Record<PTRState, string> = {
     collapsed: "Collapsed",
     loading: "Loading…",
@@ -135,8 +130,11 @@ export function PullToRefreshSpec() {
         <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
           <SectionHeading>Live preview</SectionHeading>
           <div className="flex items-center gap-2">
-            <button
-              onClick={() => setIsDark(!isDark)}
+          <button
+            onClick={() => {
+              setIsDark(!isDark);
+              setPtrState("collapsed");
+            }}
               className="flex items-center gap-2 rounded-[var(--radius-md)] border border-[var(--color-border-decorative)] bg-[var(--color-surface-card)] px-3 py-1.5 text-xs font-medium text-[var(--color-text-secondary)] transition-colors hover:bg-[var(--color-surface-hover)] hover:text-[var(--color-text-primary)]"
             >
               {isDark ? "☀ Light mode" : "☾ Dark mode"}
@@ -216,7 +214,7 @@ export function PullToRefreshSpec() {
                   </div>
                 </td>
                 <td className="px-4 py-4 align-top text-xs text-[var(--color-text-secondary)]">
-                  Animated spinner + "Loading..." label. Height expands to 52px. Shown while data fetch is in progress.
+                  Animated spinner + &quot;Loading...&quot; label. Height expands to 52px. Shown while data fetch is in progress.
                 </td>
               </tr>
               <tr>

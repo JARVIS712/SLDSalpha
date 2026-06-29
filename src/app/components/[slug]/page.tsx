@@ -20,6 +20,36 @@ import { EmptyStateSpec } from "@/components/specs/EmptyStateSpec";
 import { ErrorStateSpec } from "@/components/specs/ErrorStateSpec";
 import { StatusBadgeSpec } from "@/components/specs/StatusBadgeSpec";
 import { TextInputSpec } from "@/components/specs/TextInputSpec";
+import { PasswordInputSpec } from "@/components/specs/PasswordInputSpec";
+import { PhoneNumberInputSpec } from "@/components/specs/PhoneNumberInputSpec";
+import { TextAreaSpec } from "@/components/specs/TextAreaSpec";
+import { OtpInputSpec } from "@/components/specs/OtpInputSpec";
+import { SelectDropdownSpec } from "@/components/specs/SelectDropdownSpec";
+import { ComboBoxSpec } from "@/components/specs/ComboBoxSpec";
+import { CheckboxSpec } from "@/components/specs/CheckboxSpec";
+import { RadioButtonSpec } from "@/components/specs/RadioButtonSpec";
+import { ToggleSwitchSpec } from "@/components/specs/ToggleSwitchSpec";
+import { FileUploadSpec } from "@/components/specs/FileUploadSpec";
+import { SearchInputSpec } from "@/components/specs/SearchInputSpec";
+import { InputPrefixSuffixSpec } from "@/components/specs/InputPrefixSuffixSpec";
+import { ErrorSummarySpec } from "@/components/specs/ErrorSummarySpec";
+import { BottomSheetSpec } from "@/components/specs/BottomSheetSpec";
+import { ModalDialogSpec } from "@/components/specs/ModalDialogSpec";
+import {
+  AccordionSpec,
+  AvatarSpec,
+  DividerSpec,
+  IconCardSpec,
+  InsetTextSpec,
+  ListItemSpec,
+  LoadingSpinnerSpec,
+  ProcessListSpec,
+  ServiceCardSpec,
+  StepIndicatorSpec,
+  SummaryListSpec,
+  TagChipSpec,
+  TooltipSpec,
+} from "@/components/specs/FigmaBackedSpecs";
 
 export function generateStaticParams() {
   return components.map((c) => ({ slug: c.slug }));
@@ -58,6 +88,40 @@ const SPEC_REGISTRY: Record<string, SpecComponent> = {
   "error-state-error-page":     ErrorStateSpec,
   "status-badge":               StatusBadgeSpec,
   "text-input":                 TextInputSpec,
+  "password-input":             PasswordInputSpec,
+  "phone-number-input":         PhoneNumberInputSpec,
+  "textarea":                   TextAreaSpec,
+  "select-dropdown":            SelectDropdownSpec,
+  "combo-box-searchable":        ComboBoxSpec,
+  "combo-box-multi-select":      ComboBoxSpec,
+  "checkbox":                   CheckboxSpec,
+  "otp-input":                  OtpInputSpec,
+  "loading-spinner":            LoadingSpinnerSpec,
+  "bottom-sheet":               BottomSheetSpec,
+  "toggle-switch":              ToggleSwitchSpec,
+  "radio-button":               RadioButtonSpec,
+  "file-upload":                FileUploadSpec,
+  "search-input":               SearchInputSpec,
+  "input-with-prefix-suffix":    InputPrefixSuffixSpec,
+  "error-summary":              ErrorSummarySpec,
+  "modal-dialog":               ModalDialogSpec,
+  "service-card":                ServiceCardSpec,
+  "icon-card":                   IconCardSpec,
+  "tag-chip":                   TagChipSpec,
+  "avatar":                     AvatarSpec,
+  "divider":                    DividerSpec,
+  "list-item":                  ListItemSpec,
+  "summary-list":               SummaryListSpec,
+  "description-list":           SummaryListSpec,
+  "process-list":               ProcessListSpec,
+  "accordion":                  AccordionSpec,
+  "step-indicator-stepper":     StepIndicatorSpec,
+  "tooltip":                    TooltipSpec,
+  "inset-text":                 InsetTextSpec,
+  "warning-text":               InsetTextSpec,
+  "callout-summary-box":        InsetTextSpec,
+  "callout-inset-text":         InsetTextSpec,
+  "warning-notice-text":        InsetTextSpec,
 };
 
 export default async function ComponentPage({ params }: { params: Promise<{ slug: string }> }) {

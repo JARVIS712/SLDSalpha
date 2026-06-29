@@ -249,7 +249,7 @@ export function ErrorStateSpec() {
           {homeClicked ? (
             <div className="flex flex-col items-center gap-3 text-center">
               <p className="text-2xl">→</p>
-              <p className="text-sm text-[var(--color-text-secondary)]">"Go to Home" tapped</p>
+              <p className="text-sm text-[var(--color-text-secondary)]">&quot;Go to Home&quot; tapped</p>
               <button
                 onClick={() => setHomeClicked(false)}
                 className="text-xs underline text-[var(--color-text-tertiary)]"

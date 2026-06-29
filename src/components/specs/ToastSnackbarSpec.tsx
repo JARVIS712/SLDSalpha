@@ -10,7 +10,6 @@ function Toast({
   description,
   actionLabel,
   onAction,
-  onDismiss,
   visible,
   animKey,
 }: {
@@ -18,7 +17,6 @@ function Toast({
   description?: string;
   actionLabel?: string;
   onAction?: () => void;
-  onDismiss?: () => void;
   visible: boolean;
   animKey: number;
 }) {
@@ -293,7 +291,6 @@ export function ToastSnackbarSpec() {
                 description={showDesc ? "Enter the description text" : undefined}
                 actionLabel={showAction ? ACTION_LABELS[actionIdx] : undefined}
                 onAction={dismiss}
-                onDismiss={dismiss}
                 visible={toastVisible}
                 animKey={animKey}
               />
