@@ -6,9 +6,8 @@ export function SiteFooter() {
     <footer className="border-t border-[var(--color-border-decorative)] bg-[var(--color-surface-footer)] text-[var(--color-text-inverse)]">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-4 lg:px-8">
         <div className="md:col-span-2">
-          <div className="flex items-center gap-2.5">
-            <Image src="/slds-logo.svg" alt="" width={28} height={33} />
-            <span className="text-sm font-semibold">SLDS</span>
+          <div>
+            <Image src="/slds-logo.svg" alt="" width={54} height={40} />
           </div>
           <p className="mt-4 max-w-sm text-sm text-[var(--neutral-400)]">
             The shared design system for Sri Lanka&rsquo;s government digital services — maintained by GovTech Sri Lanka.

@@ -23,12 +23,8 @@ export function SiteHeader() {
         Skip to main content
       </a>
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-3 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-2.5">
-          <Image src="/slds-logo.svg" alt="" width={28} height={33} priority />
-          <span className="flex flex-col leading-tight">
-            <span className="text-sm font-semibold text-[var(--color-text-primary)]">SLDS</span>
-            <span className="text-[11px] text-[var(--color-text-tertiary)]">Design System</span>
-          </span>
+        <Link href="/">
+          <Image src="/slds-logo.svg" alt="SLDS — Sri Lanka Design System" width={65} height={48} priority />
         </Link>
 
         <nav aria-label="Primary" className="hidden items-center gap-1 sm:flex">
