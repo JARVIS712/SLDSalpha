@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { CodeBlock } from "@/components/CodeBlock";
-import { Card, SectionHeading } from "./shared";
+import { Card, SectionHeading, SpecTable, specTheme } from "./shared";
 
 type ToggleVariant =
   | "default"
@@ -14,12 +14,12 @@ type ToggleVariant =
 
 function toggleTheme(darkMode: boolean) {
   return {
-    frame: darkMode ? "var(--color-surface-page)" : "#FFFFFF",
-    trackOff: darkMode ? "var(--color-action-disabled-bg)" : "#ECEEF1",
-    trackOn: darkMode ? "var(--color-action-primary)" : "#FFC700",
-    thumb: darkMode ? "var(--color-surface-card)" : "#FAFAFB",
+    ...specTheme(darkMode),
+    trackOff:    darkMode ? "var(--color-action-disabled-bg)" : "#ECEEF1",
+    trackOn:     darkMode ? "var(--color-action-primary)" : "#FFC700",
+    thumb:       darkMode ? "var(--color-surface-card)" : "#FAFAFB",
     thumbDisabled: darkMode ? "var(--color-action-disabled-fg)" : "#B8BDC4",
-    focus: "0 0 6px 0 var(--gold-200), 0 0 0 3px var(--gold-300)",
+    focusRing:   "0 0 6px 0 var(--gold-200), 0 0 0 3px var(--gold-300)",
     thumbShadow: darkMode ? "0 10px 15px -3px rgba(0,0,0,0.35)" : "0 10px 15px -3px rgba(0,0,0,0.12)",
   };
 }
@@ -35,7 +35,7 @@ function ToggleMark({ variant, darkMode = false }: { variant: ToggleVariant; dar
       className={`flex h-7 w-[50.4px] shrink-0 items-center overflow-hidden rounded-full px-1 ${checked ? "justify-end" : "justify-start"}`}
       style={{
         backgroundColor: checked && !disabled ? theme.trackOn : theme.trackOff,
-        boxShadow: focused ? theme.focus : "none",
+        boxShadow: focused ? theme.focusRing : "none",
       }}
       aria-hidden="true"
     >
@@ -87,37 +87,6 @@ function VariantRows({ darkMode = false }: { darkMode?: boolean }) {
         </div>
       ))}
     </div>
-  );
-}
-
-function SpecTable({ headers, rows }: { headers: string[]; rows: React.ReactNode[][] }) {
-  return (
-    <Card>
-      <div className="overflow-x-auto">
-        <table className="w-full min-w-[560px] text-sm">
-          <thead>
-            <tr className="border-b border-[var(--color-border-decorative)]">
-              {headers.map((header) => (
-                <th key={header} className="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wide text-[var(--color-text-tertiary)]">
-                  {header}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-[var(--color-border-decorative)]">
-            {rows.map((row, rowIndex) => (
-              <tr key={rowIndex}>
-                {row.map((cell, cellIndex) => (
-                  <td key={cellIndex} className="px-5 py-4 align-top text-[var(--color-text-secondary)]">
-                    {cell}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </Card>
   );
 }
 

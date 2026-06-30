@@ -2,22 +2,14 @@
 
 import React, { useState } from "react";
 import { CodeBlock } from "@/components/CodeBlock";
-import { Card, SectionHeading } from "./shared";
+import { Card, SectionHeading, SpecTable, specTheme } from "./shared";
 
 type InputState = "default" | "focused" | "error" | "disabled";
 
 function inputAffixTheme(darkMode: boolean) {
   return {
-    frame: darkMode ? "var(--color-surface-page)" : "#FFFFFF",
-    surface: darkMode ? "var(--color-surface-card)" : "#FFFFFF",
-    border: darkMode ? "var(--color-border-default)" : "#8E949E",
-    focus: darkMode ? "var(--color-action-primary)" : "#FFC700",
-    error: darkMode ? "var(--color-feedback-error)" : "#D32F2F",
+    ...specTheme(darkMode),
     disabledBorder: darkMode ? "var(--color-border-disabled)" : "#ECEEF1",
-    text: darkMode ? "var(--color-text-primary)" : "#111111",
-    secondary: darkMode ? "var(--color-text-secondary)" : "#676C73",
-    disabled: darkMode ? "var(--color-text-disabled)" : "#B8BDC4",
-    placeholder: darkMode ? "var(--color-text-disabled)" : "#B8BDC4",
   };
 }
 
@@ -60,37 +52,6 @@ function InputAffixPreview({ state, darkMode = false }: { state: InputState; dar
         </p>
       </div>
     </div>
-  );
-}
-
-function SpecTable({ headers, rows }: { headers: string[]; rows: React.ReactNode[][] }) {
-  return (
-    <Card>
-      <div className="overflow-x-auto">
-        <table className="w-full min-w-[560px] text-sm">
-          <thead>
-            <tr className="border-b border-[var(--color-border-decorative)]">
-              {headers.map((header) => (
-                <th key={header} className="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wide text-[var(--color-text-tertiary)]">
-                  {header}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-[var(--color-border-decorative)]">
-            {rows.map((row, rowIndex) => (
-              <tr key={rowIndex}>
-                {row.map((cell, cellIndex) => (
-                  <td key={cellIndex} className="px-5 py-4 align-top text-[var(--color-text-secondary)]">
-                    {cell}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </Card>
   );
 }
 

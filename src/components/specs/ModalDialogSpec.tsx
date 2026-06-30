@@ -2,21 +2,16 @@
 
 import React, { useState } from "react";
 import { CodeBlock } from "@/components/CodeBlock";
-import { Card, SectionHeading } from "./shared";
+import { Card, SectionHeading, SpecTable, specTheme } from "./shared";
 
 function dialogTheme(darkMode: boolean) {
   return {
-    frame: darkMode ? "var(--color-surface-page)" : "#F5F6F8",
-    surface: darkMode ? "var(--color-surface-card)" : "#FFFFFF",
-    text: darkMode ? "var(--color-text-primary)" : "#111111",
-    secondary: darkMode ? "var(--color-text-secondary)" : "#676C73",
-    primaryBg: darkMode ? "var(--color-action-primary)" : "#FFC700",
-    primaryText: darkMode ? "var(--color-action-primary-foreground)" : "#111111",
-    secondaryBg: darkMode ? "var(--color-action-secondary)" : "#FFFFFF",
+    ...specTheme(darkMode),
+    frame:           darkMode ? "var(--color-surface-page)" : "#F5F6F8",
+    primaryBg:       darkMode ? "var(--color-action-primary)" : "#FFC700",
+    primaryText:     darkMode ? "var(--color-action-primary-foreground)" : "#111111",
+    secondaryBg:     darkMode ? "var(--color-action-secondary)" : "#FFFFFF",
     secondaryBorder: darkMode ? "var(--color-action-secondary-border)" : "#DADDE2",
-    shadow: darkMode
-      ? "0 18px 30px -12px rgba(0,0,0,0.65), 0 8px 14px -8px rgba(0,0,0,0.55)"
-      : "0 10px 15px -3px rgba(0,0,0,0.12), 0 8px 18px -10px rgba(0,0,0,0.22)",
   };
 }
 
@@ -78,37 +73,6 @@ function DialogPreview({ darkMode = false }: { darkMode?: boolean }) {
         </div>
       </div>
     </div>
-  );
-}
-
-function SpecTable({ headers, rows }: { headers: string[]; rows: React.ReactNode[][] }) {
-  return (
-    <Card>
-      <div className="overflow-x-auto">
-        <table className="w-full min-w-[560px] text-sm">
-          <thead>
-            <tr className="border-b border-[var(--color-border-decorative)]">
-              {headers.map((header) => (
-                <th key={header} className="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wide text-[var(--color-text-tertiary)]">
-                  {header}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-[var(--color-border-decorative)]">
-            {rows.map((row, rowIndex) => (
-              <tr key={rowIndex}>
-                {row.map((cell, cellIndex) => (
-                  <td key={cellIndex} className="px-5 py-4 align-top text-[var(--color-text-secondary)]">
-                    {cell}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </Card>
   );
 }
 

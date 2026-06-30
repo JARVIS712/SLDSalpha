@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { CodeBlock } from "@/components/CodeBlock";
-import { Card, SectionHeading } from "./shared";
+import { Card, SectionHeading, SpecTable, specTheme } from "./shared";
 
 type CheckboxSize = "large" | "default";
 type CheckboxVariant =
@@ -17,15 +17,13 @@ type CheckboxVariant =
 
 function checkboxTheme(darkMode: boolean) {
   return {
-    frame: darkMode ? "var(--color-surface-page)" : "#FFFFFF",
-    surface: darkMode ? "var(--color-surface-card)" : "#FDFDFD",
-    border: darkMode ? "var(--color-border-default)" : "#8E949E",
-    selected: darkMode ? "var(--color-action-primary)" : "#FFC700",
-    selectedIcon: darkMode ? "var(--color-action-primary-foreground)" : "#FFFFFF",
-    disabledFill: darkMode ? "var(--color-action-disabled-bg)" : "#ECEEF1",
+    ...specTheme(darkMode),
+    selected:       darkMode ? "var(--color-action-primary)" : "#FFC700",
+    selectedIcon:   darkMode ? "var(--color-action-primary-foreground)" : "#FFFFFF",
+    disabledFill:   darkMode ? "var(--color-action-disabled-bg)" : "#ECEEF1",
     disabledBorder: darkMode ? "var(--color-border-disabled)" : "#B8BDC4",
-    disabledIcon: darkMode ? "var(--color-action-disabled-fg)" : "#B8BDC4",
-    focus: "0 0 6px 0 var(--gold-200), 0 0 0 3px var(--gold-300)",
+    disabledIcon:   darkMode ? "var(--color-action-disabled-fg)" : "#B8BDC4",
+    focusRing:      "0 0 6px 0 var(--gold-200), 0 0 0 3px var(--gold-300)",
   };
 }
 
@@ -80,7 +78,7 @@ function CheckboxMark({
         borderRadius: radius,
         backgroundColor: fill,
         border: `${checked && !focused && !disabled ? 0 : borderWidth}px solid ${borderColor}`,
-        boxShadow: focused ? theme.focus : "none",
+        boxShadow: focused ? theme.focusRing : "none",
       }}
     >
       {checked && (indeterminate ? <MinusIcon color={iconColor} size={size} /> : <CheckIcon color={iconColor} size={size} />)}
@@ -133,37 +131,6 @@ function VariantRows({ darkMode = false }: { darkMode?: boolean }) {
         </div>
       ))}
     </div>
-  );
-}
-
-function SpecTable({ headers, rows }: { headers: string[]; rows: React.ReactNode[][] }) {
-  return (
-    <Card>
-      <div className="overflow-x-auto">
-        <table className="w-full min-w-[560px] text-sm">
-          <thead>
-            <tr className="border-b border-[var(--color-border-decorative)]">
-              {headers.map((header) => (
-                <th key={header} className="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wide text-[var(--color-text-tertiary)]">
-                  {header}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-[var(--color-border-decorative)]">
-            {rows.map((row, rowIndex) => (
-              <tr key={rowIndex}>
-                {row.map((cell, cellIndex) => (
-                  <td key={cellIndex} className="px-5 py-4 align-top text-[var(--color-text-secondary)]">
-                    {cell}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </Card>
   );
 }
 

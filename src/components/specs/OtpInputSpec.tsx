@@ -197,12 +197,9 @@ export function OtpInput({
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
-  let currentValue = internalState;
-  if (value !== undefined) {
-    const vals = value.split("").slice(0, length);
-    currentValue = Array(length).fill("");
-    vals.forEach((v, i) => (currentValue[i] = v));
-  }
+  const currentValue = value !== undefined
+    ? Array.from({ length }, (_, i) => value[i] ?? "")
+    : internalState;
 
   const updateValue = (newArr: string[]) => {
     if (value === undefined) {

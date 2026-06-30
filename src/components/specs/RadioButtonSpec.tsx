@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { CodeBlock } from "@/components/CodeBlock";
-import { Card, SectionHeading } from "./shared";
+import { Card, SectionHeading, SpecTable, specTheme } from "./shared";
 
 type RadioSize = "default" | "large";
 type RadioVariant =
@@ -15,15 +15,14 @@ type RadioVariant =
 
 function radioTheme(darkMode: boolean) {
   return {
-    frame: darkMode ? "var(--color-surface-page)" : "#FFFFFF",
-    controlBg: darkMode ? "var(--color-surface-sunken)" : "#F5F6F8",
-    activeBg: darkMode ? "var(--color-surface-card)" : "#FAFAFB",
-    border: darkMode ? "var(--color-border-default)" : "#8E949E",
-    selected: darkMode ? "var(--color-action-primary)" : "#FFC700",
-    disabledFill: darkMode ? "var(--color-action-disabled-bg)" : "#ECEEF1",
+    ...specTheme(darkMode),
+    controlBg:      darkMode ? "var(--color-surface-sunken)" : "#F5F6F8",
+    activeBg:       darkMode ? "var(--color-surface-card)" : "#FAFAFB",
+    selected:       darkMode ? "var(--color-action-primary)" : "#FFC700",
+    disabledFill:   darkMode ? "var(--color-action-disabled-bg)" : "#ECEEF1",
     disabledBorder: darkMode ? "var(--color-border-disabled)" : "#B8BDC4",
-    disabledDot: darkMode ? "var(--color-action-disabled-fg)" : "#B8BDC4",
-    focus: "0 0 6px 0 var(--gold-200), 0 0 0 3px var(--gold-300)",
+    disabledDot:    darkMode ? "var(--color-action-disabled-fg)" : "#B8BDC4",
+    focusRing:      "0 0 6px 0 var(--gold-200), 0 0 0 3px var(--gold-300)",
   };
 }
 
@@ -51,7 +50,7 @@ function RadioMark({
         height: dimension,
         backgroundColor: disabled ? theme.disabledFill : selected || focused ? theme.activeBg : theme.controlBg,
         borderColor: disabled ? theme.disabledBorder : selected ? theme.selected : theme.border,
-        boxShadow: focused ? theme.focus : "none",
+        boxShadow: focused ? theme.focusRing : "none",
       }}
       aria-hidden="true"
     >
@@ -112,37 +111,6 @@ function VariantRows({ darkMode = false }: { darkMode?: boolean }) {
         </div>
       ))}
     </div>
-  );
-}
-
-function SpecTable({ headers, rows }: { headers: string[]; rows: React.ReactNode[][] }) {
-  return (
-    <Card>
-      <div className="overflow-x-auto">
-        <table className="w-full min-w-[560px] text-sm">
-          <thead>
-            <tr className="border-b border-[var(--color-border-decorative)]">
-              {headers.map((header) => (
-                <th key={header} className="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wide text-[var(--color-text-tertiary)]">
-                  {header}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-[var(--color-border-decorative)]">
-            {rows.map((row, rowIndex) => (
-              <tr key={rowIndex}>
-                {row.map((cell, cellIndex) => (
-                  <td key={cellIndex} className="px-5 py-4 align-top text-[var(--color-text-secondary)]">
-                    {cell}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </Card>
   );
 }
 

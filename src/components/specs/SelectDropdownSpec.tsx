@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { CodeBlock } from "@/components/CodeBlock";
-import { Card, SectionHeading } from "./shared";
+import { Card, SectionHeading, SpecTable, specTheme, SearchIcon, SmallCheckIcon, ChevronDown } from "./shared";
 
 type DropdownState = "default" | "filling" | "selected";
 type DropdownListItemState = "default" | "hover" | "focused" | "disabled";
@@ -10,24 +10,15 @@ type DropdownListItemType = "default" | "select";
 
 function dropdownTheme(darkMode: boolean) {
   return {
-    frame: darkMode ? "var(--color-surface-page)" : "#FAFAFB",
-    surface: darkMode ? "var(--color-surface-card)" : "#FAFAFB",
-    surfaceSelected: darkMode ? "var(--color-surface-hover)" : "#F5F6F8",
-    border: darkMode ? "var(--color-border-default)" : "#8E949E",
-    menuBorder: darkMode ? "var(--color-border-decorative)" : "#DADDE2",
-    text: darkMode ? "var(--color-text-primary)" : "#111111",
-    secondary: darkMode ? "var(--color-text-secondary)" : "#676C73",
-    placeholder: darkMode ? "var(--color-text-disabled)" : "#B8BDC4",
-    disabled: darkMode ? "var(--color-text-disabled)" : "#B8BDC4",
-    checkboxBorder: darkMode ? "var(--color-border-default)" : "#8E949E",
-    checkboxDisabledFill: darkMode ? "var(--color-surface-disabled)" : "#ECEEF1",
+    ...specTheme(darkMode),
+    frame:                  darkMode ? "var(--color-surface-page)" : "#FAFAFB",
+    surface:                darkMode ? "var(--color-surface-card)" : "#FAFAFB",
+    surfaceSelected:        darkMode ? "var(--color-surface-hover)" : "#F5F6F8",
+    menuBorder:             darkMode ? "var(--color-border-decorative)" : "#DADDE2",
+    checkboxDisabledFill:   darkMode ? "var(--color-surface-disabled)" : "#ECEEF1",
     checkboxDisabledBorder: darkMode ? "var(--color-border-disabled)" : "#B8BDC4",
-    selectedFill: darkMode ? "var(--color-action-primary)" : "#FFC700",
-    selectedCheck: darkMode ? "var(--color-action-primary-foreground)" : "#FDFDFD",
-    required: darkMode ? "var(--color-feedback-error)" : "#D32F2F",
-    shadow: darkMode
-      ? "0 18px 30px -12px rgba(0,0,0,0.55), 0 8px 12px -8px rgba(0,0,0,0.45)"
-      : "0 10px 15px -3px rgba(0,0,0,0.10), 0 4px 6px -4px rgba(0,0,0,0.10)",
+    selectedFill:           darkMode ? "var(--color-action-primary)" : "#FFC700",
+    selectedCheck:          darkMode ? "var(--color-action-primary-foreground)" : "#FDFDFD",
   };
 }
 
@@ -36,31 +27,6 @@ function ArrowCounterClockwiseIcon({ color = "#111111" }: { color?: string }) {
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
       <path d="M6.25 4.25H3.75V1.75" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
       <path d="M3.95 4.25A5 5 0 1 1 3 7.18" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-function ChevronDownIcon({ color = "#8E949E" }: { color?: string }) {
-  return (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-      <path d="M5 7.5 10 12.5 15 7.5" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-function SearchIcon({ color = "#8E949E" }: { color?: string }) {
-  return (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-      <circle cx="9" cy="9" r="5.25" stroke={color} strokeWidth="1.5" />
-      <path d="m13 13 3 3" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
-    </svg>
-  );
-}
-
-function CheckIcon({ color = "#111111" }: { color?: string }) {
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-      <path d="m3.5 8.25 2.75 2.75 6.25-6.25" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -81,10 +47,10 @@ function SelectCheckbox({
       className="flex h-6 w-6 shrink-0 items-center justify-center rounded-[6px] border-[1.5px]"
       style={{
         backgroundColor: checked ? theme.selectedFill : disabled ? theme.checkboxDisabledFill : "transparent",
-        borderColor: checked ? "transparent" : disabled ? theme.checkboxDisabledBorder : theme.checkboxBorder,
+        borderColor: checked ? "transparent" : disabled ? theme.checkboxDisabledBorder : theme.border,
       }}
     >
-      {checked && <CheckIcon color={theme.selectedCheck} />}
+      {checked && <SmallCheckIcon color={theme.selectedCheck} />}
     </span>
   );
 }
@@ -132,7 +98,7 @@ function DropdownListItem({
       </span>
       {isHover && type === "default" && (
         <span className="flex h-4 w-4 shrink-0 items-center justify-center">
-          <CheckIcon color={theme.text} />
+          <SmallCheckIcon color={theme.text} />
         </span>
       )}
     </div>
@@ -148,7 +114,7 @@ function DropdownField({ state, darkMode = false }: { state: DropdownState; dark
     <div className="flex w-[361px] flex-col gap-1">
       <div className="flex h-5 w-[361px] items-start">
         <span className="text-[15px] leading-5 tracking-[0px]" style={{ color: theme.text }}>District</span>
-        <span className="text-[15px] leading-5 tracking-[0px]" style={{ color: theme.required }}>*</span>
+        <span className="text-[15px] leading-5 tracking-[0px]" style={{ color: theme.error }}>*</span>
       </div>
       <div
         className="flex h-[52px] w-[361px] items-center justify-between gap-2.5 rounded-[12px] border p-2"
@@ -160,7 +126,7 @@ function DropdownField({ state, darkMode = false }: { state: DropdownState; dark
           </span>
         </div>
         <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[8px]">
-          <ChevronDownIcon color={theme.placeholder} />
+          <ChevronDown color={theme.placeholder} />
         </span>
       </div>
     </div>
@@ -194,8 +160,8 @@ function DropdownMenu({ selected = false, darkMode = false }: { selected?: boole
                 style={{ backgroundColor: isSelected ? theme.surfaceSelected : "transparent", color: theme.text }}
               >
                 <span className={`${item === "Gampaha" ? "text-[15px]" : "text-sm"} leading-5 tracking-[0px]`}>{item}</span>
-                {selected && isSelected && <CheckIcon color={theme.text} />}
-                {!selected && isSelected && <CheckIcon color={theme.text} />}
+                {selected && isSelected && <SmallCheckIcon color={theme.text} />}
+                {!selected && isSelected && <SmallCheckIcon color={theme.text} />}
               </div>
             );
           })}
@@ -219,50 +185,13 @@ function DropdownPreview({ state, darkMode = false }: { state: DropdownState; da
   );
 }
 
-function SpecTable({
-  headers,
-  rows,
-}: {
-  headers: string[];
-  rows: React.ReactNode[][];
-}) {
-  return (
-    <Card>
-      <div className="overflow-x-auto">
-        <table className="w-full min-w-[560px] text-sm">
-          <thead>
-            <tr className="border-b border-[var(--color-border-decorative)]">
-              {headers.map((header) => (
-                <th key={header} className="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wide text-[var(--color-text-tertiary)]">
-                  {header}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-[var(--color-border-decorative)]">
-            {rows.map((row, rowIndex) => (
-              <tr key={rowIndex}>
-                {row.map((cell, cellIndex) => (
-                  <td key={cellIndex} className="px-5 py-4 align-top text-[var(--color-text-secondary)]">
-                    {cell}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </Card>
-  );
-}
-
 const SELECT_DROPDOWN_CODE = `export function SelectDropdown({ value, query, open }: SelectDropdownProps) {
   return (
     <div className="flex w-[361px] flex-col gap-1.5">
       <label className="text-[15px] leading-5 text-[#111111]">District<span className="text-[#D32F2F]">*</span></label>
       <button className="flex h-[52px] items-center justify-between rounded-[12px] border border-[#8E949E] bg-[#FAFAFB] p-2">
         <span className="px-2 text-[15px] leading-5">{value || query || "Select district"}</span>
-        <ChevronDownIcon />
+        <ChevronDown />
       </button>
       {open && (
         <div className="h-[234px] w-[362px] rounded-[16px] border border-[#DADDE2] bg-[#FAFAFB] py-2 shadow-lg">
