@@ -2,15 +2,14 @@
 
 import React, { useState } from "react";
 import { CodeBlock } from "@/components/CodeBlock";
-import { Card, SectionHeading } from "./shared";
+import { Card, SectionHeading, SpecTable, specTheme } from "./shared";
 
 function errorSummaryTheme(darkMode: boolean) {
   return {
-    frame: darkMode ? "var(--color-surface-page)" : "#FFFFFF",
-    surface: darkMode ? "var(--color-surface-card)" : "#FFFFFF",
+    ...specTheme(darkMode),
     border: darkMode ? "var(--color-feedback-error)" : "#D32F2F",
-    title: darkMode ? "var(--color-text-primary)" : "#111111",
-    link: darkMode ? "var(--color-feedback-error)" : "#D32F2F",
+    title:  darkMode ? "var(--color-text-primary)" : "#111111",
+    link:   darkMode ? "var(--color-feedback-error)" : "#D32F2F",
   };
 }
 
@@ -44,37 +43,6 @@ function ErrorSummaryPreview({ darkMode = false }: { darkMode?: boolean }) {
         ))}
       </div>
     </div>
-  );
-}
-
-function SpecTable({ headers, rows }: { headers: string[]; rows: React.ReactNode[][] }) {
-  return (
-    <Card>
-      <div className="overflow-x-auto">
-        <table className="w-full min-w-[560px] text-sm">
-          <thead>
-            <tr className="border-b border-[var(--color-border-decorative)]">
-              {headers.map((header) => (
-                <th key={header} className="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wide text-[var(--color-text-tertiary)]">
-                  {header}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-[var(--color-border-decorative)]">
-            {rows.map((row, rowIndex) => (
-              <tr key={rowIndex}>
-                {row.map((cell, cellIndex) => (
-                  <td key={cellIndex} className="px-5 py-4 align-top text-[var(--color-text-secondary)]">
-                    {cell}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </Card>
   );
 }
 

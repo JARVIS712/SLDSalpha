@@ -2,24 +2,20 @@
 
 import React, { useState } from "react";
 import { CodeBlock } from "@/components/CodeBlock";
-import { Card, SectionHeading } from "./shared";
+import { Card, SectionHeading, SpecTable, specTheme, XIcon, SmallCheckIcon } from "./shared";
 
 type UploadState = "default" | "uploading" | "success" | "failed";
 
 function uploadTheme(darkMode: boolean) {
   return {
-    frame: darkMode ? "var(--color-surface-page)" : "#FFFFFF",
-    surface: darkMode ? "var(--color-surface-card)" : "#FAFAFB",
-    border: darkMode ? "var(--color-border-default)" : "#8E949E",
-    buttonBg: darkMode ? "var(--color-action-secondary)" : "#FFFFFF",
+    ...specTheme(darkMode),
+    surface:      darkMode ? "var(--color-surface-card)" : "#FAFAFB",
+    buttonBg:     darkMode ? "var(--color-action-secondary)" : "#FFFFFF",
     buttonBorder: darkMode ? "var(--color-action-secondary-border)" : "#DADDE2",
-    text: darkMode ? "var(--color-text-primary)" : "#111111",
-    secondary: darkMode ? "var(--color-text-secondary)" : "#676C73",
-    required: darkMode ? "var(--color-feedback-error)" : "#D32F2F",
-    successBg: darkMode ? "var(--color-feedback-success-subtle)" : "#E0F2EC",
-    success: darkMode ? "var(--color-feedback-success)" : "#1FAA63",
-    errorBg: darkMode ? "var(--color-feedback-error-subtle)" : "#FDECEA",
-    error: darkMode ? "var(--color-feedback-error)" : "#D32F2F",
+    required:     darkMode ? "var(--color-feedback-error)" : "#D32F2F",
+    successBg:    darkMode ? "var(--color-feedback-success-subtle)" : "#E0F2EC",
+    success:      darkMode ? "var(--color-feedback-success)" : "#1FAA63",
+    errorBg:      darkMode ? "var(--color-feedback-error-subtle)" : "#FDECEA",
   };
 }
 
@@ -38,22 +34,6 @@ function SpinnerIcon({ color }: { color: string }) {
     <svg className="animate-spin" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path d="M12 3.75a8.25 8.25 0 0 1 8.25 8.25" stroke={color} strokeWidth="1.7" strokeLinecap="round" />
       <path d="M18.15 17.5A8.25 8.25 0 1 1 6.5 5.85" stroke={color} strokeWidth="1.7" strokeLinecap="round" strokeOpacity="0.35" />
-    </svg>
-  );
-}
-
-function CheckIcon({ color }: { color: string }) {
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-      <path d="m3.5 8.25 2.75 2.75 6.25-6.25" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-function XIcon({ color, size = 20 }: { color: string; size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 20 20" fill="none" aria-hidden="true">
-      <path d="m6 6 8 8M14 6l-8 8" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
     </svg>
   );
 }
@@ -125,7 +105,7 @@ function FileUploadPreview({ state, darkMode = false }: { state: UploadState; da
                   color: state === "success" ? theme.success : theme.error,
                 }}
               >
-                {state === "success" ? <CheckIcon color={theme.success} /> : <XIcon color={theme.error} size={16} />}
+                {state === "success" ? <SmallCheckIcon color={theme.success} /> : <XIcon color={theme.error} size={16} />}
               </span>
               <span className="flex w-[149px] flex-col gap-[6px]">
                 <span className="truncate text-[15px] leading-5 tracking-[0px]" style={{ color: theme.text }}>
@@ -146,37 +126,6 @@ function FileUploadPreview({ state, darkMode = false }: { state: UploadState; da
         )}
       </div>
     </div>
-  );
-}
-
-function SpecTable({ headers, rows }: { headers: string[]; rows: React.ReactNode[][] }) {
-  return (
-    <Card>
-      <div className="overflow-x-auto">
-        <table className="w-full min-w-[560px] text-sm">
-          <thead>
-            <tr className="border-b border-[var(--color-border-decorative)]">
-              {headers.map((header) => (
-                <th key={header} className="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wide text-[var(--color-text-tertiary)]">
-                  {header}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-[var(--color-border-decorative)]">
-            {rows.map((row, rowIndex) => (
-              <tr key={rowIndex}>
-                {row.map((cell, cellIndex) => (
-                  <td key={cellIndex} className="px-5 py-4 align-top text-[var(--color-text-secondary)]">
-                    {cell}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </Card>
   );
 }
 

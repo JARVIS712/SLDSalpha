@@ -2,53 +2,20 @@
 
 import React, { useState } from "react";
 import { CodeBlock } from "@/components/CodeBlock";
-import { Card, SectionHeading } from "./shared";
+import { Card, SectionHeading, SpecTable, specTheme, SearchIcon, XIcon, SmallCheckIcon } from "./shared";
 
 type SearchState = "default" | "typing" | "suggestion" | "filled";
 
 function searchTheme(darkMode: boolean) {
   return {
-    frame: darkMode ? "var(--color-surface-page)" : "#FFFFFF",
-    surface: darkMode ? "var(--color-surface-card)" : "#FAFAFB",
+    ...specTheme(darkMode),
+    surface:      darkMode ? "var(--color-surface-card)" : "#FAFAFB",
     surfaceHover: darkMode ? "var(--color-surface-hover)" : "#F5F6F8",
-    border: darkMode ? "var(--color-border-default)" : "#8E949E",
-    focus: darkMode ? "var(--color-action-primary)" : "#FFC700",
-    decorative: darkMode ? "var(--color-border-decorative)" : "#DADDE2",
-    divider: darkMode ? "var(--color-border-decorative)" : "#E9EAEB",
-    text: darkMode ? "var(--color-text-primary)" : "#111111",
-    secondary: darkMode ? "var(--color-text-secondary)" : "#676C73",
-    placeholder: darkMode ? "var(--color-text-disabled)" : "#B8BDC4",
-    buttonBg: darkMode ? "var(--color-action-secondary)" : "#FFFFFF",
+    decorative:   darkMode ? "var(--color-border-decorative)" : "#DADDE2",
+    divider:      darkMode ? "var(--color-border-decorative)" : "#E9EAEB",
+    buttonBg:     darkMode ? "var(--color-action-secondary)" : "#FFFFFF",
     buttonBorder: darkMode ? "var(--color-action-secondary-border)" : "#DADDE2",
-    shadow: darkMode
-      ? "0 18px 30px -12px rgba(0,0,0,0.55), 0 8px 12px -8px rgba(0,0,0,0.45)"
-      : "0 10px 15px -3px rgba(0,0,0,0.12), 0 4px 6px -4px rgba(0,0,0,0.12)",
   };
-}
-
-function SearchIcon({ color }: { color: string }) {
-  return (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-      <circle cx="9" cy="9" r="5.25" stroke={color} strokeWidth="1.5" />
-      <path d="m13 13 3 3" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
-    </svg>
-  );
-}
-
-function XIcon({ color }: { color: string }) {
-  return (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-      <path d="m6 6 8 8M14 6l-8 8" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
-    </svg>
-  );
-}
-
-function CheckIcon({ color }: { color: string }) {
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-      <path d="m3.5 8.25 2.75 2.75 6.25-6.25" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
 }
 
 function ClockIcon({ color }: { color: string }) {
@@ -158,7 +125,7 @@ function SearchSuggestions({ darkMode = false }: { darkMode?: boolean }) {
       >
         <div className="flex w-full flex-col px-2 pb-2">
           <SuggestionRow darkMode={darkMode}>Birth Certificate</SuggestionRow>
-          <SuggestionRow highlighted trailing={<CheckIcon color={theme.text} />} darkMode={darkMode}>
+          <SuggestionRow highlighted trailing={<SmallCheckIcon color={theme.text} />} darkMode={darkMode}>
             Driving License
           </SuggestionRow>
         </div>
@@ -180,37 +147,6 @@ function SearchSuggestions({ darkMode = false }: { darkMode?: boolean }) {
 function SearchPreview({ state, darkMode = false }: { state: SearchState; darkMode?: boolean }) {
   if (state === "suggestion") return <SearchSuggestions darkMode={darkMode} />;
   return <SearchBarField state={state} darkMode={darkMode} />;
-}
-
-function SpecTable({ headers, rows }: { headers: string[]; rows: React.ReactNode[][] }) {
-  return (
-    <Card>
-      <div className="overflow-x-auto">
-        <table className="w-full min-w-[560px] text-sm">
-          <thead>
-            <tr className="border-b border-[var(--color-border-decorative)]">
-              {headers.map((header) => (
-                <th key={header} className="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wide text-[var(--color-text-tertiary)]">
-                  {header}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-[var(--color-border-decorative)]">
-            {rows.map((row, rowIndex) => (
-              <tr key={rowIndex}>
-                {row.map((cell, cellIndex) => (
-                  <td key={cellIndex} className="px-5 py-4 align-top text-[var(--color-text-secondary)]">
-                    {cell}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </Card>
-  );
 }
 
 const SEARCH_INPUT_CODE = `export function SearchInput({ value, suggestionsOpen }: SearchInputProps) {

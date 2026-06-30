@@ -2,52 +2,23 @@
 
 import React, { useState } from "react";
 import { CodeBlock } from "@/components/CodeBlock";
-import { Card, SectionHeading } from "./shared";
+import { Card, SectionHeading, SpecTable, specTheme, XIcon, SriLankaFlag } from "./shared";
 
 type PhoneState = "default" | "focused" | "filled" | "error" | "disabled";
 
 function phoneTheme(darkMode: boolean) {
   return {
-    frame: darkMode ? "var(--color-surface-page)" : "#FFFFFF",
-    surface: darkMode ? "var(--color-surface-card)" : "#FFFFFF",
-    border: darkMode ? "var(--color-border-default)" : "#8E949E",
-    focus: darkMode ? "var(--color-action-primary)" : "#FFC700",
-    error: darkMode ? "var(--color-feedback-error)" : "#D32F2F",
+    ...specTheme(darkMode),
     disabledBorder: darkMode ? "var(--color-border-disabled)" : "#ECEEF1",
-    text: darkMode ? "var(--color-text-primary)" : "#111111",
-    secondary: darkMode ? "var(--color-text-secondary)" : "#676C73",
-    placeholder: darkMode ? "var(--color-text-disabled)" : "#B8BDC4",
-    disabled: darkMode ? "var(--color-text-disabled)" : "#B8BDC4",
-    icon: darkMode ? "var(--color-icon-secondary)" : "#8E949E",
-    success: darkMode ? "var(--color-feedback-success)" : "#1FAA63",
+    icon:           darkMode ? "var(--color-icon-secondary)" : "#8E949E",
+    success:        darkMode ? "var(--color-feedback-success)" : "#1FAA63",
   };
-}
-
-function SriLankaFlag({ disabled = false }: { disabled?: boolean }) {
-  return (
-    <span className={`relative h-[15px] w-[21px] shrink-0 overflow-hidden rounded-[2px] ${disabled ? "opacity-45" : ""}`} aria-hidden="true">
-      <span className="absolute inset-0 bg-[#8D153A]" />
-      <span className="absolute left-0 top-0 h-full w-[7px] bg-[#FFB700]" />
-      <span className="absolute left-[2px] top-[2px] h-[11px] w-[2px] bg-[#00534E]" />
-      <span className="absolute left-[5px] top-[2px] h-[11px] w-[2px] bg-[#EB7400]" />
-      <span className="absolute left-[9px] top-[2px] h-[11px] w-[10px] border border-[#FFB700]" />
-      <span className="absolute left-[12px] top-[4px] h-[7px] w-[4px] rounded-full bg-[#FFB700]" />
-    </span>
-  );
 }
 
 function CaretDownIcon({ color }: { color: string }) {
   return (
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
       <path d="M4 6 8 10l4-4" stroke={color} strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-function XIcon({ color }: { color: string }) {
-  return (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-      <path d="m6 6 8 8M14 6l-8 8" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
     </svg>
   );
 }
@@ -122,37 +93,6 @@ function PhoneNumberPreview({ state, darkMode = false }: { state: PhoneState; da
         </p>
       </div>
     </div>
-  );
-}
-
-function SpecTable({ headers, rows }: { headers: string[]; rows: React.ReactNode[][] }) {
-  return (
-    <Card>
-      <div className="overflow-x-auto">
-        <table className="w-full min-w-[560px] text-sm">
-          <thead>
-            <tr className="border-b border-[var(--color-border-decorative)]">
-              {headers.map((header) => (
-                <th key={header} className="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wide text-[var(--color-text-tertiary)]">
-                  {header}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-[var(--color-border-decorative)]">
-            {rows.map((row, rowIndex) => (
-              <tr key={rowIndex}>
-                {row.map((cell, cellIndex) => (
-                  <td key={cellIndex} className="px-5 py-4 align-top text-[var(--color-text-secondary)]">
-                    {cell}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </Card>
   );
 }
 

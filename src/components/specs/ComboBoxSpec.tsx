@@ -2,45 +2,22 @@
 
 import React, { useState } from "react";
 import { CodeBlock } from "@/components/CodeBlock";
-import { Card, SectionHeading } from "./shared";
+import { Card, SectionHeading, SpecTable, specTheme, SearchIcon, ChevronDown } from "./shared";
 
 type ComboBoxState = "default" | "filling" | "selected";
 
 function comboTheme(darkMode: boolean) {
   return {
-    frame: darkMode ? "var(--color-surface-page)" : "#FAFAFB",
-    surface: darkMode ? "var(--color-surface-card)" : "#FAFAFB",
-    surfaceHover: darkMode ? "var(--color-surface-hover)" : "#F5F6F8",
-    border: darkMode ? "var(--color-border-default)" : "#8E949E",
-    decorative: darkMode ? "var(--color-border-decorative)" : "#DADDE2",
-    text: darkMode ? "var(--color-text-primary)" : "#111111",
-    secondary: darkMode ? "var(--color-text-secondary)" : "#676C73",
-    placeholder: darkMode ? "var(--color-text-disabled)" : "#B8BDC4",
-    required: darkMode ? "var(--color-feedback-error)" : "#D32F2F",
-    chip: darkMode ? "var(--color-surface-hover)" : "#F5F6F8",
-    selected: darkMode ? "var(--color-action-primary)" : "#FFC700",
+    ...specTheme(darkMode),
+    frame:         darkMode ? "var(--color-surface-page)" : "#FAFAFB",
+    surface:       darkMode ? "var(--color-surface-card)" : "#FAFAFB",
+    surfaceHover:  darkMode ? "var(--color-surface-hover)" : "#F5F6F8",
+    decorative:    darkMode ? "var(--color-border-decorative)" : "#DADDE2",
+    chip:          darkMode ? "var(--color-surface-hover)" : "#F5F6F8",
+    selected:      darkMode ? "var(--color-action-primary)" : "#FFC700",
     selectedCheck: darkMode ? "var(--color-action-primary-foreground)" : "#FFFFFF",
-    shadow: darkMode
-      ? "0 18px 30px -12px rgba(0,0,0,0.55), 0 8px 12px -8px rgba(0,0,0,0.45)"
-      : "0 10px 15px -3px rgba(0,0,0,0.12), 0 4px 6px -4px rgba(0,0,0,0.12)",
+    required:      darkMode ? "var(--color-feedback-error)" : "#D32F2F",
   };
-}
-
-function CaretDownIcon({ color }: { color: string }) {
-  return (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-      <path d="M5 7.5 10 12.5 15 7.5" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-function SearchIcon({ color }: { color: string }) {
-  return (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-      <circle cx="9" cy="9" r="5.25" stroke={color} strokeWidth="1.5" />
-      <path d="m13 13 3 3" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
-    </svg>
-  );
 }
 
 function XIcon({ color }: { color: string }) {
@@ -120,7 +97,7 @@ function Field({ state, darkMode = false }: { state: ComboBoxState; darkMode?: b
           )}
         </div>
         <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[8px]">
-          <CaretDownIcon color={theme.border} />
+          <ChevronDown color={theme.border} />
         </span>
       </div>
     </div>
@@ -191,37 +168,6 @@ function ComboBoxPreview({ state, darkMode = false }: { state: ComboBoxState; da
         <ComboMenu state={state} darkMode={darkMode} />
       )}
     </div>
-  );
-}
-
-function SpecTable({ headers, rows }: { headers: string[]; rows: React.ReactNode[][] }) {
-  return (
-    <Card>
-      <div className="overflow-x-auto">
-        <table className="w-full min-w-[560px] text-sm">
-          <thead>
-            <tr className="border-b border-[var(--color-border-decorative)]">
-              {headers.map((header) => (
-                <th key={header} className="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wide text-[var(--color-text-tertiary)]">
-                  {header}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-[var(--color-border-decorative)]">
-            {rows.map((row, rowIndex) => (
-              <tr key={rowIndex}>
-                {row.map((cell, cellIndex) => (
-                  <td key={cellIndex} className="px-5 py-4 align-top text-[var(--color-text-secondary)]">
-                    {cell}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </Card>
   );
 }
 

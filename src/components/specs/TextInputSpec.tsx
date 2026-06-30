@@ -1,7 +1,7 @@
 "use client";
 import React, { useId, useState } from "react";
 import { CodeBlock } from "@/components/CodeBlock";
-import { Card, SectionHeading } from "./shared";
+import { Card, SectionHeading, SriLankaFlag, ChevronDown } from "./shared";
 
 // ── Inline SVG icons ──────────────────────────────────────────────────────────
 
@@ -29,27 +29,6 @@ function InfoFilledIcon({ color = "#8e949e" }: { color?: string }) {
       <circle cx="10" cy="10" r="8" fill={color} />
       <rect x="9.25" y="9" width="1.5" height="5" rx="0.75" fill="white" />
       <circle cx="10" cy="6.5" r="0.85" fill="white" />
-    </svg>
-  );
-}
-
-function SriLankaFlag() {
-  return (
-    <svg width="21" height="15" viewBox="0 0 21 15" fill="none" className="rounded-sm overflow-hidden" aria-hidden="true">
-      <rect width="21" height="15" fill="#FFBE29" />
-      <rect x="1" y="1" width="19" height="13" fill="#FFBE29" />
-      <rect x="2" y="2" width="3" height="11" fill="#006F53" />
-      <rect x="5.5" y="2" width="3" height="11" fill="#FF7F00" />
-      <rect x="9" y="2" width="10" height="11" fill="#80002A" />
-      <path d="M12 7.5c.3 0 .5-.2.5-.5s-.2-.5-.5-.5h-1v1h1z" fill="#FFBE29" />
-    </svg>
-  );
-}
-
-function CaretDownIcon({ color = "#111", width = 12, height = 12 }: { color?: string; width?: number | string; height?: number | string }) {
-  return (
-    <svg width={width} height={height} viewBox="0 0 12 12" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M2.5 4.5L6 8L9.5 4.5" />
     </svg>
   );
 }
@@ -341,7 +320,7 @@ export function PhoneNumberInput({
               <span className="text-[15px] font-normal leading-5 tracking-[0px]" style={{ color: labelColor }}>+94</span>
             </div>
             <div className="flex h-[28px] w-[20px] shrink-0 items-center justify-center overflow-hidden rounded-[8px]">
-              <CaretDownIcon color={state === "disabled" ? "#b8bdc4" : "#111"} width={16} height={16} />
+              <ChevronDown color={state === "disabled" ? "#b8bdc4" : "#111"} size={16} />
             </div>
           </div>
 
@@ -451,7 +430,7 @@ export function PhoneNumberInput({
               <span className="text-[15px] font-normal leading-5 tracking-[0px]" style={{ color: labelColor }}>+94</span>
             </div>
             <div className="flex h-[28px] w-[20px] shrink-0 items-center justify-center overflow-hidden rounded-[8px]">
-              <CaretDownIcon color={state === "disabled" ? "#b8bdc4" : "#111"} width={16} height={16} />
+              <ChevronDown color={state === "disabled" ? "#b8bdc4" : "#111"} size={16} />
             </div>
           </div>
 
